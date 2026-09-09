@@ -1714,3 +1714,27 @@ body {
         transform: translate(0, 0) scale(0.4);
     }
 }
+
+/* Video Preloader Overrides */
+.preloader-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    transform: translate(-50%, -50%);
+    object-fit: cover;
+    z-index: 1;
+    opacity: 0.6; /* Slightly dimmed to allow logo to pop */
+}
+
+.preloader-overlay {
+    position: absolute;
+    top: 0; left: 0; width: 100vw; height: 100vh;
+    background: linear-gradient(135deg, rgba(2, 6, 17, 0.9) 0%, rgba(11, 30, 54, 0.4) 100%);
+    z-index: 2;
+}
+
+.logo-anim-container {
+    z-index: 3;
+}
