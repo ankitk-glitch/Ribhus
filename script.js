@@ -3,25 +3,31 @@
 // ==========================================
 // Preloader Logic
 // ==========================================
-window.addEventListener('load', () => {
+(function initPreloader() {
+    // We do NOT wait for window.onload because external assets (like Google Translate or images) 
+    // might delay the event and cause the user to be stuck on the blue screen.
+    // The CSS animations start immediately, so we start our timer immediately.
     setTimeout(() => {
         const preloader = document.getElementById('preloader');
         if (preloader) {
+            // Fade out the dark blue background
             preloader.style.opacity = '0';
             preloader.style.visibility = 'hidden';
             
-            // Force visible
-            setTimeout(() => {
-                document.querySelectorAll('.animate-on-scroll').forEach(el => {
-                    el.classList.add('visible');
-                    el.style.opacity = '1';
-                    el.style.transform = 'translateY(0)';
-                });
-                setTimeout(() => { preloader.remove(); }, 1000);
-            }, 50);
+            // Immediately force all hidden page content to show
+            document.querySelectorAll('.animate-on-scroll').forEach(el => {
+                el.classList.add('visible');
+                el.style.opacity = '1';
+                el.style.transform = 'translateY(0)';
+            });
+            
+            // Remove from DOM after fade out completes
+            setTimeout(() => { 
+                preloader.remove(); 
+            }, 1000);
         }
-    }, 6000); 
-});
+    }, 5800); // 5.8s perfectly matches the 5.0s + 1s CSS shift animation
+})();
 
 // Close modal when clicking outside
 window.onclick = function(event) {
