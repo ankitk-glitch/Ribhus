@@ -1,22 +1,33 @@
 
+
 // ==========================================
 // Preloader Logic
 // ==========================================
 window.addEventListener('load', () => {
-    // Keep it visible long enough to show the beautiful 3D construction (2.8 seconds total)
+    // City draws (0-2.8s)
+    // City fades (2.8-3.0s)
+    // Logo fades in (3.0-3.5s)
+    // Logo shifts to corner (4.2-5.4s)
+    
+    // Fade out the entire preloader background exactly when the logo reaches the corner (5.2s)
     setTimeout(() => {
         const preloader = document.getElementById('preloader');
         if (preloader) {
             preloader.style.opacity = '0';
             preloader.style.visibility = 'hidden';
             
-            // Re-trigger intersection observer for hero elements after preloader hides
+            // Re-trigger hero animations
             setTimeout(() => {
                 document.querySelectorAll('.animate-on-scroll').forEach(el => {
                     if (el.getBoundingClientRect().top < window.innerHeight) {
                         el.classList.add('visible');
                     }
                 });
+            }, 100);
+        }
+    }, 5200); 
+});
+
             }, 300);
         }
     }, 2800);

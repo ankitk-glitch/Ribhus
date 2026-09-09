@@ -1458,3 +1458,99 @@ body {
         grid-template-columns: 1fr !important;
     }
 }
+
+/* ==========================================
+   Cinematic City & Logo Preloader
+   ========================================== */
+#preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #050e1a; /* Deep navy blueprint background */
+    z-index: 99999;
+    transition: opacity 0.6s ease-out, visibility 0.6s ease-out;
+}
+
+/* City Animation Container */
+.city-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px;
+    max-width: 90vw;
+    opacity: 1;
+    animation: fadeOutCity 0.5s 2.8s forwards;
+}
+
+.city-svg {
+    width: 100%;
+    height: auto;
+    stroke: var(--accent-gold);
+    stroke-width: 2.5;
+    fill: none;
+    stroke-linejoin: round;
+    stroke-linecap: round;
+    filter: drop-shadow(0 0 8px rgba(212, 175, 55, 0.4));
+}
+
+.city-svg .draw-line {
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+    animation: drawCity 2.5s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+}
+
+.city-svg .grid-line {
+    stroke-width: 1;
+    opacity: 0.5;
+    animation-delay: 0.5s;
+}
+
+.city-svg .base-line {
+    animation-duration: 1s;
+}
+
+/* Logo Animation Container */
+.logo-anim-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1.5);
+    opacity: 0;
+    /* Fades in at 3.0s, stays for a moment, then shifts to top left at 4.2s */
+    animation: fadeInLogo 0.5s 3.0s forwards, shiftToCorner 1.2s 4.2s cubic-bezier(0.77, 0, 0.175, 1) forwards;
+}
+
+.preloader-logo-svg {
+    filter: drop-shadow(0 0 15px rgba(212, 175, 55, 0.3));
+}
+
+/* Keyframes */
+@keyframes drawCity {
+    to { stroke-dashoffset: 0; }
+}
+
+@keyframes fadeOutCity {
+    to { opacity: 0; visibility: hidden; }
+}
+
+@keyframes fadeInLogo {
+    from { opacity: 0; transform: translate(-50%, -50%) scale(0.8); }
+    to { opacity: 1; transform: translate(-50%, -50%) scale(1.5); }
+}
+
+@keyframes shiftToCorner {
+    0% {
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(1.5);
+    }
+    100% {
+        /* Approximate position of the actual navbar logo */
+        top: 2rem; 
+        left: 5%; 
+        transform: translate(0, 0) scale(0.4);
+    }
+}
