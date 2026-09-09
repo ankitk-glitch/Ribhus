@@ -772,3 +772,117 @@ h1, h2, h3, h4 {
         align-items: stretch;
     }
 }
+
+/* JLL Style Hero */
+.jll-hero {
+    position: relative;
+    width: 100%;
+    height: 85vh;
+    min-height: 600px;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.3) 60%, rgba(0, 0, 0, 0) 100%), url('hero_bg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    margin-top: -80px; /* pull up behind navbar if transparent, else just standard */
+}
+
+/* Make navbar transparent for JLL look if needed, or keep clean white. The JLL screenshot has a clean white navbar ABOVE the image. So no negative margin needed. */
+.jll-hero {
+    margin-top: 0;
+}
+
+.jll-hero-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    width: 100%;
+    color: #fff;
+}
+
+.jll-hero h1 {
+    font-size: 4rem;
+    font-family: var(--font-body); /* JLL uses clean sans-serif */
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+    color: #fff;
+    font-weight: 400;
+}
+
+.jll-hero p {
+    font-size: 1.25rem;
+    font-family: var(--font-body);
+    max-width: 650px;
+    margin-bottom: 2.5rem;
+    opacity: 0.95;
+    font-weight: 400;
+    line-height: 1.6;
+}
+
+.btn-jll {
+    background-color: #fff;
+    color: #111;
+    border: none;
+    padding: 0.8rem 1.8rem;
+    font-size: 1.05rem;
+    font-family: var(--font-body);
+    font-weight: 500;
+    border-radius: 4px;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.btn-jll:hover {
+    background-color: #f4f4f4;
+}
+
+.btn-jll .arrow {
+    font-size: 1.2rem;
+    transition: transform 0.3s;
+}
+
+.btn-jll:hover .arrow {
+    transform: translateX(5px);
+}
+
+/* Features Bar Below Hero */
+.features-bar {
+    background-color: var(--primary-light);
+    padding: 3rem 0;
+    border-bottom: 1px solid #eaeaea;
+}
+
+.features-bar-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.features-bar .feature-card {
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 8px;
+    border-left: 4px solid var(--accent-gold);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+}
+
+.features-bar .feature-card h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    color: var(--primary-dark);
+}
+
+.features-bar .feature-card p {
+    color: #666;
+    margin: 0;
+}
+
+@media (max-width: 768px) {
+    .jll-hero h1 {
+        font-size: 2.5rem;
+    }
+}

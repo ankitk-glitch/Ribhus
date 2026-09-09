@@ -138,15 +138,4 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
-// Hero Slideshow Crossfade
-document.addEventListener("DOMContentLoaded", () => {
-    const slides = document.querySelectorAll('.hero-slide');
-    if (slides.length > 0) {
-        let currentSlide = 0;
-        setInterval(() => {
-            slides[currentSlide].classList.remove('active');
-            currentSlide = (currentSlide + 1) % slides.length;
-            slides[currentSlide].classList.add('active');
-        }, 4000); // Change image every 4 seconds
-    }
-});
+
