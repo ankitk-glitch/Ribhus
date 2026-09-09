@@ -555,3 +555,67 @@ h1, h2, h3, h4 {
         max-height: 300px;
     }
 }
+
+/* =========================================
+   ANIMATIONS & LOGO
+   ========================================= */
+
+/* Logo Styling */
+.logo-container {
+    display: flex;
+    align-items: center;
+    font-family: var(--font-heading);
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--primary-dark);
+    text-decoration: none;
+    transition: transform 0.3s ease;
+}
+.logo-container:hover {
+    transform: scale(1.05);
+}
+.footer-logo .logo-container {
+    color: var(--text-light);
+    justify-content: center;
+    font-size: 2.5rem;
+}
+
+/* Scroll Animations */
+.animate-on-scroll {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.animate-on-scroll.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.delay-100 { transition-delay: 0.1s; }
+.delay-200 { transition-delay: 0.2s; }
+.delay-300 { transition-delay: 0.3s; }
+.delay-400 { transition-delay: 0.4s; }
+
+/* Hero Entry Animations */
+.hero h1, .hero p, .hero-features .feature-card {
+    opacity: 0;
+    animation: slideUpFade 1s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+.hero h1 { animation-delay: 0.1s; }
+.hero p { animation-delay: 0.3s; }
+.hero-features .feature-card:nth-child(1) { animation-delay: 0.5s; }
+.hero-features .feature-card:nth-child(2) { animation-delay: 0.65s; }
+.hero-features .feature-card:nth-child(3) { animation-delay: 0.8s; }
+
+@keyframes slideUpFade {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
