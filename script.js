@@ -4,26 +4,21 @@
 // Preloader Logic
 // ==========================================
 window.addEventListener('load', () => {
-    // City draws (0-2.8s)
-    // City fades (2.8-3.0s)
-    // Logo fades in (3.0-3.5s)
-    // Logo shifts to corner (4.2-5.4s)
-    
-    // Fade out the entire preloader background exactly when the logo reaches the corner (5.2s)
     setTimeout(() => {
         const preloader = document.getElementById('preloader');
         if (preloader) {
             preloader.style.opacity = '0';
             preloader.style.visibility = 'hidden';
             
-            // Re-trigger hero animations
+            // SUPER IMPORTANT: Force all hidden elements to show, preventing blank page!
             setTimeout(() => {
                 document.querySelectorAll('.animate-on-scroll').forEach(el => {
-                    if (el.getBoundingClientRect().top < window.innerHeight) {
-                        el.classList.add('visible');
-                    }
+                    el.classList.add('visible');
+                    el.style.opacity = '1';
+                    el.style.transform = 'translateY(0)';
                 });
-            }, 100);
+                preloader.style.display = 'none'; // remove completely
+            }, 50);
         }
     }, 5200); 
 });

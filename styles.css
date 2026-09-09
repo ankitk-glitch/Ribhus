@@ -1554,3 +1554,62 @@ body {
         transform: translate(0, 0) scale(0.4);
     }
 }
+
+/* Full-Screen Blueprint Animation */
+.full-screen-blueprint {
+    position: absolute;
+    top: 0; left: 0; width: 100vw; height: 100vh;
+    opacity: 1;
+    animation: fadeOutCity 0.5s 2.8s forwards;
+    overflow: hidden;
+}
+
+.blueprint-svg {
+    width: 100%; height: 100%;
+    stroke: var(--accent-gold);
+    fill: none;
+    stroke-linejoin: round;
+    stroke-linecap: round;
+    filter: drop-shadow(0 0 5px rgba(212, 175, 55, 0.3));
+}
+
+.blueprint-svg .grid-line {
+    stroke-width: 0.1;
+    stroke: rgba(255,255,255,0.2);
+}
+
+.blueprint-svg .thick-line {
+    stroke-width: 0.4;
+}
+
+.blueprint-svg .draw-line {
+    stroke-dasharray: 200;
+    stroke-dashoffset: 200;
+    animation: drawBlueprint 2.5s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+}
+
+@keyframes drawBlueprint {
+    to { stroke-dashoffset: 0; }
+}
+
+@keyframes fadeOutCity {
+    to { opacity: 0; visibility: hidden; }
+}
+
+@keyframes fadeInLogo {
+    from { opacity: 0; transform: translate(-50%, -50%) scale(0.8); }
+    to { opacity: 1; transform: translate(-50%, -50%) scale(1.5); }
+}
+
+@keyframes shiftToCorner {
+    0% {
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(1.5);
+    }
+    100% {
+        top: 2rem; 
+        left: 5%; 
+        transform: translate(0, 0) scale(0.4);
+    }
+}
