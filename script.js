@@ -1,4 +1,98 @@
 
+// ==========================================
+// Portfolio & Modal Logic
+// ==========================================
+const projects = [
+    {
+        title: "Residential House Planning & Design",
+        scope: "Ground Floor Layout | 1393 sq.ft. | 37 ft Frontage",
+        highlights: "Complete architectural planning focusing on spatial efficiency and natural light integration for a modern family home.",
+        images: ["https://ankitk-glitch.github.io/ankit.Portfolio/assets/images/3d_project1.jpg"]
+    },
+    {
+        title: "4-Floor Residential Building (G+3)",
+        scope: "3D BIM Design | 8 x 10 m Plot | ARCHICAD",
+        highlights: "Full LOD 300 BIM modeling delivered in ArchiCAD, including structural layouts and detailed facade rendering.",
+        images: ["https://ankitk-glitch.github.io/ankit.Portfolio/assets/images/3d_project2.jpg"]
+    },
+    {
+        title: "3BHK Residential Project",
+        scope: "Architectural Planning & BIM Documentation | 32 x 50 ft Plot",
+        highlights: "Comprehensive 2D drafting to 3D BIM conversion, generating precise floor plans, elevations, and section views.",
+        images: ["https://ankitk-glitch.github.io/ankit.Portfolio/assets/images/3d_project3.jpg"]
+    },
+    {
+        title: "Professional BIM Model Portfolio",
+        scope: "European Residential Projects | Celekhor GmbH (Germany)",
+        highlights: "A collection of high-fidelity BIM conversions tailored specifically for German architectural standards and compliance.",
+        images: ["https://ankitk-glitch.github.io/ankit.Portfolio/assets/images/3d_bim_portfolio.jpg"]
+    }
+];
+
+let currentProjectIndex = 0;
+let currentModalImageIndex = 0;
+
+function scrollPortfolio(dir) {
+    const carousel = document.querySelector('.portfolio-carousel');
+    if (!carousel) return;
+    const card = carousel.querySelector('.portfolio-card');
+    if (!card) return;
+    const scrollAmount = card.offsetWidth + 32; 
+    carousel.scrollBy({ left: dir * scrollAmount, behavior: 'smooth' });
+}
+
+function openModal(index) {
+    currentProjectIndex = index;
+    currentModalImageIndex = 0;
+    const project = projects[index];
+    
+    document.getElementById('modalTitle').innerText = project.title;
+    document.getElementById('modalScope').innerHTML = `<strong>Scope:</strong> ${project.scope}`;
+    document.getElementById('modalHighlights').innerHTML = `<p>${project.highlights}</p>`;
+    
+    renderModalImages();
+    
+    const modal = document.getElementById('projectModal');
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden'; 
+}
+
+function closeModal() {
+    const modal = document.getElementById('projectModal');
+    modal.classList.remove('active');
+    document.body.style.overflow = 'auto';
+}
+
+function renderModalImages() {
+    const container = document.getElementById('modalImagesContainer');
+    const project = projects[currentProjectIndex];
+    container.innerHTML = '';
+    
+    project.images.forEach((imgSrc, i) => {
+        const img = document.createElement('img');
+        img.src = imgSrc;
+        if (i === currentModalImageIndex) img.classList.add('active');
+        container.appendChild(img);
+    });
+    
+    const leftBtn = document.querySelector('.modal-slider-btn.left');
+    const rightBtn = document.querySelector('.modal-slider-btn.right');
+    if (project.images.length > 1) {
+        leftBtn.style.display = 'block';
+        rightBtn.style.display = 'block';
+    } else {
+        leftBtn.style.display = 'none';
+        rightBtn.style.display = 'none';
+    }
+}
+
+function moveModalImage(dir) {
+    const project = projects[currentProjectIndex];
+    currentModalImageIndex = (currentModalImageIndex + dir + project.images.length) % project.images.length;
+    renderModalImages();
+}
+
+
 
 // ==========================================
 // Preloader Logic

@@ -1726,7 +1726,7 @@ body {
     z-index: 1;
     opacity: 0.75;
     /* Scale to 1.15 hides the Gemini logo in the corners */
-    transform: translate(-50%, -50%) scale(1.15);
+    transform: translate(-50%, -50%) scale(1.35) !important;
 }
 
 .preloader-overlay {
@@ -1742,5 +1742,5 @@ body {
 
 @keyframes cinematicPan {
     0% { transform: translate(-50%, -50%) scale(1.0) rotate(0deg); }
-    100% { transform: translate(-50%, -50%) scale(1.15) rotate(0.5deg); }
+    100% { transform: translate(-50%, -50%) scale(1.35) !important rotate(0.5deg); }
 }
