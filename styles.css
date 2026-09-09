@@ -619,3 +619,20 @@ h1, h2, h3, h4 {
         transform: translateY(0);
     }
 }
+
+/* Logo Circle Fix */
+.logo-circle {
+    background-color: #FFFFFF;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 2rem;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+.logo-circle svg {
+    width: 45px;
+    height: 45px;
+}
