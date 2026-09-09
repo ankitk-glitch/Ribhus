@@ -1385,7 +1385,7 @@ body {
    ========================================== */
 .pricing-grid {
     display: grid !important;
-    grid-template-columns: repeat(4, 1fr) !important;
+    grid-template-columns: repeat(3, 1fr) !important;
     gap: 1.5rem !important;
     align-items: stretch !important;
     width: 100%;
@@ -1414,9 +1414,9 @@ body {
     align-items: baseline !important;
     gap: 5px !important;
     margin-bottom: 1.2rem !important;
-    flex-wrap: nowrap !important;
-    white-space: nowrap !important;
-    overflow: visible !important;
+    flex-wrap: wrap !important;
+    white-space: normal !important;
+    overflow: hidden !important;
 }
 
 .pricing-card .price .dynamic-price {
