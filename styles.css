@@ -1287,3 +1287,95 @@ body {
     border: none;
     border-top: 1px solid rgba(0,0,0,0.1);
 }
+
+/* ==========================================
+   3D Geometric Preloader
+   ========================================== */
+#preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #050e1a; /* deep dark navy */
+    z-index: 99999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.8s ease-out, visibility 0.8s ease-out;
+}
+
+.preloader-content {
+    text-align: center;
+}
+
+.bim-preloader-svg {
+    width: 120px;
+    height: 120px;
+    fill: rgba(255,255,255,0); /* Transparent initially */
+    stroke: var(--accent-gold);
+    stroke-width: 2.5;
+    stroke-linejoin: round;
+    overflow: visible;
+}
+
+/* Drawing the wireframe lines */
+.bim-preloader-svg polygon {
+    stroke-dasharray: 300;
+    stroke-dashoffset: 300;
+    animation: drawWire 1.5s cubic-bezier(0.4, 0, 0.2, 1) forwards, fill3D 1s 1.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.wire-wall-left { 
+    animation-delay: 0s, 1.5s; 
+}
+.wire-wall-right { 
+    animation-delay: 0.3s, 1.7s; 
+}
+.wire-roof { 
+    animation-delay: 0.6s, 1.9s; 
+}
+
+/* Line Drawing Keyframes */
+@keyframes drawWire {
+    100% { stroke-dashoffset: 0; }
+}
+
+/* 3D Solid Fill Keyframes */
+@keyframes fill3D {
+    100% { 
+        fill: rgba(212, 175, 55, 0.15); /* Soft gold fill */
+    }
+}
+
+/* Specific face fills to create 3D shading illusion */
+.wire-wall-left {
+    --target-fill: rgba(212, 175, 55, 0.3);
+}
+.wire-wall-right {
+    --target-fill: rgba(212, 175, 55, 0.1);
+}
+.wire-roof {
+    --target-fill: rgba(212, 175, 55, 0.4);
+}
+
+@keyframes fill3D {
+    100% { fill: var(--target-fill); }
+}
+
+.preloader-text {
+    color: var(--accent-gold);
+    font-family: var(--font-heading);
+    margin-top: 30px;
+    letter-spacing: 3px;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    font-weight: 600;
+    opacity: 0;
+    animation: fadeInPulse 2s 0.5s infinite alternate;
+}
+
+@keyframes fadeInPulse {
+    0% { opacity: 0.3; transform: translateY(5px); }
+    100% { opacity: 1; transform: translateY(0); }
+}

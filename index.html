@@ -10,6 +10,21 @@
     <link rel="stylesheet" href="styles.css?v=4">
 </head>
 <body>
+    <!-- 3D Geometric Preloader -->
+    <div id="preloader">
+        <div class="preloader-content">
+            <svg viewBox="0 0 100 100" class="bim-preloader-svg">
+                <!-- Left Wall -->
+                <polygon points="50,85 15,65 15,25 50,45" class="wire-wall-left" />
+                <!-- Right Wall -->
+                <polygon points="50,85 85,65 85,25 50,45" class="wire-wall-right" />
+                <!-- Top Roof -->
+                <polygon points="15,25 50,45 85,25 50,5" class="wire-roof" />
+            </svg>
+            <div class="preloader-text">Constructing 3D Model...</div>
+        </div>
+    </div>
+
     <header class="navbar">
         <div class="container nav-container">
             <a href="#" class="logo-container">

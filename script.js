@@ -1,3 +1,27 @@
+
+// ==========================================
+// Preloader Logic
+// ==========================================
+window.addEventListener('load', () => {
+    // Keep it visible long enough to show the beautiful 3D construction (2.8 seconds total)
+    setTimeout(() => {
+        const preloader = document.getElementById('preloader');
+        if (preloader) {
+            preloader.style.opacity = '0';
+            preloader.style.visibility = 'hidden';
+            
+            // Re-trigger intersection observer for hero elements after preloader hides
+            setTimeout(() => {
+                document.querySelectorAll('.animate-on-scroll').forEach(el => {
+                    if (el.getBoundingClientRect().top < window.innerHeight) {
+                        el.classList.add('visible');
+                    }
+                });
+            }, 300);
+        }
+    }, 2800);
+});
+
 const projects = [
     {
         title: "Residential House Planning & Design",
