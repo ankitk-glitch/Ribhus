@@ -164,28 +164,7 @@ async function autoLocalize() {
         // Now inject Google Translate (it will read the cookie we just set and auto-translate)
         loadGoogleTranslate();
 
-        // --- 2. Auto Currency Conversion ---
-        const userCurrency = geoData.currency;
-        if (userCurrency && userCurrency !== 'EUR') {
-            const rateRes = await fetch('https://api.exchangerate-api.com/v4/latest/EUR');
-            const rateData = await rateRes.json();
-            const conversionRate = rateData.rates[userCurrency];
-
-            if (conversionRate) {
-                const formatter = new Intl.NumberFormat(geoData.languages.split(',')[0], {
-                    style: 'currency',
-                    currency: userCurrency,
-                    maximumFractionDigits: 0
-                });
-
-                document.querySelectorAll('.dynamic-price').forEach(el => {
-                    const eurValue = parseFloat(el.getAttribute('data-eur'));
-                    const convertedValue = eurValue * conversionRate;
-                    el.innerText = formatter.format(convertedValue);
-                });
-            }
-        }
-    } catch (error) {
+        } catch (error) {
         console.error("Auto localization failed (fallback to default): ", error);
         loadGoogleTranslate(); // Make sure translation widget still loads on failure
     }
