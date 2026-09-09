@@ -1379,3 +1379,82 @@ body {
     0% { opacity: 0.3; transform: translateY(5px); }
     100% { opacity: 1; transform: translateY(0); }
 }
+
+/* ==========================================
+   Pricing Overrides (Strict 4-Column Layout)
+   ========================================== */
+.pricing-grid {
+    display: grid !important;
+    grid-template-columns: repeat(4, 1fr) !important;
+    gap: 1.5rem !important;
+    align-items: stretch !important;
+    width: 100%;
+}
+
+.pricing-card {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
+    padding: 2.5rem 1.5rem !important; /* Perfect internal spacing */
+    height: auto !important;
+    min-height: 100% !important;
+    box-sizing: border-box !important;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+}
+
+/* Ensure the gold border doesn't break grid sizing */
+.pricing-card[style*="border"] {
+    border-width: 2px !important;
+}
+
+.pricing-card .price {
+    display: flex !important;
+    align-items: baseline !important;
+    gap: 5px !important;
+    margin-bottom: 1.2rem !important;
+    flex-wrap: nowrap !important;
+    white-space: nowrap !important;
+    overflow: visible !important;
+}
+
+.pricing-card .price .dynamic-price {
+    display: inline !important;
+    font-size: 1.65rem !important; /* Smaller so €199 - €499 fits perfectly */
+    font-family: var(--font-heading) !important;
+    color: var(--primary-dark) !important;
+    font-weight: 800 !important;
+    letter-spacing: -0.5px !important;
+}
+
+.pricing-card .price .price-suffix {
+    display: inline !important;
+    font-size: 0.9rem !important;
+    color: #666 !important;
+    font-style: normal !important;
+}
+
+.pricing-card h3 {
+    font-size: 1.25rem !important;
+    margin-bottom: 1rem !important;
+    line-height: 1.4 !important;
+}
+
+.pricing-card p {
+    font-size: 0.95rem !important;
+    line-height: 1.5 !important;
+}
+
+@media (max-width: 1200px) {
+    .pricing-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 2rem !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .pricing-grid {
+        grid-template-columns: 1fr !important;
+    }
+}

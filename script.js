@@ -238,9 +238,15 @@ async function autoLocalize() {
             const geoRes = await fetch('https://ipapi.co/json/');
             geoData = await geoRes.json();
             
+            
             if (!langCode) {
                 const langFull = geoData.languages ? geoData.languages.split(',')[0] : 'en';
                 langCode = langFull.split('-')[0];
+                
+                // Professional websites in India use English, not Hindi.
+                if (geoData.country_code === 'IN') {
+                    langCode = 'en';
+                }
             }
             if (!userCurrency) {
                 userCurrency = geoData.currency || 'EUR';
