@@ -7,6 +7,19 @@
     // We do NOT wait for window.onload because external assets (like Google Translate or images) 
     // might delay the event and cause the user to be stuck on the blue screen.
     // The CSS animations start immediately, so we start our timer immediately.
+    
+            // Video loop logic to skip the last 2 seconds (hides Gemini end text)
+            const vid = document.getElementById('preloader-vid');
+            if (vid) {
+                vid.addEventListener('timeupdate', () => {
+                    // Gemini videos usually have text in the last 1.5 - 2 seconds
+                    if (vid.duration && vid.currentTime >= vid.duration - 2.0) {
+                        vid.currentTime = 0; // Loop before text appears
+                        vid.play();
+                    }
+                });
+            }
+
     setTimeout(() => {
         const preloader = document.getElementById('preloader');
         if (preloader) {
