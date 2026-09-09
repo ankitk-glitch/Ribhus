@@ -379,12 +379,11 @@ h1, h2, h3, h4 {
     margin-bottom: 1rem;
 }
 
-/* Portfolio Carousel */
+
+/* Premium Portfolio Carousel */
 .portfolio-carousel-wrapper {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
     position: relative;
+    padding: 1rem 0;
 }
 
 .portfolio-carousel {
@@ -392,9 +391,9 @@ h1, h2, h3, h4 {
     gap: 2rem;
     overflow-x: auto;
     scroll-behavior: smooth;
-    flex: 1;
-    padding-bottom: 1rem;
+    padding: 1rem 0.5rem 2rem 0.5rem; /* Room for shadow */
     scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none;  /* IE and Edge */
 }
 
 .portfolio-carousel::-webkit-scrollbar {
@@ -402,43 +401,114 @@ h1, h2, h3, h4 {
 }
 
 .portfolio-card {
-    min-width: calc(50% - 1rem); /* Show 2 cards at a time */
+    min-width: calc(50% - 1rem);
     flex: 0 0 auto;
     cursor: pointer;
-    transition: transform 0.3s;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    border: 1px solid rgba(0,0,0,0.03);
 }
 
 .portfolio-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.12);
 }
 
-.carousel-btn {
-    background: var(--accent-gold);
+.portfolio-card img {
+    width: 100%;
+    height: 320px;
+    object-fit: cover;
+    display: block;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+
+.portfolio-card .portfolio-content {
+    padding: 2.5rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.portfolio-card h3 {
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
     color: var(--primary-dark);
-    border: none;
-    width: 45px;
-    height: 45px;
+}
+
+.portfolio-card p {
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+    font-size: 1rem;
+}
+
+.view-details {
+    margin-top: auto;
+    display: inline-flex;
+    align-items: center;
+    color: var(--accent-gold);
+    font-weight: 600;
+    font-size: 1rem;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.view-details:hover {
+    color: var(--primary-dark);
+}
+
+/* Absolute Floating Carousel Buttons */
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #fff;
+    color: var(--primary-dark);
+    border: 1px solid rgba(0,0,0,0.1);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
     cursor: pointer;
     font-size: 1.5rem;
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-shrink: 0;
-    transition: background 0.3s;
+    z-index: 10;
+    transition: all 0.3s;
 }
 
 .carousel-btn:hover {
-    background: #fff;
+    background: var(--accent-gold);
+    color: var(--primary-dark);
+    border-color: var(--accent-gold);
+    transform: translateY(-50%) scale(1.1);
 }
 
-.view-details {
-    display: inline-block;
-    margin-top: 1rem;
-    color: var(--accent-gold);
-    font-weight: 600;
-    font-size: 0.95rem;
+.carousel-btn.prev-btn {
+    left: -25px;
+}
+
+.carousel-btn.next-btn {
+    right: -25px;
+}
+
+@media (max-width: 992px) {
+    .portfolio-card {
+        min-width: calc(80% - 1rem); /* Show 1.5 cards on tablet so they know to scroll */
+    }
+}
+@media (max-width: 768px) {
+    .portfolio-card {
+        min-width: 100%;
+    }
+    .carousel-btn.prev-btn { left: 0; }
+    .carousel-btn.next-btn { right: 0; }
 }
 
 /* Modal */
