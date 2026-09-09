@@ -139,3 +139,47 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
+
+// ==========================================
+// Auto Currency Conversion based on Location
+// ==========================================
+async function localizeCurrency() {
+    try {
+        // 1. Fetch user's country and currency
+        const geoRes = await fetch('https://ipapi.co/json/');
+        const geoData = await geoRes.json();
+        const userCurrency = geoData.currency;
+        
+        // If user is in Europe or fetching failed, keep default EUR
+        if (!userCurrency || userCurrency === 'EUR') return;
+
+        // 2. Fetch latest exchange rates from EUR
+        const rateRes = await fetch('https://api.exchangerate-api.com/v4/latest/EUR');
+        const rateData = await rateRes.json();
+        const conversionRate = rateData.rates[userCurrency];
+
+        if (!conversionRate) return;
+
+        // 3. Format numbers based on user's locale (e.g., US -> $1,000, DE -> 1.000 €)
+        const locale = geoData.languages ? geoData.languages.split(',')[0] : 'en-US';
+        const formatter = new Intl.NumberFormat(locale, {
+            style: 'currency',
+            currency: userCurrency,
+            maximumFractionDigits: 0
+        });
+
+        // 4. Update the pricing elements dynamically
+        const priceElements = document.querySelectorAll('.dynamic-price');
+        priceElements.forEach(el => {
+            const eurValue = parseFloat(el.getAttribute('data-eur'));
+            const convertedValue = eurValue * conversionRate;
+            el.innerText = formatter.format(convertedValue);
+        });
+
+    } catch (error) {
+        console.error("Localization failed (fallback to EUR): ", error);
+    }
+}
+
+// Run on page load
+document.addEventListener('DOMContentLoaded', localizeCurrency);

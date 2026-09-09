@@ -20,13 +20,16 @@
                 </svg>
                 
             </a>
+            
             <nav class="nav-links">
                 <a href="#why-ribhus">Why Ribhus</a>
                 <a href="#process">Process</a>
                 <a href="#portfolio">Portfolio</a>
                 <a href="#pricing">Pricing</a>
             </nav>
+            <div id="google_translate_element" class="lang-selector"></div>
             <a href="#contact" class="btn btn-primary">Start Free Pilot</a>
+
         </div>
     </header>
 
@@ -159,7 +162,7 @@
             <div class="pricing-grid">
                 <div class="pricing-card white-card animate-on-scroll delay-100">
                     <h3>Single-Family & Small Residential</h3>
-                    <div class="price">€59 – €99<span>per project</span></div>
+                    <div class="price"><span class="dynamic-price" data-eur="59">€59</span> – <span class="dynamic-price" data-eur="99">€99</span><span>per project</span></div>
                     <p>Ideal for energy consultants (Energieberater), private architects, renovation planning.</p>
                     <hr>
                     <p>Exterior & interior envelope, wall/window/roof geometry, IFC + native files.</p>
@@ -167,7 +170,7 @@
                 </div>
                 <div class="pricing-card white-card animate-on-scroll delay-200">
                     <h3>Multi-Story Residential & Apartments</h3>
-                    <div class="price">€199 – €499+<span>by floors & complexity</span></div>
+                    <div class="price"><span class="dynamic-price" data-eur="199">€199</span> – <span class="dynamic-price" data-eur="499">€499</span>+<span>by floors & complexity</span></div>
                     <p>Ideal for property developers, real estate agencies, multi-family renovations.</p>
                     <hr>
                     <p>Full multi-story volume, floor-by-floor zoning, door/window schedules.</p>
@@ -175,7 +178,7 @@
                 </div>
                 <div class="pricing-card white-card animate-on-scroll delay-300">
                     <h3>Studio Retainer</h3>
-                    <div class="price">From €1,799<span>per month</span></div>
+                    <div class="price">From <span class="dynamic-price" data-eur="1799">€1,799</span><span>per month</span></div>
                     <p>Ideal for growing studios & energy audit practices needing dedicated weekly capacity.</p>
                     <hr>
                     <p>Custom monthly volume — no local hiring costs.</p>
@@ -228,5 +231,16 @@
         </div>
     </div>
     <script src="script.js"></script>
+
+    <!-- Google Translate Script -->
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'en',
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+            }, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </body>
 </html>
