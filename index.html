@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css?v=4">
 </head>
 <body>
     <header class="navbar">
@@ -28,7 +28,8 @@
                 <a href="#pricing">Pricing</a>
             </nav>
             
-            <div class="custom-lang-selector" id="country-selector-widget">
+            <div class="nav-actions" style="display: flex; align-items: center;">
+                <div class="custom-lang-selector" id="country-selector-widget">
                 <button class="lang-btn" onclick="toggleLangMenu(event)">
                     <span id="current-flag">🇪🇺</span> <span id="current-country">Europe</span> <span class="arrow">▼</span>
                 </button>
@@ -54,8 +55,8 @@
                 </div>
             </div>
             <div id="google_translate_element" style="display:none;"></div>
-
-            <a href="#contact" class="btn btn-primary">Start Free Pilot</a>
+                <a href="#contact" class="btn btn-primary">Start Free Pilot</a>
+            </div>
 
         </div>
     </header>
@@ -214,8 +215,8 @@
                 </div>
                 
                 <div class="pricing-card white-card animate-on-scroll delay-300">
-                    <h3>Multi-Story Residential & Apartments</h3>
-                    <div class="price"><span class="dynamic-price" data-eur="199">€199</span> – <span class="dynamic-price" data-eur="499">€499</span>+<span class="price-suffix">/ multi-story</span></div>
+                    <h3>Multi-Story Residential</h3>
+                    <div class="price"><span class="dynamic-price" data-eur="199">€199</span> – <span class="dynamic-price" data-eur="499">€499</span>+<span class="price-suffix">/ project</span></div>
                     <p>Ideal for property developers, real estate agencies, multi-family renovations.</p>
                     <hr>
                     <p>Full multi-story volume, floor-by-floor zoning, door/window schedules.</p>

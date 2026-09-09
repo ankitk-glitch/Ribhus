@@ -1275,3 +1275,15 @@ body {
 body {
     top: 0 !important;
 }
+
+.pricing-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+.pricing-card hr {
+    margin: 1.5rem 0;
+    border: none;
+    border-top: 1px solid rgba(0,0,0,0.1);
+}
