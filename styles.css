@@ -1738,3 +1738,8 @@ body {
 .logo-anim-container {
     z-index: 3;
 }
+
+@keyframes cinematicPan {
+    0% { transform: translate(-50%, -50%) scale(1.0) rotate(0deg); }
+    100% { transform: translate(-50%, -50%) scale(1.15) rotate(0.5deg); }
+}
