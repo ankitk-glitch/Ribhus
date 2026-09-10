@@ -42,7 +42,7 @@ const projects = [
     },
     {
         title: "Professional BIM Model Portfolio",
-        scope: "European Residential Projects | Celekhor GmbH (Germany)",
+        scope: "European Residential Projects | 6+ Months Experience in Germany",
         highlights: "A collection of high-fidelity BIM conversions tailored specifically for German architectural standards and compliance.",
         images: ["https://ankitk-glitch.github.io/ankit.Portfolio/assets/images/3d_bim_portfolio.jpg"]
     }
