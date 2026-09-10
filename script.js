@@ -7,19 +7,38 @@ const projects = [
         title: "Residential House Planning & Design",
         scope: "Ground Floor Layout | 1393 sq.ft. | 37 ft Frontage",
         highlights: "Complete architectural planning focusing on spatial efficiency and natural light integration for a modern family home.",
-        images: ["https://ankitk-glitch.github.io/ankit.Portfolio/assets/images/3d_project1.jpg"]
+        images: [
+            "https://ankitk-glitch.github.io/ankit.Portfolio/assets/images/3d_project1.jpg",
+            "https://ankitk-glitch.github.io/ankit.Portfolio/assets/images/3d_p1_1.jpg",
+            "https://ankitk-glitch.github.io/ankit.Portfolio/assets/images/3d_p1_2.jpg",
+            "https://ankitk-glitch.github.io/ankit.Portfolio/assets/images/3d_p1_3.jpg",
+            "https://ankitk-glitch.github.io/ankit.Portfolio/assets/images/3d_p1_4.jpg",
+            "https://ankitk-glitch.github.io/ankit.Portfolio/assets/images/3d_p1_5.jpg",
+            "https://ankitk-glitch.github.io/ankit.Portfolio/assets/images/3d_p1_6.jpg"
+        ]
     },
     {
         title: "4-Floor Residential Building (G+3)",
         scope: "3D BIM Design | 8 x 10 m Plot | ARCHICAD",
         highlights: "Full LOD 300 BIM modeling delivered in ArchiCAD, including structural layouts and detailed facade rendering.",
-        images: ["https://ankitk-glitch.github.io/ankit.Portfolio/assets/images/3d_project2.jpg"]
+        images: [
+            "https://ankitk-glitch.github.io/ankit.Portfolio/assets/images/3d_project2.jpg",
+            "https://ankitk-glitch.github.io/ankit.Portfolio/assets/images/3d_p2_1.jpg",
+            "https://ankitk-glitch.github.io/ankit.Portfolio/assets/images/3d_p2_2.jpg",
+            "https://ankitk-glitch.github.io/ankit.Portfolio/assets/images/3d_p2_3.jpg"
+        ]
     },
     {
         title: "3BHK Residential Project",
         scope: "Architectural Planning & BIM Documentation | 32 x 50 ft Plot",
         highlights: "Comprehensive 2D drafting to 3D BIM conversion, generating precise floor plans, elevations, and section views.",
-        images: ["https://ankitk-glitch.github.io/ankit.Portfolio/assets/images/3d_project3.jpg"]
+        images: [
+            "https://ankitk-glitch.github.io/ankit.Portfolio/assets/images/3d_project3.jpg",
+            "https://ankitk-glitch.github.io/ankit.Portfolio/assets/images/3d_p3_1.jpg",
+            "https://ankitk-glitch.github.io/ankit.Portfolio/assets/images/3d_p3_2.jpg",
+            "https://ankitk-glitch.github.io/ankit.Portfolio/assets/images/3d_p3_3.jpg",
+            "https://ankitk-glitch.github.io/ankit.Portfolio/assets/images/3d_p3_4.jpg"
+        ]
     },
     {
         title: "Professional BIM Model Portfolio",
