@@ -32,7 +32,7 @@ const projects = [
 let currentProjectIndex = 0;
 let currentModalImageIndex = 0;
 
-function scrollPortfolio(dir) {
+function movePortfolio(dir) {
     const carousel = document.querySelector('.portfolio-carousel');
     if (!carousel) return;
     const card = carousel.querySelector('.portfolio-card');
@@ -259,6 +259,10 @@ async function autoLocalize() {
             // Auto update UI based on IP detection
             if (!localStorage.getItem('manual_lang')) {
                 document.getElementById('current-country').innerText = geoData.country_name || 'Europe';
+                if (geoData.country_code) {
+                    const flag = String.fromCodePoint(...[...geoData.country_code.toUpperCase()].map(c => c.charCodeAt(0) + 127397));
+                    document.getElementById('current-flag').innerText = flag;
+                }
             }
         }
         
