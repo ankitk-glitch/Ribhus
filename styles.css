@@ -312,6 +312,7 @@ h1, h2, h3, h4 {
 
 .contact-links {
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     gap: 1.5rem;
     margin-bottom: 4rem;
