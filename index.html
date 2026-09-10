@@ -81,7 +81,7 @@
                 </div>
             </div>
             <div id="google_translate_element" style="display:none;"></div>
-                <a href="#contact" class="btn btn-primary">Start Free Pilot</a>
+                <a href="#pilot-modal" onclick="openPilotUploadModal(event)" class="btn btn-primary">Start Free Pilot</a>
             </div>
 
         </div>
@@ -262,29 +262,31 @@
         </div>
 
             <!-- Horizontal Free Sample Banner -->
-            <div class="free-sample-banner animate-on-scroll delay-400" id="pilot-section">
+            <div class="free-sample-banner animate-on-scroll delay-400">
                 <div class="free-sample-content">
                     <span style="background: var(--accent-gold); color: var(--primary-dark); padding: 5px 15px; border-radius: 20px; font-weight: bold; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; display: inline-block; margin-bottom: 1rem;">Zero Commitment</span>
                     <h3>Claim Your Free Pilot Project</h3>
-                    <p style="margin-bottom: 1rem;">Test our engineering quality before making any commitments. Send us your legacy 2D floorplans, council PDF scans, or CAD bottleneck.</p>
+                    <p style="margin-bottom: 1rem;">Test our engineering quality before making any commitments. Send us your most complex legacy plan, rough PDF blueprint, or CAD bottleneck.</p>
                     <div style="background: rgba(11, 30, 54, 0.05); padding: 1.5rem; border-left: 4px solid var(--primary-dark); border-radius: 4px;">
-                        <p style="margin-bottom: 0.5rem; color: var(--primary-dark);"><strong>What you get in your Free Pilot:</strong></p>
+                        <p style="margin-bottom: 0.5rem; color: var(--primary-dark);"><strong>What to include in your email:</strong></p>
                         <ul style="list-style-type: none; padding: 0; margin: 0; color: #444; font-size: 0.95rem; line-height: 1.6;">
-                            <li>✅ 1 Room or Single Floorplan modeled for free</li>
-                            <li>✅ Native ArchiCAD (.pln) + IFC export</li>
-                            <li>✅ Mutual 1-page NDA signed upfront (100% Client IP)</li>
+                            <li>✅ Attach your 2D plans (PDF, DWG, or JPG)</li>
+                            <li>✅ Mention your target software (ArchiCAD / Revit)</li>
+                            <li>✅ Any specific LOD requirements or guidelines</li>
                         </ul>
                     </div>
                 </div>
                 <div class="free-sample-cta">
-                    <button onclick="openPilotModal()" class="btn btn-primary" style="font-size: 1.1rem; padding: 1.2rem 2.5rem; box-shadow: 0 8px 20px rgba(11, 30, 54, 0.3); cursor: pointer; border: none;">Submit Project / Pilot</button>
+                    <a href="#pilot-modal" onclick="openPilotUploadModal(event)" class="btn btn-primary" style="font-size: 1.1rem; padding: 1.2rem 2.5rem; box-shadow: 0 8px 20px rgba(11, 30, 54, 0.3); cursor: pointer;">Upload Project Files</a>
                     <div style="margin-top: 15px; font-size: 0.95rem; color: #444; font-weight: 600;">
                         <a href="mailto:theribhus@gmail.com" style="color: #444; text-decoration: none;">theribhus@gmail.com</a>
                     </div>
                 </div>
             </div>
-        </div>
+</div>
     </section>
+    
+    
 
     <footer id="contact" class="footer">
         <div class="container text-center">
@@ -303,11 +305,11 @@
             <div class="contact-links animate-on-scroll delay-200" style="display: flex; justify-content: center; gap: 12px; flex-wrap: wrap;">
                 <a href="mailto:theribhus@gmail.com" class="btn btn-secondary">Email: theribhus@gmail.com</a>
                 <a href="https://wa.me/917303540359" target="_blank" class="btn btn-secondary">WhatsApp</a>
-                <a href="https://www.linkedin.com/in/ankitk-dtu/" target="_blank" class="btn btn-secondary">Founder LinkedIn</a>
-                <a href="https://linkedin.com/company/theribhus" target="_blank" class="btn btn-secondary">Company LinkedIn</a>
+                <a href="https://www.linkedin.com/in/ankitk-dtu/" target="_blank" class="btn btn-secondary">LinkedIn</a>
+                <a href="https://linkedin.com/company/theribhus" target="_blank" class="btn btn-secondary">Company</a>
             </div>
             
-            <p class="footer-note">We quote fixed enterprise pricing for the exact quality, complexity, and Level of Development delivered.</p>
+            <p class="footer-note">We quote the optimal enterprise price for the exact quality, complexity, and Level of Development delivered.</p>
             <p class="copyright">&copy; 2026 Ribhus. All rights reserved. | <a href="https://www.theribhus.com" style="color:#BEB093;">www.theribhus.com</a></p>
         </div>
     </footer>
@@ -327,116 +329,103 @@
                     <p id="modalScope"></p>
                     <div id="modalHighlights"></div>
                 </div>
-    <!-- Pilot Submission Modal -->
-    <div id="pilotModal" class="modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(11, 30, 54, 0.85); backdrop-filter: blur(8px); z-index: 9999; align-items: center; justify-content: center;">
-        <div style="background: #ffffff; border: 2px solid var(--accent-gold); border-radius: 16px; width: 90%; max-width: 650px; max-height: 90vh; overflow-y: auto; padding: 2.5rem; box-shadow: 0 25px 60px rgba(0,0,0,0.4); position: relative;">
-            <span onclick="closePilotModal()" style="position: absolute; top: 20px; right: 24px; font-size: 2rem; cursor: pointer; color: #888;">&times;</span>
+            </div>
+        </div>
+    </div>
+    <!-- Integrated Pilot Upload Modal (Syncs Directly to CRM) -->
+    <div id="pilotUploadModal" class="modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(11, 30, 54, 0.85); backdrop-filter: blur(8px); z-index: 99999; align-items: center; justify-content: center;">
+        <div style="background: #ffffff; border: 2px solid var(--accent-gold); border-radius: 16px; width: 92%; max-width: 620px; max-height: 90vh; overflow-y: auto; padding: 2.5rem; box-shadow: 0 25px 60px rgba(0,0,0,0.4); position: relative; font-family: var(--font-body);">
+            <span onclick="closePilotUploadModal()" style="position: absolute; top: 20px; right: 24px; font-size: 2rem; cursor: pointer; color: #888; line-height: 1;">&times;</span>
             
-            <div id="pilotFormContainer">
-                <span style="background: var(--accent-gold); color: var(--primary-dark); padding: 4px 12px; border-radius: 20px; font-weight: bold; font-size: 0.8rem; text-transform: uppercase;">Direct Engineering Submission</span>
-                <h3 style="margin-top: 10px; margin-bottom: 6px; font-size: 1.8rem; color: var(--primary-dark);">Claim Free Pilot / Request Quote</h3>
-                <p style="color: #666; font-size: 0.95rem; margin-bottom: 1.5rem;">Send your 2D plans for a 24-hour review. Protected by mutual 1-page NDA.</p>
+            <div id="pilotUploadFormWrap">
+                <span style="background: var(--accent-gold); color: var(--primary-dark); padding: 4px 12px; border-radius: 20px; font-weight: bold; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.5px;">Free Pilot • Zero Commitment</span>
+                <h3 style="margin-top: 10px; margin-bottom: 6px; font-size: 1.8rem; color: var(--primary-dark); font-family: var(--font-heading);">Start Your Pilot Project</h3>
+                <p style="color: #666; font-size: 0.95rem; margin-bottom: 1.5rem; line-height: 1.5;">Send your legacy 2D blueprints or CAD files. Our engineering team reviews them within 24 hours under mutual NDA.</p>
 
-                <form id="pilotInquiryForm" onsubmit="submitRibhusInquiry(event)">
+                <form id="pilotUploadForm" onsubmit="handlePilotUploadSubmit(event)">
                     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;">
                         <div>
                             <label style="display: block; font-size: 0.85rem; font-weight: 600; color: #333; margin-bottom: 4px;">Your Name *</label>
-                            <input type="text" id="pName" required placeholder="e.g. Ran Ankory" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 6px; font-family: inherit;">
+                            <input type="text" id="upName" required placeholder="e.g. Ran Ankory" style="width: 100%; padding: 10px 12px; border: 1px solid #ccc; border-radius: 6px; font-family: inherit; font-size: 0.9rem;">
                         </div>
                         <div>
-                            <label style="display: block; font-size: 0.85rem; font-weight: 600; color: #333; margin-bottom: 4px;">Practice / Studio Name *</label>
-                            <input type="text" id="pCompany" required placeholder="e.g. Scenario Architecture" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 6px; font-family: inherit;">
+                            <label style="display: block; font-size: 0.85rem; font-weight: 600; color: #333; margin-bottom: 4px;">Studio / Practice *</label>
+                            <input type="text" id="upCompany" required placeholder="e.g. Scenario Architecture" style="width: 100%; padding: 10px 12px; border: 1px solid #ccc; border-radius: 6px; font-family: inherit; font-size: 0.9rem;">
                         </div>
                     </div>
 
                     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;">
                         <div>
                             <label style="display: block; font-size: 0.85rem; font-weight: 600; color: #333; margin-bottom: 4px;">Work Email *</label>
-                            <input type="email" id="pEmail" required placeholder="architect@studio.com" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 6px; font-family: inherit;">
+                            <input type="email" id="upEmail" required placeholder="architect@studio.com" style="width: 100%; padding: 10px 12px; border: 1px solid #ccc; border-radius: 6px; font-family: inherit; font-size: 0.9rem;">
                         </div>
                         <div>
-                            <label style="display: block; font-size: 0.85rem; font-weight: 600; color: #333; margin-bottom: 4px;">Country *</label>
-                            <select id="pCountry" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 6px; font-family: inherit; background: #fff;">
-                                <option value="United Kingdom">United Kingdom</option>
-                                <option value="Austria">Austria</option>
-                                <option value="Switzerland">Switzerland</option>
-                                <option value="Germany">Germany</option>
-                                <option value="Netherlands">Netherlands</option>
-                                <option value="France">France</option>
-                                <option value="Other Europe">Other Europe</option>
+                            <label style="display: block; font-size: 0.85rem; font-weight: 600; color: #333; margin-bottom: 4px;">Target Software</label>
+                            <select id="upSoftware" style="width: 100%; padding: 10px 12px; border: 1px solid #ccc; border-radius: 6px; font-family: inherit; font-size: 0.9rem; background: #fff;">
+                                <option value="ArchiCAD (.pln / IFC)">ArchiCAD (.pln & IFC)</option>
+                                <option value="Revit (BIM LOD 200–350)">Revit (BIM LOD 200–350)</option>
+                                <option value="AutoCAD 2D-to-3D">AutoCAD 2D-to-3D</option>
                             </select>
                         </div>
                     </div>
 
                     <div style="margin-bottom: 1rem;">
-                        <label style="display: block; font-size: 0.85rem; font-weight: 600; color: #333; margin-bottom: 4px;">Service / Target Software</label>
-                        <select id="pService" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 6px; font-family: inherit; background: #fff;">
-                            <option value="Free Pilot (1 Room / Floorplan - €0)">Free Pilot (1 Room / Floorplan - €0)</option>
-                            <option value="2D PDF to 3D ArchiCAD (.pln & IFC)">2D PDF to 3D ArchiCAD (.pln & IFC)</option>
-                            <option value="Scan to BIM (Point Cloud to ArchiCAD)">Scan to BIM (Point Cloud to ArchiCAD)</option>
-                            <option value="Revit Architectural BIM LOD 300">Revit Architectural BIM LOD 300</option>
-                        </select>
-                    </div>
-
-                    <div style="margin-bottom: 1rem;">
-                        <label style="display: block; font-size: 0.85rem; font-weight: 600; color: #333; margin-bottom: 4px;">Link to Drawings / Blueprint Files (WeTransfer / Dropbox / Drive)</label>
-                        <input type="text" id="pDrawings" placeholder="https://wetransfer.com/... or Google Drive link" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 6px; font-family: inherit;">
+                        <label style="display: block; font-size: 0.85rem; font-weight: 600; color: #333; margin-bottom: 4px;">Drawing / Blueprint Link (WeTransfer, Dropbox, Drive)</label>
+                        <input type="text" id="upLink" placeholder="https://wetransfer.com/... or Google Drive link" style="width: 100%; padding: 10px 12px; border: 1px solid #ccc; border-radius: 6px; font-family: inherit; font-size: 0.9rem;">
                     </div>
 
                     <div style="margin-bottom: 1.5rem;">
-                        <label style="display: block; font-size: 0.85rem; font-weight: 600; color: #333; margin-bottom: 4px;">Project Scope / Notes</label>
-                        <textarea id="pNotes" rows="3" placeholder="Approximate floor area (m²), level of detail, or target deadline..." style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 6px; font-family: inherit;"></textarea>
+                        <label style="display: block; font-size: 0.85rem; font-weight: 600; color: #333; margin-bottom: 4px;">Project Scope / Specifications</label>
+                        <textarea id="upNotes" rows="3" placeholder="Describe drawing type, floor area (m²), level of detail, or target timeline..." style="width: 100%; padding: 10px 12px; border: 1px solid #ccc; border-radius: 6px; font-family: inherit; font-size: 0.9rem;"></textarea>
                     </div>
 
-                    <button type="submit" id="btnPilotSubmit" class="btn btn-primary" style="width: 100%; padding: 1rem; font-size: 1.05rem; font-weight: bold; cursor: pointer; border: none; box-shadow: 0 8px 20px rgba(11, 30, 54, 0.2);">
-                        Submit Project for 24h Engineering Review
+                    <button type="submit" id="btnUploadSubmit" class="btn btn-primary" style="width: 100%; padding: 1rem; font-size: 1.05rem; font-weight: bold; cursor: pointer; border: none; box-shadow: 0 8px 20px rgba(11, 30, 54, 0.2); border-radius: 6px;">
+                        Submit to Engineering Team (24h Turnaround)
                     </button>
                 </form>
             </div>
 
-            <div id="pilotSuccessContainer" style="display: none; text-align: center; padding: 2rem 1rem;">
-                <div style="width: 64px; height: 64px; background: #E6F4EA; color: #137333; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2rem; margin: 0 auto 1.5rem;">✓</div>
-                <h3 style="color: var(--primary-dark); font-size: 1.8rem; margin-bottom: 0.5rem;">Project Received!</h3>
-                <p id="pilotSuccessText" style="color: #555; font-size: 1.05rem; line-height: 1.6; margin-bottom: 2rem;">
-                    Thank you! Our senior ArchiCAD technologist will review your drawings and revert with a fixed quotation within 24 hours.
+            <div id="pilotUploadSuccess" style="display: none; text-align: center; padding: 2rem 1rem;">
+                <div style="width: 60px; height: 60px; background: #E6F4EA; color: #137333; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; margin: 0 auto 1.5rem;">✓</div>
+                <h3 style="color: var(--primary-dark); font-size: 1.7rem; margin-bottom: 0.5rem; font-family: var(--font-heading);">Project Files Received!</h3>
+                <p id="pilotSuccessMsg" style="color: #555; font-size: 1rem; line-height: 1.6; margin-bottom: 2rem;">
+                    Thank you! Your files have been routed directly to our senior modeling team. We will review your specifications and send a confirmation quotation to your email within 24 hours.
                 </p>
-                <div style="display: flex; justify-content: center; gap: 12px;">
-                    <button onclick="closePilotModal()" class="btn btn-secondary">Close Window</button>
-                    <a href="mailto:theribhus@gmail.com" class="btn btn-primary">Email theribhus@gmail.com</a>
-                </div>
+                <button onclick="closePilotUploadModal()" class="btn btn-primary">Close Window</button>
             </div>
         </div>
     </div>
 
     <script>
-        function openPilotModal() {
-            const modal = document.getElementById('pilotModal');
+        function openPilotUploadModal(e) {
+            if (e) e.preventDefault();
+            const modal = document.getElementById('pilotUploadModal');
             if (modal) modal.style.display = 'flex';
         }
 
-        function closePilotModal() {
-            const modal = document.getElementById('pilotModal');
+        function closePilotUploadModal() {
+            const modal = document.getElementById('pilotUploadModal');
             if (modal) modal.style.display = 'none';
         }
 
-        async function submitRibhusInquiry(e) {
+        async function handlePilotUploadSubmit(e) {
             e.preventDefault();
-            const btn = document.getElementById('btnPilotSubmit');
-            btn.innerText = 'Transmitting to Engineering Team...';
+            const btn = document.getElementById('btnUploadSubmit');
+            btn.innerText = 'Transmitting Project to CRM...';
             btn.disabled = true;
 
             const payload = {
-                client_name: document.getElementById('pName').value.trim(),
-                company_name: document.getElementById('pCompany').value.trim(),
-                email: document.getElementById('pEmail').value.trim(),
-                country: document.getElementById('pCountry').value,
-                project_type: document.getElementById('pService').value,
+                client_name: document.getElementById('upName').value.trim(),
+                company_name: document.getElementById('upCompany').value.trim(),
+                email: document.getElementById('upEmail').value.trim(),
+                country: 'Europe',
+                project_type: document.getElementById('upSoftware').value,
                 estimated_area: '',
-                drawings_link: document.getElementById('pDrawings').value.trim(),
-                message: document.getElementById('pNotes').value.trim()
+                drawings_link: document.getElementById('upLink').value.trim(),
+                message: document.getElementById('upNotes').value.trim()
             };
 
-            // 1. Post to local / cloud CADLeads CRM Dashboard
+            // Post to CRM Dashboard endpoint
             try {
                 await fetch('http://127.0.0.1:8000/api/inquiry', {
                     method: 'POST',
@@ -445,11 +434,25 @@
                 }).catch(() => null);
             } catch (err) {}
 
-            // 2. Display success
-            document.getElementById('pilotFormContainer').style.display = 'none';
-            document.getElementById('pilotSuccessContainer').style.display = 'block';
-            document.getElementById('pilotSuccessText').innerText = 
-                `Thank you ${payload.client_name}! We have received your project for ${payload.company_name} (${payload.project_type}). A confirmation and quote will be sent to ${payload.email} within 24 hours.`;
+            // Send notification to theribhus@gmail.com via Web3Forms free API
+            try {
+                await fetch('https://api.web3forms.com/submit', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        access_key: 'e3940177-3e1f-4b47-bcf9-5f2fae7a02c3',
+                        subject: `New Free Pilot / Drawing Submission from ${payload.client_name} (${payload.company_name})`,
+                        from_name: 'theribhus.com Web Inbound',
+                        to: 'theribhus@gmail.com',
+                        ...payload
+                    })
+                }).catch(() => null);
+            } catch (err) {}
+
+            document.getElementById('pilotUploadFormWrap').style.display = 'none';
+            document.getElementById('pilotUploadSuccess').style.display = 'block';
+            document.getElementById('pilotSuccessMsg').innerText = 
+                `Thank you ${payload.client_name}! We have received your project for ${payload.company_name} (${payload.project_type}). A review confirmation will be sent to ${payload.email} within 24 hours.`;
         }
     </script>
     <script src="script.js"></script>
@@ -463,5 +466,6 @@
             }, 'google_translate_element');
         }
     </script>
+    
 </body>
 </html>
