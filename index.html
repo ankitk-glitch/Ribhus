@@ -279,7 +279,7 @@
                 <div class="free-sample-cta">
                     <a href="#pilot-modal" onclick="openPilotUploadModal(event)" class="btn btn-primary" style="font-size: 1.1rem; padding: 1.2rem 2.5rem; box-shadow: 0 8px 20px rgba(11, 30, 54, 0.3); cursor: pointer;">Upload Project Files</a>
                     <div style="margin-top: 15px; font-size: 0.95rem; color: #444; font-weight: 600;">
-                        <a href="mailto:theribhus@gmail.com" style="color: #444; text-decoration: none;">theribhus@gmail.com</a>
+                        <a href="mailto:contact@ribhus.com" style="color: #444; text-decoration: none;">contact@ribhus.com</a>
                     </div>
                 </div>
             </div>
@@ -302,11 +302,11 @@
             <h2 class="animate-on-scroll">Initiate Your Digital Transformation Today</h2>
             <p class="animate-on-scroll delay-100">Stop relying on legacy paper. Secure your scalable engineering capacity with Ribhus — starting with a free pilot conversion.</p>
             
-            <div class="contact-links animate-on-scroll delay-200" style="display: flex; justify-content: center; gap: 12px; flex-wrap: wrap;">
-                <a href="mailto:theribhus@gmail.com" class="btn btn-secondary">Email: theribhus@gmail.com</a>
-                <a href="https://wa.me/917303540359" target="_blank" class="btn btn-secondary">WhatsApp</a>
-                <a href="https://www.instagram.com/the.ribhus/" target="_blank" class="btn btn-secondary">Instagram</a>
-                <a href="https://linkedin.com/company/theribhus" target="_blank" class="btn btn-secondary">Company LinkedIn</a>
+            <div class="contact-links animate-on-scroll delay-200" style="display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;">
+                <a href="mailto:contact@ribhus.com" class="btn btn-secondary">✉️ Email</a>
+                <a href="https://wa.me/917303540359" target="_blank" class="btn btn-secondary">💬 WhatsApp</a>
+                <a href="https://www.instagram.com/the.ribhus/" target="_blank" class="btn btn-secondary">📸 Instagram</a>
+                <a href="https://linkedin.com/company/theribhus" target="_blank" class="btn btn-secondary">💼 LinkedIn</a>
             </div>
             
             <p class="footer-note">We quote the optimal enterprise price for the exact quality, complexity, and Level of Development delivered.</p>
@@ -434,7 +434,7 @@
                 }).catch(() => null);
             } catch (err) {}
 
-            // Send notification to theribhus@gmail.com via Web3Forms free API
+            // Send notification to contact@ribhus.com via Web3Forms free API
             try {
                 await fetch('https://api.web3forms.com/submit', {
                     method: 'POST',
@@ -443,7 +443,7 @@
                         access_key: 'e3940177-3e1f-4b47-bcf9-5f2fae7a02c3',
                         subject: `New Free Pilot / Drawing Submission from ${payload.client_name} (${payload.company_name})`,
                         from_name: 'theribhus.com Web Inbound',
-                        to: 'theribhus@gmail.com',
+                        to: 'contact@ribhus.com',
                         ...payload
                     })
                 }).catch(() => null);
