@@ -1745,3 +1745,57 @@ body {
     0% { transform: translate(-50%, -50%) scale(1.0) rotate(0deg); }
     100% { transform: translate(-50%, -50%) scale(1.35) !important rotate(0.5deg); }
 }
+
+/* Why Ribhus - 6 Card Grid */
+.why-ribhus-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: 1rem;
+}
+
+.why-card {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 2.5rem 2rem;
+    transition: transform 0.3s ease, background 0.3s ease, border-color 0.3s ease;
+}
+
+.why-card:hover {
+    transform: translateY(-6px);
+    background: rgba(255, 255, 255, 0.1);
+    border-color: var(--accent-gold);
+}
+
+.why-icon {
+    font-size: 2.2rem;
+    margin-bottom: 1.2rem;
+    display: block;
+}
+
+.why-card h3 {
+    font-size: 1.2rem;
+    color: #fff;
+    margin-bottom: 0.8rem;
+    font-family: var(--font-heading);
+    line-height: 1.4;
+}
+
+.why-card p {
+    color: rgba(255, 255, 255, 0.72);
+    font-size: 0.95rem;
+    line-height: 1.75;
+}
+
+@media (max-width: 992px) {
+    .why-ribhus-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .why-ribhus-grid {
+        grid-template-columns: 1fr;
+    }
+}
