@@ -2427,3 +2427,36 @@ ul { list-style: none; }
   .pilot-submit-row { flex-direction: column; align-items: stretch; }
   .pilot-submit-row button { width: 100%; }
 }
+
+/* Breakdown lists & Zone pills for Case Studies */
+.cs-specs-breakdown {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 16px 0 24px;
+}
+.cs-specs-breakdown li {
+  padding: 8px 14px;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-size: 0.9rem;
+  color: var(--text-dark);
+}
+.cs-specs-breakdown li strong { color: var(--accent-dark); }
+
+.zones-pill-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 14px;
+}
+.zone-pill {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  padding: 6px 14px;
+  border-radius: 100px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--text-dark);
+}

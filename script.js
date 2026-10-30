@@ -6,79 +6,69 @@
 
 /* ─── REAL ARCHITECTURAL PROJECTS DATA STORE ──── */
 const projectsData = {
-  celekhor: {
-    title: "Celekohr GmbH — 150+ European Residential BIM Portfolio",
-    tag: "German BIM Portfolio",
-    subtitle: "Modelled 150+ residential and commercial architectural projects in ArchiCAD at LOD 200–300 in six months, building models used for energy audits across Germany.",
-    service: "BIM Modeling & Energy Audits",
-    timeline: "6 Months Retainer",
-    tools: "ArchiCAD, IFC 4.3 Workflows, DIN Standards",
-    standard: "LOD 200–300 (German GEG)",
+  complex7: {
+    title: "3-Building Complex — Basement to 5th Floor (7 Storeys)",
+    tag: "Energy Audit · 7 Storeys",
+    subtitle: "Coordinated BIM model covering 3 distinct buildings (2,682 elements, 1,364 walls, 6,595.83 m³ volume, 232 thermal zones) built as the exact data source for EPC audits and thermal evaluations.",
+    service: "Energy Performance BIM Modeling",
+    timeline: "Coordinated Complex Delivery",
+    tools: "ArchiCAD, IFC4, XML Schedules",
+    standard: "LOD 300 Audit-Ready",
     actionText: "Open Full Case Study Page ↗",
-    actionUrl: "projects/celekhor-german-bim.html",
+    actionUrl: "projects/three-building-complex-energy-bim.html",
     images: [
-      "assets/3d_bim_portfolio.jpg",
-      "assets/3d_project2.jpg",
-      "assets/3d_project3.jpg",
-      "assets/apartment_3d.jpg"
+      "assets/project_complex_7storey.jpg"
     ],
     bullets: [
-      "Modelled 150+ residential and commercial architectural projects in ArchiCAD at LOD 200–300 in six months for German clients.",
-      "Exported IFC 4.3 files for downstream energy-model extraction and ran 30+ monthly pre-checks for dimension errors and DIN deviations.",
-      "Documented requirements, resolved complex roof/envelope junctions, and maintained strict BIM consistency across all European deliverables."
+      "Extracted 2,682 elements: 1,364 walls (6,595.83 m³), 66 slabs, 6 roofs, 412 doors, 602 windows (1,114.73 m² glazing area).",
+      "Modelled 232 spatially defined room zones (47 Rooms, 29 Corridors, 24 Bathrooms, 17 Bedrooms, etc.) with verified volume calculations.",
+      "Captures shared shading and solar exposure across all 3 buildings for SAP, PHPP, and dynamic thermal simulations."
     ]
   },
 
-  multistory: {
-    title: "4-Floor Residential Building (G+3) — Multi-Story ArchiCAD Modeling",
-    tag: "Multi-Storey Architecture",
-    subtitle: "Multi-level residential building modeling featuring vertical circulation cores, structural grid alignments, and coordinated service shafts.",
-    service: "Multi-Storey Architectural BIM",
-    timeline: "4 Weeks Delivery",
-    tools: "ArchiCAD, AutoCAD 2D, BIMx",
-    standard: "LOD 300 Construction Coordination",
+  berlin12: {
+    title: "12-Storey Residential Building — Berlin, Germany",
+    tag: "Thermal Simulation · Berlin",
+    subtitle: "11,073 m² across 12 levels modeled for energy simulation from day one. Direct IFC4 export into thermal engines with zero geometric approximations.",
+    service: "Thermal Simulation & EPBD Compliance",
+    timeline: "Direct Simulation Pipeline",
+    tools: "ArchiCAD, IFC4, Thermal Simulation Engine",
+    standard: "GEG, EPBD, EN ISO 13790",
     actionText: "Open Full Case Study Page ↗",
-    actionUrl: "projects/multistory-residential-g3.html",
+    actionUrl: "projects/berlin-12storey-thermal-bim.html",
     images: [
-      "assets/3d_project2.jpg",
-      "assets/3d_p2_1.jpg",
-      "assets/3d_p2_2.jpg",
-      "assets/3d_p2_3.jpg"
+      "assets/project_berlin_residential.jpg"
     ],
     bullets: [
-      "Structured a multi-story G+3 residential building model in ArchiCAD with vertical load-bearing and circulation consistency.",
-      "Maintained exact alignment of staircases, lift wells, plumbing shafts, and service ducts across all 4 floors.",
-      "Generated unified elevation sheets, cross-sectional views, and scheduled component quantities for construction review."
+      "11,073 m² across 12 levels: 538 windows and 171 doors modeled with zone-specific glazing ratios (7% to 80%).",
+      "Thermal engine output: 17,454 m³ ventilated volume, 11,718 m² envelope area, 4.49 W/m²K building shell U-value average.",
+      "Primary energy demand of 244 MWh/year (7.66 kWh/m²a) and annual CO₂ emissions of 17,601 kg traceable back to model geometry."
     ]
   },
 
-  residential3bhk: {
-    title: "3BHK Residential Planning & Technical BIM Documentation | 32 x 50 ft",
-    tag: "BIM Documentation",
-    subtitle: "Site-responsive architectural planning and technical BIM documentation for a 3BHK residential residence on a 32 x 50 ft plot compliant with bylaws.",
-    service: "Architectural Planning & BIM",
-    timeline: "3 Weeks Delivery",
-    tools: "ArchiCAD, BIMx, Twinmotion",
-    standard: "LOD 300 Municipal Bylaws Compliant",
+  germanvilla: {
+    title: "Modern German Residential Villa — Energy Envelope BIM",
+    tag: "German Residential BIM",
+    subtitle: "Single-family high-efficiency villa modeled in ArchiCAD with continuous thermal envelope assemblies, U-value classifications, and solar exposure detailing for GEG audits.",
+    service: "Residential Energy BIM",
+    timeline: "36 Hours Delivery",
+    tools: "ArchiCAD 26, IFC 4.3, BIMx",
+    standard: "German GEG / DIN 4108",
     actionText: "Open Full Case Study Page ↗",
-    actionUrl: "projects/3bhk-residential-bim.html",
+    actionUrl: "projects/german-residential-villa.html",
     images: [
-      "assets/3d_project3.jpg",
-      "assets/3d_p3_1.jpg",
-      "assets/3d_p3_2.jpg",
-      "assets/3d_p3_3.jpg",
-      "assets/3d_p3_4.jpg"
+      "assets/project_german_villa.jpg"
     ],
     bullets: [
-      "Site-responsive planning strictly separating public guest spaces, semi-private family zones, and private bedroom suites.",
-      "Standardized room geometries, wall thicknesses, and setbacks compliant with local municipal building regulations.",
-      "Constructed complete BIM documentation linking 2D floor plans, structural sections, and exterior elevation drawings in one integrated ArchiCAD file."
+      "Monolithic insulated wall assemblies (U ≤ 0.20 W/m²K) and 35° pitched roof insulation layers (U ≤ 0.14 W/m²K).",
+      "High-efficiency triple-glazed aperture assemblies (Uw ≤ 0.85 W/m²K) with explicit frame reveal depths.",
+      "Audit-defensible living area and heated building volume calculations for GEG energy certificates."
     ]
   },
 
   truss: {
     title: "Truss Bridge Renovation — Gusset Plates & Girder Connections | IS 800:2007",
-    tag: "Structural Detailing",
+    tag: "Structural Detailing · IS 800",
     subtitle: "Delivered 17 detailed 2D AutoCAD (DWG) sheets of gusset plate and girder bolted connections in 8 days for a consulting firm in Rajasthan.",
     service: "Structural Steel Detailing",
     timeline: "8 Days (On-Time Delivery)",
@@ -87,57 +77,15 @@ const projectsData = {
     actionText: "Open Full Case Study Page ↗",
     actionUrl: "projects/truss-bridge-renovation.html",
     images: [
-      "assets/truss_gusset_1.jpg",
-      "assets/truss_gusset_2.jpg",
-      "assets/truss_gusset_3.png"
+      "assets/truss_gusset_1.jpg"
     ],
     bullets: [
       "Delivered 17 detailed 2D AutoCAD (DWG) sheets of gusset plate and girder bolted connections in 8 days from structural design inputs.",
       "Generated accurate connection plans, elevations, and sections for truss bridge renovation under strict client turnaround deadlines.",
       "Ensured edge distance, pitch, and bolt hole clearances conformed rigorously to IS 800:2007 steel design specifications."
     ]
-  },
-
-  houseplan: {
-    title: "Contemporary Residential Villa — Concept Planning & Exterior 3D",
-    tag: "Architectural Design",
-    subtitle: "Architectural concept planning, exterior modeling, and material study for contemporary private residential living with high-res visualizations.",
-    service: "Residential Architecture & Visuals",
-    timeline: "2 Weeks",
-    tools: "ArchiCAD, Twinmotion, AutoCAD",
-    standard: "LOD 300 Photorealistic Visualization",
-    actionText: "Open Full Case Study Page ↗",
-    actionUrl: "projects/contemporary-villa-design.html",
-    images: [
-      "assets/3d_project1.jpg",
-      "assets/3d_p1_1.jpg",
-      "assets/3d_p1_2.jpg",
-      "assets/3d_p1_3.jpg",
-      "assets/3d_p1_4.jpg"
-    ],
-    bullets: [
-      "Developed functional modern layouts balancing indoor circulation with landscaped outdoor patio integration.",
-      "Utilized ArchiCAD to coordinate 3D wall assemblies, window fenestrations, cantilevered canopies, and roof detailing.",
-      "Produced high-resolution 3D visualizations and drawing packages for stakeholder and municipal approval."
-    ]
-  },
-
-  veterinary: {
-    title: "Commercial Veterinary Clinic (Tierarztpraxis) — 2D Blueprint to 3D BIM",
-    tag: "Commercial Renovation BIM",
-    subtitle: "Existing commercial veterinary clinic converted from scanned blueprints into structured ArchiCAD & IFC BIM model for German renovation.",
-    service: "Existing Building → Structured BIM",
-    timeline: "10 Days",
-    tools: "ArchiCAD, IFC 4.3, PDF Vectorization",
-    standard: "LOD 200 Renovation Model",
-    actionText: "Open Full Case Study Page ↗",
-    actionUrl: "projects/veterinary-clinic-bim.html",
-    images: [
-      "assets/apartment_3d.jpg",
-      "assets/blueprint.jpg",
-      "assets/elevation.jpg",
-      "assets/section.jpg"
-    ],
+  }
+};
     bullets: [
       "Reconstructed existing clinic layout from hand-annotated blueprints and legacy drawings into parametric BIM walls, doors, and equipment zones.",
       "Isolated clinical treatment rooms, surgical theaters, and customer waiting areas with distinct acoustic and wall properties.",
