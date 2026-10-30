@@ -1506,6 +1506,9 @@ ul { list-style: none; }
   :root { --section-pad: 64px 0; }
 
   .nav-links, .nav-actions .nav-email-link { display: none; }
+  .nav-actions { gap: 10px; }
+  .country-btn { padding: 4px 8px; height: 34px; }
+  .country-flag { font-size: 1.15rem; }
   .nav-hamburger { display: flex; }
 
   .hero-card { padding: 40px 24px; border-radius: var(--radius-lg); }
@@ -2881,15 +2884,13 @@ ul { list-style: none; }
 .country-btn {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  justify-content: center;
+  gap: 5px;
   background: #FFFFFF;
   border: 1px solid #E2E8F0;
   border-radius: 100px;
-  padding: 5px 12px;
-  font-family: var(--font-body);
-  font-size: 0.8rem;
-  font-weight: 600;
-  color: var(--text-dark);
+  padding: 5px 10px;
+  height: 38px;
   cursor: pointer;
   transition: all 0.2s ease;
   white-space: nowrap;
@@ -2898,44 +2899,25 @@ ul { list-style: none; }
 .country-btn:hover {
   background: #F8FAFC;
   border-color: #CBD5E1;
-  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.05);
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.08);
+  transform: translateY(-1px);
 }
 
 .country-flag {
-  font-size: 1.05rem;
+  font-size: 1.25rem;
   line-height: 1;
 }
 
-.country-name {
-  font-weight: 700;
-  color: var(--text-dark);
-}
-
-.country-curr-badge {
-  font-size: 0.72rem;
-  font-weight: 700;
-  background: #F1F5F9;
-  color: #2563EB;
-  padding: 2px 7px;
-  border-radius: 6px;
-  letter-spacing: 0.02em;
-}
-
+/* User requirement: ONLY show flag in the country button */
+.country-name,
+.country-curr-badge,
 .country-lang-badge {
-  font-size: 0.7rem;
-  font-weight: 800;
-  background: var(--obsidian);
-  color: #FFFFFF;
-  padding: 2px 6px;
-  border-radius: 4px;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  line-height: 1.1;
+  display: none !important;
 }
 
 .country-chevron {
-  width: 14px;
-  height: 14px;
+  width: 12px;
+  height: 12px;
   color: #64748B;
   transition: transform 0.2s ease;
 }
