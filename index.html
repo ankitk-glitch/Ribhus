@@ -13,7 +13,7 @@
   <meta name="twitter:card" content="summary_large_image" />
 
   <!-- Favicon -->
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M25 80 V20 H55 C70 20 80 30 80 40 C80 50 70 60 55 60 H40 V80' stroke='%230d1117' stroke-width='9' stroke-linejoin='miter' fill='none'/%3E%3Cpath d='M50 60 L75 80' stroke='%230d1117' stroke-width='9' stroke-linecap='square'/%3E%3Cline x1='10' y1='65' x2='90' y2='35' stroke='%23C5A880' stroke-width='7' stroke-linecap='square'/%3E%3C/svg%3E" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='100' height='100' rx='22' fill='%230B132B' stroke='%23C5A880' stroke-width='5'/%3E%3Cpath d='M28 78 V22 H54 C68 22 78 31 78 41 C78 51 68 60 54 60 H40 V78' stroke='%23FFFFFF' stroke-width='8' stroke-linejoin='miter' fill='none'/%3E%3Cpath d='M50 60 L74 78' stroke='%23FFFFFF' stroke-width='8' stroke-linecap='square'/%3E%3Cline x1='12' y1='66' x2='88' y2='34' stroke='%23C5A880' stroke-width='7' stroke-linecap='square'/%3E%3C/svg%3E" />
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -33,12 +33,18 @@
   <nav class="navbar" id="navbar">
     <div class="nav-container">
       <a href="#" class="nav-logo">
-        <svg width="34" height="34" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" class="ribhus-svg">
-          <path d="M25 80 V20 H55 C70 20 80 30 80 40 C80 50 70 60 55 60 H40 V80" stroke="#0d1117" stroke-width="8" stroke-linejoin="miter" fill="none"/>
-          <path d="M50 60 L75 80" stroke="#0d1117" stroke-width="8" stroke-linecap="square"/>
-          <line x1="10" y1="65" x2="90" y2="35" stroke="#C5A880" stroke-width="6" stroke-linecap="square"/>
-        </svg>
-        <span class="logo-text">RIBHUS</span>
+        <div class="logo-badge">
+          <svg width="36" height="36" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" class="ribhus-svg">
+            <rect width="100" height="100" rx="22" fill="#0B132B" stroke="#C5A880" stroke-width="4"/>
+            <path d="M28 78 V22 H54 C68 22 78 31 78 41 C78 51 68 60 54 60 H40 V78" stroke="#FFFFFF" stroke-width="8" stroke-linejoin="miter" fill="none"/>
+            <path d="M50 60 L74 78" stroke="#FFFFFF" stroke-width="8" stroke-linecap="square"/>
+            <line x1="12" y1="66" x2="88" y2="34" stroke="#C5A880" stroke-width="7" stroke-linecap="square"/>
+          </svg>
+        </div>
+        <div class="logo-text-group">
+          <span class="logo-text">RIBHUS</span>
+          <span class="logo-tagline">BIM STUDIO</span>
+        </div>
       </a>
 
       <ul class="nav-links">
@@ -83,8 +89,8 @@
     <div class="hero-container">
       <div class="hero-card">
         <div class="hero-left">
-          <span class="hero-eyebrow">Civil Engineer-Led BIM Studio</span>
-          <h1 class="hero-title">BIM Models Engineered for Energy Performance</h1>
+          <span class="hero-eyebrow"><span class="eyebrow-pulsar"></span> Civil Engineer-Led BIM Studio · Berlin &amp; DACH</span>
+          <h1 class="hero-title">Audit-Ready BIM Models Engineered for Energy Performance</h1>
           <p class="hero-subtitle">When modelling for energy performance, clean, accurate geometry isn't a nice-to-have — it is the entire foundation of your audit. We deliver coordinate-precise ArchiCAD, Revit, and IFC4 models with floor-by-floor thermal zones, wall volumes, and opening schedules in 24–48 hours.</p>
           <div class="hero-actions">
             <a href="#pilot" class="btn btn-primary">Start a Free Pilot</a>
@@ -98,14 +104,40 @@
         </div>
         <div class="hero-right">
           <div class="hero-image-wrap">
+            <div class="hud-laser-line"></div>
+            <div class="hud-bracket hud-bracket-tl"></div>
+            <div class="hud-bracket hud-bracket-tr"></div>
+            <div class="hud-bracket hud-bracket-bl"></div>
+            <div class="hud-bracket hud-bracket-br"></div>
+
             <img src="assets/project_complex_7storey.jpg" alt="Coordinated 3-Building Complex Energy Model — Ribhus" class="hero-img" loading="eager" />
-            <div class="hero-badge hero-badge-1">
-              <span class="badge-number">24–48h</span>
-              <span class="badge-label">Turnaround SLA</span>
+
+            <div class="hud-chip hud-chip-top-left">
+              <span class="blip-live"></span>
+              <div>
+                <div class="hud-chip-title">24–48h Turnaround</div>
+                <div class="hud-chip-sub">SLA Guaranteed</div>
+              </div>
             </div>
-            <div class="hero-badge hero-badge-2">
-              <span class="badge-number">IFC4</span>
-              <span class="badge-label">Thermal Ready</span>
+
+            <div class="hud-chip hud-chip-top-right">
+              <i data-lucide="shield-check" style="color: #10B981; width: 16px; height: 16px;"></i>
+              <div>
+                <div class="hud-chip-title">IFC 4.3 Certified</div>
+                <div class="hud-chip-sub">Thermal Ready</div>
+              </div>
+            </div>
+
+            <div class="hud-chip hud-chip-bottom">
+              <i data-lucide="layers" style="color: #C5A880; width: 16px; height: 16px;"></i>
+              <div>
+                <div class="hud-chip-title">2,682 Elements · 232 Zones</div>
+                <div class="hud-chip-sub">Volume: 6,595.83 m³ Geometrically Locked</div>
+              </div>
+            </div>
+
+            <div class="hud-chip hud-chip-coords">
+              <span>X: 124.50m · Y: 89.20m · Z: +18.50m</span>
             </div>
           </div>
         </div>
@@ -186,31 +218,289 @@
       <h2 class="section-heading centered">Specialized BIM Conversion Services</h2>
 
       <div class="services-grid">
+        <!-- Service 1: 2D-to-3D BIM Conversion -->
         <div class="service-card reveal-up" style="--delay: 0ms">
-          <div class="service-icon"><i data-lucide="layers"></i></div>
+          <div class="service-anim-wrap">
+            <svg viewBox="0 0 340 190" fill="none" xmlns="http://www.w3.org/2000/svg" class="service-anim-svg">
+              <defs>
+                <linearGradient id="gridGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#0F172A"/>
+                  <stop offset="100%" stop-color="#080C16"/>
+                </linearGradient>
+                <linearGradient id="laserGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stop-color="rgba(0,210,255,0)"/>
+                  <stop offset="50%" stop-color="#00D2FF"/>
+                  <stop offset="100%" stop-color="rgba(0,210,255,0)"/>
+                </linearGradient>
+                <linearGradient id="goldWallGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="rgba(197,168,128,0.25)"/>
+                  <stop offset="100%" stop-color="rgba(197,168,128,0.06)"/>
+                </linearGradient>
+              </defs>
+              <rect width="340" height="190" rx="14" fill="url(#gridGrad1)" stroke="rgba(197,168,128,0.3)" stroke-width="1"/>
+              <g class="blueprint-grid-base" opacity="0.45">
+                <path d="M50 145 L170 178 L290 145 L170 115 Z" fill="rgba(37,99,235,0.08)" stroke="#38BDF8" stroke-width="1" stroke-dasharray="3 3"/>
+                <line x1="80" y1="137" x2="200" y2="169" stroke="#38BDF8" stroke-width="0.75" opacity="0.5"/>
+                <line x1="110" y1="130" x2="230" y2="161" stroke="#38BDF8" stroke-width="0.75" opacity="0.5"/>
+                <line x1="140" y1="122" x2="260" y2="153" stroke="#38BDF8" stroke-width="0.75" opacity="0.5"/>
+                <line x1="140" y1="170" x2="80" y2="153" stroke="#38BDF8" stroke-width="0.75" opacity="0.5"/>
+                <line x1="200" y1="170" x2="140" y2="153" stroke="#38BDF8" stroke-width="0.75" opacity="0.5"/>
+                <line x1="260" y1="153" x2="200" y2="137" stroke="#38BDF8" stroke-width="0.75" opacity="0.5"/>
+              </g>
+              <g class="bim-cube-group">
+                <polygon points="90,140 170,162 250,140 170,120" fill="url(#goldWallGrad)" stroke="#C5A880" stroke-width="1.5"/>
+                <polygon points="90,140 170,162 170,118 90,96" fill="rgba(15,23,42,0.6)" stroke="#C5A880" stroke-width="1.5"/>
+                <polygon points="170,162 250,140 250,96 170,118" fill="rgba(15,23,42,0.8)" stroke="#C5A880" stroke-width="1.5"/>
+                <polygon points="90,96 170,118 250,96 170,74" fill="url(#goldWallGrad)" stroke="#C5A880" stroke-width="1.5"/>
+                <polygon points="115,90 170,105 225,90 170,75" fill="url(#goldWallGrad)" stroke="#D4AF37" stroke-width="1.5"/>
+                <polygon points="115,90 170,105 170,65 115,50" fill="rgba(37,99,235,0.2)" stroke="#D4AF37" stroke-width="1.2"/>
+                <polygon points="170,105 225,90 225,50 170,65" fill="rgba(37,99,235,0.3)" stroke="#D4AF37" stroke-width="1.2"/>
+                <polygon points="115,50 170,65 225,50 170,35" fill="url(#goldWallGrad)" stroke="#D4AF37" stroke-width="1.5"/>
+                <polygon points="105,122 125,127 125,108 105,103" fill="rgba(56,189,248,0.4)" stroke="#38BDF8" stroke-width="1"/>
+                <polygon points="135,130 155,135 155,116 135,111" fill="rgba(56,189,248,0.4)" stroke="#38BDF8" stroke-width="1"/>
+                <polygon points="185,135 205,130 205,111 185,116" fill="rgba(56,189,248,0.4)" stroke="#38BDF8" stroke-width="1"/>
+                <polygon points="215,127 235,122 235,103 215,108" fill="rgba(56,189,248,0.4)" stroke="#38BDF8" stroke-width="1"/>
+              </g>
+              <g class="laser-sweep-anim">
+                <line x1="60" y1="0" x2="280" y2="0" stroke="url(#laserGrad)" stroke-width="2.5" filter="drop-shadow(0 0 6px #00D2FF)" class="laser-beam-line"/>
+              </g>
+              <circle cx="90" cy="96" r="3" fill="#00D2FF" class="pulsing-vertex"/>
+              <circle cx="170" cy="118" r="3" fill="#00D2FF" class="pulsing-vertex"/>
+              <circle cx="250" cy="96" r="3" fill="#00D2FF" class="pulsing-vertex"/>
+              <circle cx="170" cy="35" r="3" fill="#C5A880" class="pulsing-vertex"/>
+              <rect x="16" y="16" width="92" height="22" rx="6" fill="rgba(15,23,42,0.85)" stroke="rgba(197,168,128,0.4)" stroke-width="1"/>
+              <circle cx="26" cy="27" r="3.5" fill="#10B981" class="radar-blip"/>
+              <text x="35" y="31" fill="#E2E8F0" font-family="'Plus Jakarta Sans',sans-serif" font-size="9" font-weight="700">2D → 3D BIM</text>
+              <rect x="232" y="16" width="92" height="22" rx="6" fill="rgba(15,23,42,0.85)" stroke="rgba(0,210,255,0.4)" stroke-width="1"/>
+              <text x="244" y="31" fill="#00D2FF" font-family="monospace" font-size="9" font-weight="700">LOD 300 · IFC4</text>
+              <text x="16" y="174" fill="#94A3B8" font-family="monospace" font-size="9">Z-EXTRUDE: +14.80m</text>
+              <text x="248" y="174" fill="#C5A880" font-family="monospace" font-size="9">Δ DIM: 0.00mm</text>
+            </svg>
+          </div>
+          <div class="service-meta-head">
+            <span class="service-badge">Parametric Extrusion</span>
+            <span class="service-format-pill">ArchiCAD · Revit</span>
+          </div>
           <h3>2D-to-3D BIM conversion</h3>
-          <p>PDFs, DWG files or scans turned into parametric ArchiCAD or Revit models at LOD 200–300.</p>
+          <p>PDFs, DWG files or scans turned into parametric ArchiCAD or Revit models at LOD 200–300 with exact geometric alignment and zero dimensional drift.</p>
+          <div class="service-checklist-pills">
+            <span>✓ Wall Assemblies</span>
+            <span>✓ Floor Setbacks</span>
+            <span>✓ Opening Schedules</span>
+          </div>
         </div>
+
+        <!-- Service 2: Audit-Ready Models -->
         <div class="service-card reveal-up" style="--delay: 100ms">
-          <div class="service-icon"><i data-lucide="zap"></i></div>
+          <div class="service-anim-wrap">
+            <svg viewBox="0 0 340 190" fill="none" xmlns="http://www.w3.org/2000/svg" class="service-anim-svg">
+              <defs>
+                <linearGradient id="thermalGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stop-color="#38BDF8" stop-opacity="0.8"/>
+                  <stop offset="40%" stop-color="#818CF8" stop-opacity="0.6"/>
+                  <stop offset="70%" stop-color="#F59E0B" stop-opacity="0.8"/>
+                  <stop offset="100%" stop-color="#EF4444" stop-opacity="0.9"/>
+                </linearGradient>
+                <linearGradient id="heatWavePulse" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#0F172A"/>
+                  <stop offset="100%" stop-color="#0A0F1D"/>
+                </linearGradient>
+              </defs>
+              <rect width="340" height="190" rx="14" fill="url(#heatWavePulse)" stroke="rgba(197,168,128,0.3)" stroke-width="1"/>
+              <g class="building-envelope-cutaway" opacity="0.9">
+                <rect x="30" y="45" width="18" height="120" fill="#1E293B" stroke="#38BDF8" stroke-width="1.5"/>
+                <rect x="48" y="45" width="14" height="120" fill="rgba(245,158,11,0.25)" stroke="#F59E0B" stroke-width="1" stroke-dasharray="2 2"/>
+                <rect x="62" y="45" width="24" height="120" fill="#334155" stroke="#C5A880" stroke-width="1.5"/>
+                <rect x="62" y="45" width="210" height="8" fill="#1E293B" stroke="#64748B" stroke-width="1"/>
+                <rect x="62" y="100" width="210" height="8" fill="#1E293B" stroke="#64748B" stroke-width="1"/>
+                <rect x="62" y="157" width="210" height="8" fill="#1E293B" stroke="#64748B" stroke-width="1"/>
+                <rect x="86" y="53" width="186" height="47" fill="rgba(245,158,11,0.06)" stroke="rgba(245,158,11,0.2)" stroke-width="1"/>
+                <rect x="86" y="108" width="186" height="49" fill="rgba(56,189,248,0.06)" stroke="rgba(56,189,248,0.2)" stroke-width="1"/>
+              </g>
+              <g class="thermal-flow-waves">
+                <path d="M20 75 Q 40 68, 60 75 T 100 75 T 140 75 T 180 75 T 220 75 T 260 75" stroke="url(#thermalGrad)" stroke-width="2.5" fill="none" class="heat-wave-line-1"/>
+                <path d="M20 130 Q 40 123, 60 130 T 100 130 T 140 130 T 180 130 T 220 130 T 260 130" stroke="url(#thermalGrad)" stroke-width="2.5" fill="none" class="heat-wave-line-2"/>
+              </g>
+              <g class="zone-tag-1">
+                <rect x="110" y="62" width="145" height="28" rx="6" fill="rgba(15,23,42,0.9)" stroke="rgba(245,158,11,0.5)" stroke-width="1"/>
+                <circle cx="122" cy="76" r="3" fill="#F59E0B"/>
+                <text x="132" y="74" fill="#FFFFFF" font-family="'Plus Jakarta Sans',sans-serif" font-size="9" font-weight="700">Zone 01 · 21.0°C</text>
+                <text x="132" y="85" fill="#F59E0B" font-family="monospace" font-size="8">U = 0.18 W/m²K · SAP</text>
+              </g>
+              <g class="zone-tag-2">
+                <rect x="110" y="117" width="145" height="28" rx="6" fill="rgba(15,23,42,0.9)" stroke="rgba(56,189,248,0.5)" stroke-width="1"/>
+                <circle cx="122" cy="131" r="3" fill="#38BDF8"/>
+                <text x="132" y="129" fill="#FFFFFF" font-family="'Plus Jakarta Sans',sans-serif" font-size="9" font-weight="700">Zone 02 · 18.5°C</text>
+                <text x="132" y="140" fill="#38BDF8" font-family="monospace" font-size="8">V: 1,433 m³ · IFC4 Space</text>
+              </g>
+              <rect x="16" y="14" width="105" height="22" rx="6" fill="rgba(15,23,42,0.85)" stroke="rgba(197,168,128,0.4)" stroke-width="1"/>
+              <circle cx="26" cy="25" r="3.5" fill="#EF4444" class="radar-blip"/>
+              <text x="36" y="29" fill="#E2E8F0" font-family="'Plus Jakarta Sans',sans-serif" font-size="9" font-weight="700">THERMAL AUDIT</text>
+              <rect x="220" y="14" width="104" height="22" rx="6" fill="rgba(15,23,42,0.85)" stroke="rgba(245,158,11,0.4)" stroke-width="1"/>
+              <text x="230" y="29" fill="#F59E0B" font-family="monospace" font-size="9" font-weight="700">DIN EN ISO 13790</text>
+            </svg>
+          </div>
+          <div class="service-meta-head">
+            <span class="service-badge">Energy Performance</span>
+            <span class="service-format-pill">IFC 4.3 Export</span>
+          </div>
           <h3>Audit-ready models</h3>
-          <p>Models and IFC 4.3 exports prepared for energy model extraction: correct wall assemblies, floor heights and room volumes.</p>
+          <p>Models and IFC 4.3 exports engineered specifically for energy simulation: continuous thermal envelopes, zone boundary definitions, and room volume extractions.</p>
+          <div class="service-checklist-pills">
+            <span>✓ GEG / EPBD Compliant</span>
+            <span>✓ U-Value Assemblies</span>
+            <span>✓ Thermal Bridges</span>
+          </div>
         </div>
+
+        <!-- Service 3: Scan-to-BIM & Legacy Drawings -->
         <div class="service-card reveal-up" style="--delay: 200ms">
-          <div class="service-icon"><i data-lucide="file-digit"></i></div>
+          <div class="service-anim-wrap">
+            <svg viewBox="0 0 340 190" fill="none" xmlns="http://www.w3.org/2000/svg" class="service-anim-svg">
+              <defs>
+                <linearGradient id="radarSweepGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="rgba(0,210,255,0.4)"/>
+                  <stop offset="50%" stop-color="rgba(197,168,128,0.15)"/>
+                  <stop offset="100%" stop-color="rgba(0,0,0,0)"/>
+                </linearGradient>
+              </defs>
+              <rect width="340" height="190" rx="14" fill="#0B132B" stroke="rgba(197,168,128,0.3)" stroke-width="1"/>
+              <g class="radar-grid" transform="translate(170, 105)" opacity="0.5">
+                <circle cx="0" cy="0" r="25" fill="none" stroke="#1E293B" stroke-width="1"/>
+                <circle cx="0" cy="0" r="50" fill="none" stroke="#1E293B" stroke-width="1"/>
+                <circle cx="0" cy="0" r="75" fill="none" stroke="rgba(56,189,248,0.25)" stroke-width="1" stroke-dasharray="3 3"/>
+                <line x1="-80" y1="0" x2="80" y2="0" stroke="#334155" stroke-width="1"/>
+                <line x1="0" y1="-80" x2="0" y2="80" stroke="#334155" stroke-width="1"/>
+              </g>
+              <g class="lidar-points">
+                <circle cx="110" cy="65" r="2" fill="#00D2FF" class="p-cloud"/>
+                <circle cx="125" cy="66" r="2" fill="#00D2FF" class="p-cloud"/>
+                <circle cx="140" cy="65" r="2" fill="#00D2FF" class="p-cloud"/>
+                <circle cx="155" cy="67" r="2" fill="#00D2FF" class="p-cloud"/>
+                <circle cx="170" cy="65" r="2" fill="#00D2FF" class="p-cloud"/>
+                <circle cx="185" cy="66" r="2" fill="#00D2FF" class="p-cloud"/>
+                <circle cx="200" cy="65" r="2" fill="#00D2FF" class="p-cloud"/>
+                <circle cx="215" cy="66" r="2" fill="#00D2FF" class="p-cloud"/>
+                <circle cx="230" cy="65" r="2" fill="#00D2FF" class="p-cloud"/>
+                <circle cx="230" cy="80" r="2" fill="#C5A880" class="p-cloud"/>
+                <circle cx="230" cy="95" r="2" fill="#C5A880" class="p-cloud"/>
+                <circle cx="230" cy="110" r="2" fill="#C5A880" class="p-cloud"/>
+                <circle cx="230" cy="125" r="2" fill="#C5A880" class="p-cloud"/>
+                <circle cx="230" cy="140" r="2" fill="#C5A880" class="p-cloud"/>
+                <circle cx="110" cy="80" r="2" fill="#C5A880" class="p-cloud"/>
+                <circle cx="110" cy="95" r="2" fill="#C5A880" class="p-cloud"/>
+                <circle cx="110" cy="110" r="2" fill="#C5A880" class="p-cloud"/>
+                <circle cx="110" cy="125" r="2" fill="#C5A880" class="p-cloud"/>
+                <circle cx="110" cy="140" r="2" fill="#C5A880" class="p-cloud"/>
+                <circle cx="130" cy="140" r="2" fill="#00D2FF" class="p-cloud"/>
+                <circle cx="150" cy="140" r="2" fill="#00D2FF" class="p-cloud"/>
+                <circle cx="190" cy="140" r="2" fill="#00D2FF" class="p-cloud"/>
+                <circle cx="210" cy="140" r="2" fill="#00D2FF" class="p-cloud"/>
+              </g>
+              <g class="reconstructed-walls">
+                <path d="M110 65 L230 65 L230 140 L195 140 M145 140 L110 140 Z" stroke="#C5A880" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="rgba(197,168,128,0.06)"/>
+                <path d="M145 140 A 25 25 0 0 1 170 165" stroke="#38BDF8" stroke-width="1.5" stroke-dasharray="3 3" fill="none"/>
+              </g>
+              <g class="sweeping-radar-cone" transform="translate(170, 105)">
+                <path d="M0 0 L 75 -35 A 80 80 0 0 1 80 20 Z" fill="url(#radarSweepGrad)"/>
+                <line x1="0" y1="0" x2="80" y2="-5" stroke="#00D2FF" stroke-width="1.5"/>
+              </g>
+              <circle cx="170" cy="105" r="4" fill="#00D2FF"/>
+              <rect x="16" y="14" width="105" height="22" rx="6" fill="rgba(15,23,42,0.85)" stroke="rgba(197,168,128,0.4)" stroke-width="1"/>
+              <circle cx="26" cy="25" r="3.5" fill="#00D2FF" class="radar-blip"/>
+              <text x="36" y="29" fill="#E2E8F0" font-family="'Plus Jakarta Sans',sans-serif" font-size="9" font-weight="700">SCAN-TO-BIM</text>
+              <rect x="225" y="14" width="99" height="22" rx="6" fill="rgba(15,23,42,0.85)" stroke="rgba(0,210,255,0.4)" stroke-width="1"/>
+              <text x="234" y="29" fill="#00D2FF" font-family="monospace" font-size="9" font-weight="700">PTS: 4.8M / ACC ±2mm</text>
+              <text x="16" y="174" fill="#94A3B8" font-family="monospace" font-size="9">POINT CLOUD → SOLID CAD</text>
+              <text x="245" y="174" fill="#C5A880" font-family="monospace" font-size="9">E57 / LAS / DWG</text>
+            </svg>
+          </div>
+          <div class="service-meta-head">
+            <span class="service-badge">LiDAR &amp; Scans</span>
+            <span class="service-format-pill">Point Cloud / E57</span>
+          </div>
           <h3>Scan-to-BIM &amp; legacy drawings</h3>
-          <p>Hand-drawn or scanned blueprints of existing buildings rebuilt as a clean 3D model for renovation and audit work.</p>
+          <p>Hand-drawn blueprints, PDF archives or 3D laser scan point clouds converted into clean, coordinate-referenced models for renovation and energy audits.</p>
+          <div class="service-checklist-pills">
+            <span>✓ Heritage Preservation</span>
+            <span>✓ Cloud Decimation</span>
+            <span>✓ As-Built Reconstruction</span>
+          </div>
         </div>
+
+        <!-- Service 4: Drafting, Quantities & Visuals -->
         <div class="service-card reveal-up" style="--delay: 300ms">
-          <div class="service-icon"><i data-lucide="layout"></i></div>
+          <div class="service-anim-wrap">
+            <svg viewBox="0 0 340 190" fill="none" xmlns="http://www.w3.org/2000/svg" class="service-anim-svg">
+              <defs>
+                <linearGradient id="barGrad1" x1="0%" y1="100%" x2="0%" y2="0%">
+                  <stop offset="0%" stop-color="#1E3A8A"/>
+                  <stop offset="100%" stop-color="#38BDF8"/>
+                </linearGradient>
+                <linearGradient id="barGrad2" x1="0%" y1="100%" x2="0%" y2="0%">
+                  <stop offset="0%" stop-color="#78350F"/>
+                  <stop offset="100%" stop-color="#F59E0B"/>
+                </linearGradient>
+                <linearGradient id="barGrad3" x1="0%" y1="100%" x2="0%" y2="0%">
+                  <stop offset="0%" stop-color="#064E3B"/>
+                  <stop offset="100%" stop-color="#10B981"/>
+                </linearGradient>
+              </defs>
+              <rect width="340" height="190" rx="14" fill="#0B132B" stroke="rgba(197,168,128,0.3)" stroke-width="1"/>
+              <g class="caliper-group" transform="translate(20, 45)">
+                <rect x="10" y="25" width="140" height="45" rx="4" fill="rgba(30,41,59,0.8)" stroke="#475569" stroke-width="1.5"/>
+                <line x1="25" y1="25" x2="45" y2="70" stroke="#334155" stroke-width="1"/>
+                <line x1="55" y1="25" x2="75" y2="70" stroke="#334155" stroke-width="1"/>
+                <line x1="85" y1="25" x2="105" y2="70" stroke="#334155" stroke-width="1"/>
+                <line x1="115" y1="25" x2="135" y2="70" stroke="#334155" stroke-width="1"/>
+                <g class="caliper-slider">
+                  <line x1="10" y1="12" x2="150" y2="12" stroke="#00D2FF" stroke-width="1.5"/>
+                  <line x1="10" y1="4" x2="10" y2="20" stroke="#00D2FF" stroke-width="1.5"/>
+                  <line x1="150" y1="4" x2="150" y2="20" stroke="#00D2FF" stroke-width="1.5"/>
+                  <rect x="52" y="0" width="56" height="18" rx="4" fill="#0F172A" stroke="#00D2FF" stroke-width="1"/>
+                  <text x="80" y="13" fill="#00D2FF" font-family="monospace" font-size="10" font-weight="700" text-anchor="middle">14.850 m</text>
+                </g>
+                <text x="10" y="90" fill="#94A3B8" font-family="monospace" font-size="9">WALL THICKNESS: 36.5 cm</text>
+                <text x="10" y="102" fill="#C5A880" font-family="monospace" font-size="9">TOLERANCE: DIN 18202</text>
+              </g>
+              <g class="boq-meters" transform="translate(190, 52)">
+                <rect x="0" y="0" width="132" height="105" rx="8" fill="rgba(15,23,42,0.7)" stroke="rgba(197,168,128,0.25)" stroke-width="1"/>
+                <text x="12" y="18" fill="#C5A880" font-family="'Plus Jakarta Sans',sans-serif" font-size="9" font-weight="700">BOQ QUANTITY AUDIT</text>
+                <text x="12" y="38" fill="#E2E8F0" font-family="monospace" font-size="8">CONCRETE</text>
+                <rect x="65" y="30" width="55" height="8" rx="3" fill="#1E293B"/>
+                <rect x="65" y="30" width="46" height="8" rx="3" fill="url(#barGrad1)" class="anim-boq-bar-1"/>
+                <text x="12" y="58" fill="#E2E8F0" font-family="monospace" font-size="8">GLAZING</text>
+                <rect x="65" y="50" width="55" height="8" rx="3" fill="#1E293B"/>
+                <rect x="65" y="50" width="38" height="8" rx="3" fill="url(#barGrad2)" class="anim-boq-bar-2"/>
+                <text x="12" y="78" fill="#E2E8F0" font-family="monospace" font-size="8">ENVELOPE</text>
+                <rect x="65" y="70" width="55" height="8" rx="3" fill="#1E293B"/>
+                <rect x="65" y="70" width="52" height="8" rx="3" fill="url(#barGrad3)" class="anim-boq-bar-3"/>
+                <text x="12" y="96" fill="#38BDF8" font-family="monospace" font-size="7.5">EXPORT: IFC · XLS · CSV</text>
+              </g>
+              <rect x="16" y="14" width="120" height="22" rx="6" fill="rgba(15,23,42,0.85)" stroke="rgba(197,168,128,0.4)" stroke-width="1"/>
+              <circle cx="26" cy="25" r="3.5" fill="#F59E0B" class="radar-blip"/>
+              <text x="36" y="29" fill="#E2E8F0" font-family="'Plus Jakarta Sans',sans-serif" font-size="9" font-weight="700">DRAFTING &amp; BOQ</text>
+              <rect x="235" y="14" width="89" height="22" rx="6" fill="rgba(15,23,42,0.85)" stroke="rgba(16,185,129,0.4)" stroke-width="1"/>
+              <text x="244" y="29" fill="#10B981" font-family="monospace" font-size="9" font-weight="700">DIN 277 / VOB</text>
+            </svg>
+          </div>
+          <div class="service-meta-head">
+            <span class="service-badge">Quantity Extraction</span>
+            <span class="service-format-pill">DWG · PDF · BIMx</span>
+          </div>
           <h3>Drafting, quantities &amp; visuals</h3>
-          <p>CAD drafting, floor plan redesign, BOQ extraction and renderings, produced from the same centralized model.</p>
+          <p>CAD drawing sets, floor plan redesign, BOQ volume extractions and interactive BIMx presentation models produced from the centralized 3D geometry.</p>
+          <div class="service-checklist-pills">
+            <span>✓ DIN 277 Volume Matrix</span>
+            <span>✓ Material Schedules</span>
+            <span>✓ High-Res Visuals</span>
+          </div>
         </div>
       </div>
 
       <div class="service-boundary-box">
         <i data-lucide="info"></i>
-        <span><strong>Clear scope boundary:</strong> We build the model. The energy calculation and certificate stay with your team.</span>
+        <span><strong>Clear scope boundary:</strong> We build the coordinated model. The energy calculation, thermal engine simulation, and certificate stay with your team.</span>
       </div>
     </div>
   </section>
@@ -227,16 +517,55 @@
 
       <div class="steps-grid">
         <div class="step-card reveal-up" style="--delay: 0ms">
+          <div class="step-anim-container">
+            <svg viewBox="0 0 140 100" fill="none" xmlns="http://www.w3.org/2000/svg" class="step-anim-svg">
+              <rect width="140" height="100" rx="10" fill="#0B132B" stroke="rgba(197,168,128,0.3)" stroke-width="1"/>
+              <path d="M45 20 L85 20 L100 35 L100 80 L45 80 Z" fill="#1E293B" stroke="#38BDF8" stroke-width="1.5"/>
+              <polygon points="85,20 85,35 100,35" fill="#334155" stroke="#38BDF8" stroke-width="1"/>
+              <line x1="55" y1="45" x2="90" y2="45" stroke="#00D2FF" stroke-width="1.5"/>
+              <line x1="55" y1="55" x2="80" y2="55" stroke="#C5A880" stroke-width="1.5"/>
+              <line x1="55" y1="65" x2="88" y2="65" stroke="#38BDF8" stroke-width="1.5"/>
+              <circle cx="55" cy="45" r="2" fill="#10B981"/>
+              <circle cx="90" cy="45" r="2" fill="#10B981"/>
+              <text x="70" y="92" fill="#94A3B8" font-family="monospace" font-size="8" text-anchor="middle">PDF · DWG · SCANS</text>
+            </svg>
+          </div>
           <div class="step-number-badge">1</div>
           <h3>Send your plans</h3>
-          <p>Upload PDFs, DWG files or scans at any European scale. Everything stays under NDA on request.</p>
+          <p>Upload PDFs, DWG files or scans at any European scale. Everything stays under strict NDA upon request.</p>
         </div>
+
         <div class="step-card reveal-up" style="--delay: 100ms">
+          <div class="step-anim-container">
+            <svg viewBox="0 0 140 100" fill="none" xmlns="http://www.w3.org/2000/svg" class="step-anim-svg">
+              <rect width="140" height="100" rx="10" fill="#0B132B" stroke="rgba(197,168,128,0.3)" stroke-width="1"/>
+              <rect x="30" y="22" width="80" height="52" rx="6" fill="#1E293B" stroke="#C5A880" stroke-width="1.2"/>
+              <line x1="30" y1="40" x2="110" y2="40" stroke="rgba(197,168,128,0.3)" stroke-width="1"/>
+              <text x="40" y="34" fill="#C5A880" font-family="monospace" font-size="8" font-weight="700">SQM SCOPE</text>
+              <text x="70" y="58" fill="#FFFFFF" font-family="'Plus Jakarta Sans',sans-serif" font-size="14" font-weight="800" text-anchor="middle">€ FIXED</text>
+              <circle cx="100" cy="34" r="3" fill="#10B981"/>
+              <text x="70" y="92" fill="#94A3B8" font-family="monospace" font-size="8" text-anchor="middle">IN &lt;4 HOURS · ZERO HOURLY</text>
+            </svg>
+          </div>
           <div class="step-number-badge">2</div>
           <h3>Get a fixed quote</h3>
-          <p>Within hours you receive one price based on floor area, level of detail and complexity. No hourly billing.</p>
+          <p>Within hours you receive one price based on floor area, level of detail and complexity. No hourly billing surprises.</p>
         </div>
+
         <div class="step-card reveal-up" style="--delay: 200ms">
+          <div class="step-anim-container">
+            <svg viewBox="0 0 140 100" fill="none" xmlns="http://www.w3.org/2000/svg" class="step-anim-svg">
+              <rect width="140" height="100" rx="10" fill="#0B132B" stroke="rgba(197,168,128,0.3)" stroke-width="1"/>
+              <polygon points="70,22 105,38 70,54 35,38" fill="rgba(197,168,128,0.25)" stroke="#C5A880" stroke-width="1.5"/>
+              <polygon points="35,38 70,54 70,78 35,62" fill="#1E293B" stroke="#C5A880" stroke-width="1.5"/>
+              <polygon points="70,54 105,38 105,62 70,78" fill="#0F172A" stroke="#C5A880" stroke-width="1.5"/>
+              <rect x="18" y="46" width="32" height="14" rx="3" fill="#2563EB"/>
+              <text x="34" y="56" fill="#FFFFFF" font-family="monospace" font-size="7.5" font-weight="700" text-anchor="middle">.PLN</text>
+              <rect x="90" y="46" width="32" height="14" rx="3" fill="#10B981"/>
+              <text x="106" y="56" fill="#FFFFFF" font-family="monospace" font-size="7.5" font-weight="700" text-anchor="middle">IFC4</text>
+              <text x="70" y="92" fill="#94A3B8" font-family="monospace" font-size="8" text-anchor="middle">24–48h DELIVERY SLA</text>
+            </svg>
+          </div>
           <div class="step-number-badge">3</div>
           <h3>Receive your model</h3>
           <p>Standard residential models arrive in 24–48 hours. Larger multi-storey or commercial projects get their own timeline in the quote.</p>
@@ -402,17 +731,6 @@
       </div>
     </div>
   </section>
-                  <span class="spec-val">AutoCAD (DWG)</span>
-                </div>
-                <a href="projects/truss-bridge-renovation.html" class="btn-link" onclick="event.stopPropagation()">View project →</a>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </div>
-  </section>
 
   <!-- ═══════════════════════════════════════════════
        8. PRICING (Three tiers)
@@ -531,7 +849,25 @@
             </div>
           </div>
 
-          <div class="about-cta-bar">
+          <div class="qa-seal-wrap">
+            <svg viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg" class="qa-seal-anim-svg">
+              <circle cx="90" cy="90" r="85" fill="#0B132B" stroke="#C5A880" stroke-width="2" stroke-dasharray="6 3" class="rotate-slow-ring"/>
+              <circle cx="90" cy="90" r="74" fill="#0F172A" stroke="rgba(197,168,128,0.4)" stroke-width="1"/>
+              <circle cx="90" cy="90" r="60" fill="rgba(37,99,235,0.08)" stroke="#00D2FF" stroke-width="1.5" stroke-dasharray="3 3"/>
+              <line x1="90" y1="10" x2="90" y2="170" stroke="rgba(197,168,128,0.3)" stroke-width="1"/>
+              <line x1="10" y1="90" x2="170" y2="90" stroke="rgba(197,168,128,0.3)" stroke-width="1"/>
+              <circle cx="90" cy="90" r="8" fill="#C5A880"/>
+              <circle cx="90" cy="90" r="3" fill="#0B132B"/>
+              <text x="90" y="72" fill="#FFFFFF" font-family="'Plus Jakarta Sans',sans-serif" font-size="10" font-weight="800" text-anchor="middle" letter-spacing="1">CIVIL ENGINEER</text>
+              <text x="90" y="116" fill="#C5A880" font-family="monospace" font-size="9" font-weight="700" text-anchor="middle">QA VERIFIED · DTU</text>
+              <text x="90" y="128" fill="#00D2FF" font-family="monospace" font-size="7.5" text-anchor="middle">ISO 13790 / GEG</text>
+            </svg>
+            <div class="qa-seal-text">
+              <h4>Civil Engineering Quality Assurance</h4>
+              <p>Every ArchiCAD, Revit and IFC model is personally checked by DTU Civil Engineers before export. Zero dimensional drift, fully defended under audit.</p>
+            </div>
+          </div>
+          <div class="about-cta-bar" style="margin-top: 20px;">
             <a href="mailto:contact@theribhus.com" class="btn btn-primary">Email the founders (contact@theribhus.com)</a>
           </div>
         </div>
@@ -661,12 +997,18 @@
       <div class="footer-top">
         <div class="footer-brand">
           <a href="#" class="nav-logo" style="color: #fff;">
-            <svg width="34" height="34" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" class="ribhus-svg">
-              <path d="M25 80 V20 H55 C70 20 80 30 80 40 C80 50 70 60 55 60 H40 V80" stroke="#FFFFFF" stroke-width="8" stroke-linejoin="miter" fill="none"/>
-              <path d="M50 60 L75 80" stroke="#FFFFFF" stroke-width="8" stroke-linecap="square"/>
-              <line x1="10" y1="65" x2="90" y2="35" stroke="#C5A880" stroke-width="6" stroke-linecap="square"/>
-            </svg>
-            <span class="logo-text" style="color: #fff;">RIBHUS</span>
+            <div class="logo-badge">
+              <svg width="36" height="36" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" class="ribhus-svg">
+                <rect width="100" height="100" rx="22" fill="#0B132B" stroke="#C5A880" stroke-width="4"/>
+                <path d="M28 78 V22 H54 C68 22 78 31 78 41 C78 51 68 60 54 60 H40 V78" stroke="#FFFFFF" stroke-width="8" stroke-linejoin="miter" fill="none"/>
+                <path d="M50 60 L74 78" stroke="#FFFFFF" stroke-width="8" stroke-linecap="square"/>
+                <line x1="12" y1="66" x2="88" y2="34" stroke="#C5A880" stroke-width="7" stroke-linecap="square"/>
+              </svg>
+            </div>
+            <div class="logo-text-group">
+              <span class="logo-text" style="color: #fff;">RIBHUS</span>
+              <span class="logo-tagline">BIM STUDIO</span>
+            </div>
           </a>
           <p class="brand-line" style="margin-top: 14px; font-weight: 500; color: rgba(255,255,255,0.75);">
             Civil engineer-led BIM modeling for energy audits and consulting.

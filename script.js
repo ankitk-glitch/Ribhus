@@ -86,13 +86,6 @@ const projectsData = {
     ]
   }
 };
-    bullets: [
-      "Reconstructed existing clinic layout from hand-annotated blueprints and legacy drawings into parametric BIM walls, doors, and equipment zones.",
-      "Isolated clinical treatment rooms, surgical theaters, and customer waiting areas with distinct acoustic and wall properties.",
-      "Supplied structured IFC exports for mechanical MEP coordination and German energy performance compliance."
-    ]
-  }
-};
 
 /* ─── INITIALIZATION ──────────────────────────── */
 document.addEventListener('DOMContentLoaded', () => {
