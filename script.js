@@ -413,3 +413,290 @@ async function handleFullPilotForm(e) {
     }, 2500);
   }
 }
+
+
+/* ═══════════════════════════════════════════════
+   LOCATION-AWARE BILINGUAL I18N SYSTEM (EN / DE)
+═══════════════════════════════════════════════ */
+const i18nDict = {
+  en: {
+    "nav.services": "Services",
+    "nav.process": "Process",
+    "nav.projects": "Projects",
+    "nav.pricing": "Pricing",
+    "nav.about": "About",
+    "nav.pilot": "Free Pilot",
+
+    "hero.eyebrow": "Civil Engineer-Led BIM Studio · Berlin & DACH",
+    "hero.title": "Audit-Ready BIM Models Engineered for Energy Performance",
+    "hero.subtitle": "When modelling for energy performance, clean, accurate geometry isn't a nice-to-have — it is the entire foundation of your audit. We deliver coordinate-precise ArchiCAD, Revit, and IFC4 models with floor-by-floor thermal zones, wall volumes, and opening schedules in 24–48 hours.",
+    "hero.btnPilot": "Start a Free Pilot",
+    "hero.btnProjects": "Explore Energy Projects",
+    "hero.trust1": "✓ Civil Engineering-Led QA",
+    "hero.trust2": "✓ Direct Thermal Engine Export",
+    "hero.trust3": "✓ NDA on Request",
+
+    "trustbar.speed.label": "Speed",
+    "trustbar.speed.val": "24–48 h turnaround on standard residential",
+    "trustbar.detail.label": "Detail",
+    "trustbar.detail.val": "LOD 200–300 models",
+    "trustbar.formats.label": "Formats",
+    "trustbar.formats.val": "ArchiCAD · Revit · IFC 4.3 · DWG",
+    "trustbar.exp.label": "Experience",
+    "trustbar.exp.val": "150+ models used in German energy audits",
+
+    "problem.eyebrow": "Why Energy Consultancies Outsource Modeling",
+    "problem.heading": "An energy audit is only as good as the model under it.",
+    "problem.body": "Auditors and consultants receive plans as PDFs, DWGs or scans. Before any calculation can start, someone has to rebuild them as a model with correct wall thicknesses, floor heights, openings and room volumes. Hiring locally is slow and costly, and generic CAD outsourcing often returns models that fail your own checks. Ribhus is a small civil engineering studio that does only this one job, and does it to a standard you can build on.",
+    "problem.card1.title": "Capacity when you need it",
+    "problem.card1.desc": "We absorb peak workloads without hiring or training, so deadlines stop depending on headcount.",
+    "problem.card2.title": "Checked before delivery",
+    "problem.card2.desc": "Every model goes through dimension and standards checks, so errors are caught on our side.",
+    "problem.card3.title": "Fixed quote per project",
+    "problem.card3.desc": "A fixed quote per project instead of hourly billing surprises.",
+
+    "services.eyebrow": "What We Build",
+    "services.heading": "Specialized BIM Conversion Services",
+    "services.subheading": "High-precision parametric models engineered for German and European building energy auditors, architects, and engineering consultancies.",
+    "services.card1.badge": "LOD 200–300",
+    "services.card1.title": "2D-to-3D BIM Conversion",
+    "services.card1.desc": "PDFs, DWG files or paper scans converted into coordinate-locked ArchiCAD or Revit models with exact wall assemblies and zero dimensional drift.",
+    "services.card1.feat1": "Monolithic & composite wall assemblies",
+    "services.card1.feat2": "Floor-by-floor vertical alignment",
+    "services.card1.feat3": "Precise door & window opening schedules",
+
+    "services.card2.badge": "Energy Simulation",
+    "services.card2.title": "Audit-Ready Models (IFC 4.3)",
+    "services.card2.desc": "Engineered specifically to feed thermal calculation engines directly. Continuous envelope definitions, room volume extractions, and zone assignments.",
+    "services.card2.feat1": "Spatially defined thermal room boundaries",
+    "services.card2.feat2": "Glazing ratio & solar gain data extraction",
+    "services.card2.feat3": "Direct import into SAP, PHPP & thermal tools",
+
+    "services.card3.badge": "LiDAR & Point Cloud",
+    "services.card3.title": "Scan-to-BIM & Legacy Blueprints",
+    "services.card3.desc": "Hand-drawn blueprints, historical municipal archives, or 3D LiDAR point cloud scans reconstructed into clean, coordinate-referenced digital twins.",
+    "services.card3.feat1": "Point cloud decimation & vectorization",
+    "services.card3.feat2": "As-built geometric verification (±2mm)",
+    "services.card3.feat3": "Existing building retrofit & renovation base",
+
+    "services.card4.badge": "Quantity Extraction",
+    "services.card4.title": "Drafting, Quantities & Visuals",
+    "services.card4.desc": "CAD drawing sets, floor plan redesign, BOQ volume calculations according to DIN 277, and interactive BIMx presentation models from a centralized model.",
+    "services.card4.feat1": "Automated bill-of-quantities (BOQ) extraction",
+    "services.card4.feat2": "Executive 2D plan, section & elevation sheets",
+    "services.card4.feat3": "Interactive mobile BIMx model walkthroughs",
+
+    "services.boundary": "Clear scope boundary: We build the coordinated 3D BIM model. The energy calculation, thermal engine simulation, and official certificate stay with your team.",
+
+    "process.eyebrow": "Clear, Predictable Turnaround",
+    "process.heading": "Three steps from plans to model.",
+    "process.step1.title": "Send your plans",
+    "process.step1.desc": "Upload PDFs, DWG files or scans at any European scale. Everything stays under strict NDA upon request.",
+    "process.step2.title": "Get a fixed quote",
+    "process.step2.desc": "Within hours you receive one price based on floor area, level of detail and complexity. No hourly billing surprises.",
+    "process.step3.title": "Receive your model",
+    "process.step3.desc": "Standard residential models arrive in 24–48 hours. Larger multi-storey or commercial projects get their own timeline in the quote.",
+
+    "pricing.eyebrow": "Transparent Fixed Pricing",
+    "pricing.heading": "Fixed prices, no hourly surprises.",
+    "pricing.subheading": "Every project gets a fixed quote before work starts. These ranges are for standard drawings in clear condition.",
+    "pricing.tier1.tag": "Small Residential",
+    "pricing.tier1.title": "Single project, small residential",
+    "pricing.tier1.best": "Best for single-family homes and small units",
+    "pricing.tier1.price": "49–99",
+    "pricing.tier1.unit": "/ unit",
+    "pricing.tier1.time": "24–48 hours turnaround",
+    "pricing.btn": "Start with a Free Pilot",
+    "pricing.popular": "Most Requested",
+    "pricing.tier2.tag": "Multi-Storey",
+    "pricing.tier2.title": "Multi-storey residential & commercial",
+    "pricing.tier2.best": "Best for apartment buildings and larger complexes",
+    "pricing.tier2.price": "100–299",
+    "pricing.tier2.unit": "/ building",
+    "pricing.tier2.time": "Quoted within hours (3–5 days)",
+    "pricing.tier3.tag": "Retainer",
+    "pricing.tier3.title": "Studio retainer",
+    "pricing.tier3.best": "Best for consultancies with steady volume",
+    "pricing.tier3.currency": "From €",
+    "pricing.tier3.price": "1,500",
+    "pricing.tier3.unit": "/ month",
+    "pricing.tier3.time": "Reserved monthly capacity",
+
+    "pilot.eyebrow": "Zero-Risk Starting Point",
+    "pilot.heading": "Try us on one drawing, free.",
+    "pilot.lead": "Send one room, one floor plan or one scanned PDF (up to 50 m²). We model it at no cost, so you can judge our accuracy and speed before you commit. No card, no contract.",
+    "pilot.submitBtn": "Send Pilot Request",
+    "pilot.promise": "We reply within one working day. NDA on request."
+  },
+
+  de: {
+    "nav.services": "Leistungen",
+    "nav.process": "Ablauf",
+    "nav.projects": "Projekte",
+    "nav.pricing": "Preise",
+    "nav.about": "Über uns",
+    "nav.pilot": "Kostenloser Testlauf",
+
+    "hero.eyebrow": "Bauingenieur-geführtes BIM-Studio · Berlin & DACH",
+    "hero.title": "Audit-Bereite BIM-Modelle für Energieberatung & Effizienz",
+    "hero.subtitle": "Bei der energetischen Gebäudeanalyse ist präzise Geometrie unverzichtbar. Wir liefern audit-bereite ArchiCAD-, Revit- und IFC4-Modelle mit exakten Raumvolumen, thermischen Hüllflächen und Bauteilschichten in 24–48 Stunden.",
+    "hero.btnPilot": "Kostenlosen Testlauf starten",
+    "hero.btnProjects": "Projekte ansehen",
+    "hero.trust1": "✓ Bauingenieur-geführte QA",
+    "hero.trust2": "✓ Direkter Export für thermische Simulation",
+    "hero.trust3": "✓ NDA auf Wunsch",
+
+    "trustbar.speed.label": "Geschwindigkeit",
+    "trustbar.speed.val": "24–48 Std. Turnaround für Wohngebäude",
+    "trustbar.detail.label": "Detaillierungsgrad",
+    "trustbar.detail.val": "LOD 200–300 Modelle",
+    "trustbar.formats.label": "Formate",
+    "trustbar.formats.val": "ArchiCAD · Revit · IFC 4.3 · DWG",
+    "trustbar.exp.label": "Erfahrung",
+    "trustbar.exp.val": "150+ Modelle für deutsche Energieaudits",
+
+    "problem.eyebrow": "Warum Energieberater die Modellierung auslagern",
+    "problem.heading": "Ein Energieaudit ist nur so verlässlich wie das darunterliegende Modell.",
+    "problem.body": "Energieberater und Ingenieurbüros erhalten Bestandspläne meist als PDF, DWG oder Scan. Bevor gerechnet werden kann, muss ein exaktes 3D-Modell mit Schichtaufbauten, Höhen und Raumvolumen erstellt werden. Lokales Personal ist teuer, und generische CAD-Dienstleister liefern oft fehlerhafte Geometrien. Ribhus ist ein spezialisiertes Bauingenieur-Studio, das ausschließlich diese Aufgabe auf höchstem Niveau löst.",
+    "problem.card1.title": "Kapazität nach Bedarf",
+    "problem.card1.desc": "Wir fangen Arbeitsspitzen ohne Personaleinstellung oder Schulungsaufwand flexibel ab.",
+    "problem.card2.title": "Vorab durch Bauingenieure geprüft",
+    "problem.card2.desc": "Jedes Modell durchläuft 5-stufige Maß- und Normenprüfungen vor dem Export.",
+    "problem.card3.title": "Feste Pauschalpreise",
+    "problem.card3.desc": "Verbindliche Pauschalpreise pro Projekt anstelle unvorhersehbarer Stundensätze.",
+
+    "services.eyebrow": "Was wir modellieren",
+    "services.heading": "Spezialisierte BIM-Konvertierungsdienste",
+    "services.subheading": "Präzise parametrische Modelle, entwickelt für deutsche und europäische Gebäudeenergieberater, Architekten und Fachplaner.",
+    "services.card1.badge": "LOD 200–300",
+    "services.card1.title": "2D-zu-3D BIM-Konvertierung",
+    "services.card1.desc": "PDFs, DWG-Dateien oder Papierscans werden in ArchiCAD- oder Revit-Modelle mit exakten Wandaufbauten ohne Maßabweichungen überführt.",
+    "services.card1.feat1": "Monolithische & mehrschichtige Wandaufbauten",
+    "services.card1.feat2": "Geschossweise vertikale Koordinierung",
+    "services.card1.feat3": "Exakte Fenster- und Türlisten",
+
+    "services.card2.badge": "Thermische Simulation",
+    "services.card2.title": "Audit-Bereite Modelle (IFC 4.3)",
+    "services.card2.desc": "Speziell für thermische Simulationsprogramme vorbereitet: Geschlossene Hüllflächen, exakte Raumvolumen und thermische Zonen.",
+    "services.card2.feat1": "Räumlich definierte thermische Raumgrenzen",
+    "services.card2.feat2": "Fensterflächenanteil & Solarertragsdaten",
+    "services.card2.feat3": "Direktimport in SAP, PHPP & Hottgenroth",
+
+    "services.card3.badge": "LiDAR & Punktwolke",
+    "services.card3.title": "Scan-to-BIM & Bestandspläne",
+    "services.card3.desc": "Historische Bauakten, Papierpläne oder 3D-Laserscans werden als präzise digitale Zwillinge für Sanierung und GEG-Nachweis rekonstruiert.",
+    "services.card3.feat1": "Punktwolken-Dezimierung & Vektorisierung",
+    "services.card3.feat2": "Geometrische Bestandsverifikation (±2mm)",
+    "services.card3.feat3": "Sanierungsbasis für Denkmalschutz & GEG",
+
+    "services.card4.badge": "Massen & Visualisierung",
+    "services.card4.title": "CAD-Zeichnungen, Massen & Visuals",
+    "services.card4.desc": "CAD-Plandokumentation, Grundrissüberarbeitung, Massenermittlung nach DIN 277 und interaktive BIMx-Präsentationsmodelle.",
+    "services.card4.feat1": "Automatisierte Massenermittlung nach DIN 277",
+    "services.card4.feat2": "Ausführungsreife Grundrisse, Schnitte & Ansichten",
+    "services.card4.feat3": "Interaktive BIMx 3D-Modellbegehungen",
+
+    "services.boundary": "Klare Schnittstelle: Wir bauen das koordinierte 3D-BIM-Modell. Die energetische Berechnung und das offizielle Zertifikat bleiben vollständig bei Ihrem Büro.",
+
+    "process.eyebrow": "Transparenter Ablauf",
+    "process.heading": "In drei Schritten vom Plan zum BIM-Modell.",
+    "process.step1.title": "1. Pläne senden",
+    "process.step1.desc": "Laden Sie PDFs, DWGs oder Scans hoch. Alle Projektdaten unterliegen auf Wunsch strenger Geheimhaltung (NDA).",
+    "process.step2.title": "2. Festpreis erhalten",
+    "process.step2.desc": "Innerhalb weniger Stunden erhalten Sie ein verbindliches Festpreisangebot nach BGF und Detailgrad. Keine versteckten Stundensätze.",
+    "process.step3.title": "3. Modell in 24–48h erhalten",
+    "process.step3.desc": "Wohngebäude-Modelle liefern wir in 24–48 Stunden als native ArchiCAD-, Revit- und IFC 4.3-Dateien.",
+
+    "pricing.eyebrow": "Transparente Festpreise",
+    "pricing.heading": "Feste Pauschalpreise ohne Stundensurprises.",
+    "pricing.subheading": "Jedes Projekt erhält vor Beginn ein verbindliches Angebot. Diese Richtwerte gelten für Standardpläne.",
+    "pricing.tier1.tag": "Einfamilienhaus",
+    "pricing.tier1.title": "Einzelprojekt Einfamilienhaus & Wohnungen",
+    "pricing.tier1.best": "Ideal für Einfamilienhäuser und kleine Einheiten",
+    "pricing.tier1.price": "49–99",
+    "pricing.tier1.unit": "/ Einheit",
+    "pricing.tier1.time": "24–48 Stunden Turnaround",
+    "pricing.btn": "Kostenlosen Testlauf starten",
+    "pricing.popular": "Meistgefragt",
+    "pricing.tier2.tag": "Mehrfamilienhaus",
+    "pricing.tier2.title": "Mehrfamilienhäuser & Gewerbe",
+    "pricing.tier2.best": "Ideal für Mehrfamilienhäuser und größere Komplexe",
+    "pricing.tier2.price": "100–299",
+    "pricing.tier2.unit": "/ Gebäude",
+    "pricing.tier2.time": "Angebot in wenigen Stunden (3–5 Tage)",
+    "pricing.tier3.tag": "Retainer",
+    "pricing.tier3.title": "Studio-Retainer",
+    "pricing.tier3.best": "Für Büros mit kontinuierlichem Monatsbedarf",
+    "pricing.tier3.currency": "Ab €",
+    "pricing.tier3.price": "1.500",
+    "pricing.tier3.unit": "/ Monat",
+    "pricing.tier3.time": "Reservierte monatliche Kapazität",
+
+    "pilot.eyebrow": "Risikofreier Einstieg",
+    "pilot.heading": "Testen Sie uns an einem Plan — völlig kostenlos.",
+    "pilot.lead": "Senden Sie uns einen Grundriss oder Scan (bis zu 50 m² BGF). Wir modellieren ihn kostenlos, damit Sie unsere Präzision und Geschwindigkeit unverbindlich testen können. Ohne Vertrag, ohne Kreditkarte.",
+    "pilot.submitBtn": "Kostenlosen Testlauf anfragen",
+    "pilot.promise": "Antwort innerhalb von 24 Stunden. NDA auf Wunsch."
+  }
+};
+
+function setLanguage(lang) {
+  if (!i18nDict[lang]) lang = 'en';
+
+  const dict = i18nDict[lang];
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (dict[key]) {
+      el.textContent = dict[key];
+    }
+  });
+
+  // Update button active state
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    if (btn.getAttribute('data-lang') === lang) {
+      btn.classList.add('active');
+    } else {
+      btn.classList.remove('active');
+    }
+  });
+
+  document.documentElement.lang = lang;
+  localStorage.setItem('ribhus_lang', lang);
+}
+
+function initLanguage() {
+  let lang = localStorage.getItem('ribhus_lang');
+
+  if (!lang) {
+    // 1. Detect from browser language
+    const browserLang = (navigator.language || navigator.userLanguage || '').toLowerCase();
+    const isGerman = browserLang.startsWith('de');
+
+    // 2. Detect from timezone (Germany, Austria, Switzerland)
+    let isGermanTZ = false;
+    try {
+      const tz = Intl.DateTimeFormat().resolvedOptions().timeZone || '';
+      if (tz.includes('Berlin') || tz.includes('Vienna') || tz.includes('Zurich') || tz.includes('Busingen')) {
+        isGermanTZ = true;
+      }
+    } catch (e) {}
+
+    lang = (isGerman || isGermanTZ) ? 'de' : 'en';
+  }
+
+  setLanguage(lang);
+
+  // Bind click listeners
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const targetLang = btn.getAttribute('data-lang');
+      setLanguage(targetLang);
+    });
+  });
+}
+
+// Hook into DOMContentLoaded
+document.addEventListener('DOMContentLoaded', () => {
+  initLanguage();
+});
