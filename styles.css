@@ -2833,6 +2833,214 @@ ul { list-style: none; }
    CLEAN EXECUTIVE SERVICES LAYOUT & LANGUAGE SWITCHER
 ═══════════════════════════════════════════════ */
 
+/* ─── COUNTRY & CURRENCY SELECTOR ──────────────── */
+.country-selector-wrap {
+  position: relative;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.country-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-radius: 100px;
+  padding: 5px 12px;
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-dark);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.country-btn:hover {
+  background: #F8FAFC;
+  border-color: #CBD5E1;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.05);
+}
+
+.country-flag {
+  font-size: 1.05rem;
+  line-height: 1;
+}
+
+.country-name {
+  font-weight: 700;
+  color: var(--text-dark);
+}
+
+.country-curr-badge {
+  font-size: 0.72rem;
+  font-weight: 700;
+  background: #F1F5F9;
+  color: #2563EB;
+  padding: 2px 7px;
+  border-radius: 6px;
+  letter-spacing: 0.02em;
+}
+
+.country-chevron {
+  width: 14px;
+  height: 14px;
+  color: #64748B;
+  transition: transform 0.2s ease;
+}
+
+.country-selector-wrap.open .country-chevron {
+  transform: rotate(180deg);
+}
+
+.country-dropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-radius: 12px;
+  box-shadow: 0 16px 40px rgba(15, 23, 42, 0.12), 0 2px 8px rgba(15, 23, 42, 0.04);
+  padding: 8px;
+  min-width: 260px;
+  z-index: 1200;
+  display: none;
+  animation: dropdownFadeIn 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes dropdownFadeIn {
+  from { opacity: 0; transform: translateY(-6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.country-selector-wrap.open .country-dropdown {
+  display: block;
+}
+
+.country-dropdown-header {
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #94A3B8;
+  padding: 6px 10px 8px;
+  border-bottom: 1px solid #F1F5F9;
+  margin-bottom: 4px;
+}
+
+.country-options-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.country-option {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 8px 10px;
+  background: none;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  text-align: left;
+  transition: background 0.18s ease;
+}
+
+.country-option:hover {
+  background: #F8FAFC;
+}
+
+.country-option.active {
+  background: #EFF6FF;
+}
+
+.opt-flag {
+  font-size: 1.25rem;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.opt-info {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
+}
+
+.opt-country {
+  font-size: 0.84rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  line-height: 1.25;
+}
+
+.opt-meta {
+  font-size: 0.72rem;
+  color: #64748B;
+  margin-top: 2px;
+}
+
+.opt-check {
+  width: 16px;
+  height: 16px;
+  color: #2563EB;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  flex-shrink: 0;
+}
+
+.country-option.active .opt-check {
+  opacity: 1;
+}
+
+/* Mobile selector row */
+.mobile-menu-selectors {
+  padding: 12px 14px 16px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.mobile-sel-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.mobile-sel-label {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--text-dark);
+}
+
+.mobile-country-select {
+  padding: 6px 10px;
+  border-radius: 8px;
+  border: 1px solid #E2E8F0;
+  background: #FFFFFF;
+  font-size: 0.82rem;
+  font-family: var(--font-body);
+  font-weight: 600;
+  color: var(--text-dark);
+  outline: none;
+}
+
+@media (max-width: 1200px) {
+  .nav-container { gap: 16px; }
+  .nav-links { gap: 18px; }
+  .country-name { display: none; }
+}
+
+@media (max-width: 992px) {
+  .nav-email-link span { display: none; }
+}
+
 /* ─── LANGUAGE SWITCHER PILL ───────────────────── */
 .lang-switcher {
   display: inline-flex;

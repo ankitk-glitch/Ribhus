@@ -56,10 +56,73 @@
       </ul>
 
       <div class="nav-actions">
+        <!-- Country & Currency Selector -->
+        <div class="country-selector-wrap" id="countrySelectorWrap">
+          <button class="country-btn" id="countryBtn" type="button" aria-expanded="false" aria-haspopup="true" title="Select Country & Currency">
+            <span class="country-flag" id="currentCountryFlag">🇩🇪</span>
+            <span class="country-name" id="currentCountryName">Germany</span>
+            <span class="country-curr-badge" id="currentCountryCurrency">€ EUR</span>
+            <i data-lucide="chevron-down" class="country-chevron"></i>
+          </button>
+          <div class="country-dropdown" id="countryDropdown" role="menu">
+            <div class="country-dropdown-header">Select Country &amp; Currency</div>
+            <div class="country-options-list">
+              <button class="country-option active" data-country="DE" type="button" role="menuitem">
+                <span class="opt-flag">🇩🇪</span>
+                <div class="opt-info">
+                  <span class="opt-country">Germany (Deutschland)</span>
+                  <span class="opt-meta">EUR (€) · Deutsch</span>
+                </div>
+                <i data-lucide="check" class="opt-check"></i>
+              </button>
+              <button class="country-option" data-country="AT" type="button" role="menuitem">
+                <span class="opt-flag">🇦🇹</span>
+                <div class="opt-info">
+                  <span class="opt-country">Austria (Österreich)</span>
+                  <span class="opt-meta">EUR (€) · Deutsch</span>
+                </div>
+                <i data-lucide="check" class="opt-check"></i>
+              </button>
+              <button class="country-option" data-country="CH" type="button" role="menuitem">
+                <span class="opt-flag">🇨🇭</span>
+                <div class="opt-info">
+                  <span class="opt-country">Switzerland (Schweiz)</span>
+                  <span class="opt-meta">CHF · Deutsch</span>
+                </div>
+                <i data-lucide="check" class="opt-check"></i>
+              </button>
+              <button class="country-option" data-country="GB" type="button" role="menuitem">
+                <span class="opt-flag">🇬🇧</span>
+                <div class="opt-info">
+                  <span class="opt-country">United Kingdom</span>
+                  <span class="opt-meta">GBP (£) · English</span>
+                </div>
+                <i data-lucide="check" class="opt-check"></i>
+              </button>
+              <button class="country-option" data-country="US" type="button" role="menuitem">
+                <span class="opt-flag">🇺🇸</span>
+                <div class="opt-info">
+                  <span class="opt-country">United States &amp; Global</span>
+                  <span class="opt-meta">USD ($) · English</span>
+                </div>
+                <i data-lucide="check" class="opt-check"></i>
+              </button>
+              <button class="country-option" data-country="IN" type="button" role="menuitem">
+                <span class="opt-flag">🇮🇳</span>
+                <div class="opt-info">
+                  <span class="opt-country">India</span>
+                  <span class="opt-meta">INR (₹) · English</span>
+                </div>
+                <i data-lucide="check" class="opt-check"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
         <div class="lang-switcher" id="langSwitcher" aria-label="Language Selector">
-          <button class="lang-btn active" data-lang="en">EN</button>
+          <button class="lang-btn" data-lang="en">EN</button>
           <span class="lang-sep">|</span>
-          <button class="lang-btn" data-lang="de">DE</button>
+          <button class="lang-btn active" data-lang="de">DE</button>
         </div>
         <a href="mailto:contact@theribhus.com" class="nav-email-link" title="Direct Email">
           <i data-lucide="mail"></i>
@@ -76,12 +139,25 @@
 
   <!-- Mobile menu -->
   <div class="mobile-menu" id="mobileMenu">
-    <div style="padding: 10px 14px 16px; border-bottom: 1px solid var(--border); margin-bottom: 8px; display: flex; align-items: center; justify-content: space-between;">
-      <span style="font-size: 0.85rem; font-weight: 700; color: var(--text-dark);">Language:</span>
-      <div class="lang-switcher">
-        <button class="lang-btn active" data-lang="en">English (EN)</button>
-        <span class="lang-sep">|</span>
-        <button class="lang-btn" data-lang="de">Deutsch (DE)</button>
+    <div class="mobile-menu-selectors">
+      <div class="mobile-sel-row">
+        <span class="mobile-sel-label">Country:</span>
+        <select class="mobile-country-select" id="mobileCountrySelect">
+          <option value="DE">🇩🇪 Germany (EUR € · DE)</option>
+          <option value="AT">🇦🇹 Austria (EUR € · DE)</option>
+          <option value="CH">🇨🇭 Switzerland (CHF · DE)</option>
+          <option value="GB">🇬🇧 United Kingdom (GBP £ · EN)</option>
+          <option value="US">🇺🇸 United States & Global (USD $ · EN)</option>
+          <option value="IN">🇮🇳 India (INR ₹ · EN)</option>
+        </select>
+      </div>
+      <div class="mobile-sel-row">
+        <span class="mobile-sel-label">Language:</span>
+        <div class="lang-switcher">
+          <button class="lang-btn" data-lang="en">EN</button>
+          <span class="lang-sep">|</span>
+          <button class="lang-btn active" data-lang="de">DE</button>
+        </div>
       </div>
     </div>
     <ul>
@@ -517,8 +593,8 @@
           <h3 data-i18n="pricing.tier1.title">Single project, small residential</h3>
           <p class="pricing-best-for" data-i18n="pricing.tier1.best">Best for single-family homes and small units</p>
           <div class="pricing-price">
-            <span class="currency">€</span>
-            <span class="amount" data-i18n="pricing.tier1.price">49–99</span>
+            <span class="currency" data-currency-symbol>€</span>
+            <span class="amount" data-currency-amount="tier1">49–99</span>
             <span class="unit" data-i18n="pricing.tier1.unit">/ unit</span>
           </div>
           <div class="pricing-turnaround">
@@ -535,8 +611,8 @@
           <h3 data-i18n="pricing.tier2.title">Multi-storey residential &amp; commercial</h3>
           <p class="pricing-best-for" data-i18n="pricing.tier2.best">Best for apartment buildings and larger complexes</p>
           <div class="pricing-price">
-            <span class="currency">€</span>
-            <span class="amount" data-i18n="pricing.tier2.price">100–299</span>
+            <span class="currency" data-currency-symbol>€</span>
+            <span class="amount" data-currency-amount="tier2">100–299</span>
             <span class="unit" data-i18n="pricing.tier2.unit">/ building</span>
           </div>
           <div class="pricing-turnaround">
@@ -552,8 +628,8 @@
           <h3 data-i18n="pricing.tier3.title">Studio retainer</h3>
           <p class="pricing-best-for" data-i18n="pricing.tier3.best">Best for consultancies with steady volume</p>
           <div class="pricing-price">
-            <span class="currency" data-i18n="pricing.tier3.currency">From €</span>
-            <span class="amount" data-i18n="pricing.tier3.price">1,500</span>
+            <span class="currency" data-currency-prefix data-i18n="pricing.tier3.currency">From €</span>
+            <span class="amount" data-currency-amount="tier3">1,500</span>
             <span class="unit" data-i18n="pricing.tier3.unit">/ month</span>
           </div>
           <div class="pricing-turnaround">
@@ -726,6 +802,7 @@
             <textarea name="details" rows="3" placeholder="Tell us about the level of detail (LOD 200 or 300), target deadline, software preference (ArchiCAD or Revit)..."></textarea>
           </div>
 
+          <input type="hidden" name="country" id="pilotCountryInput" value="DE" />
           <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_KEY" />
           <input type="hidden" name="recipient" value="contact@theribhus.com" />
 

@@ -640,12 +640,192 @@ const i18nDict = {
   }
 };
 
-function setLanguage(lang) {
+/* ═══════════════════════════════════════════════
+   COUNTRY, CURRENCY & LANGUAGE CONFIGURATION
+═══════════════════════════════════════════════ */
+const countryConfig = {
+  DE: {
+    name: 'Germany',
+    flag: '🇩🇪',
+    currency: 'EUR',
+    symbol: '€',
+    defaultLang: 'de',
+    prices: {
+      tier1: '49–99',
+      tier2: '100–299',
+      tier3: '1,500',
+      tier3DE: '1.500',
+      prefixEN: 'From €',
+      prefixDE: 'Ab €'
+    }
+  },
+  AT: {
+    name: 'Austria',
+    flag: '🇦🇹',
+    currency: 'EUR',
+    symbol: '€',
+    defaultLang: 'de',
+    prices: {
+      tier1: '49–99',
+      tier2: '100–299',
+      tier3: '1,500',
+      tier3DE: '1.500',
+      prefixEN: 'From €',
+      prefixDE: 'Ab €'
+    }
+  },
+  CH: {
+    name: 'Switzerland',
+    flag: '🇨🇭',
+    currency: 'CHF',
+    symbol: 'CHF ',
+    defaultLang: 'de',
+    prices: {
+      tier1: '48–96',
+      tier2: '98–288',
+      tier3: '1,450',
+      tier3DE: '1.450',
+      prefixEN: 'From CHF ',
+      prefixDE: 'Ab CHF '
+    }
+  },
+  GB: {
+    name: 'United Kingdom',
+    flag: '🇬🇧',
+    currency: 'GBP',
+    symbol: '£',
+    defaultLang: 'en',
+    prices: {
+      tier1: '42–85',
+      tier2: '85–255',
+      tier3: '1,275',
+      tier3DE: '1.275',
+      prefixEN: 'From £',
+      prefixDE: 'Ab £'
+    }
+  },
+  US: {
+    name: 'United States',
+    flag: '🇺🇸',
+    currency: 'USD',
+    symbol: '$',
+    defaultLang: 'en',
+    prices: {
+      tier1: '55–109',
+      tier2: '109–325',
+      tier3: '1,650',
+      tier3DE: '1.650',
+      prefixEN: 'From $',
+      prefixDE: 'Ab $'
+    }
+  },
+  IN: {
+    name: 'India',
+    flag: '🇮🇳',
+    currency: 'INR',
+    symbol: '₹',
+    defaultLang: 'en',
+    prices: {
+      tier1: '4,400–8,900',
+      tier2: '9,000–26,900',
+      tier3: '1,35,000',
+      tier3DE: '1.35.000',
+      prefixEN: 'From ₹',
+      prefixDE: 'Ab ₹'
+    }
+  }
+};
+
+let currentCountryCode = 'DE';
+let currentLangCode = 'en';
+
+function updatePricingDisplay() {
+  const cfg = countryConfig[currentCountryCode] || countryConfig.DE;
+  const isDe = currentLangCode === 'de';
+
+  // 1. Update currency symbols
+  document.querySelectorAll('[data-currency-symbol]').forEach(el => {
+    el.textContent = cfg.symbol;
+  });
+
+  // 2. Update tier 1 and tier 2 amounts
+  const t1 = document.querySelector('[data-currency-amount="tier1"]');
+  if (t1) t1.textContent = cfg.prices.tier1;
+
+  const t2 = document.querySelector('[data-currency-amount="tier2"]');
+  if (t2) t2.textContent = cfg.prices.tier2;
+
+  // 3. Update tier 3 prefix and amount
+  const t3Prefix = document.querySelector('[data-currency-prefix]');
+  if (t3Prefix) {
+    t3Prefix.textContent = isDe ? cfg.prices.prefixDE : cfg.prices.prefixEN;
+  }
+
+  const t3 = document.querySelector('[data-currency-amount="tier3"]');
+  if (t3) {
+    t3.textContent = isDe ? cfg.prices.tier3DE : cfg.prices.tier3;
+  }
+}
+
+function setCountry(countryCode, syncLanguage = true) {
+  if (!countryConfig[countryCode]) {
+    countryCode = 'DE';
+  }
+  currentCountryCode = countryCode;
+  const cfg = countryConfig[countryCode];
+
+  // 1. Update trigger button
+  const flagEl = document.getElementById('currentCountryFlag');
+  const nameEl = document.getElementById('currentCountryName');
+  const currEl = document.getElementById('currentCountryCurrency');
+
+  if (flagEl) flagEl.textContent = cfg.flag;
+  if (nameEl) nameEl.textContent = cfg.name;
+  if (currEl) currEl.textContent = `${cfg.symbol.trim()} ${cfg.currency}`;
+
+  // 2. Update active state in dropdown
+  document.querySelectorAll('.country-option').forEach(opt => {
+    if (opt.getAttribute('data-country') === countryCode) {
+      opt.classList.add('active');
+    } else {
+      opt.classList.remove('active');
+    }
+  });
+
+  // 3. Update mobile select if present
+  const mobileSel = document.getElementById('mobileCountrySelect');
+  if (mobileSel) {
+    mobileSel.value = countryCode;
+  }
+
+  // 4. Update pilot form hidden input
+  const pilotCountry = document.getElementById('pilotCountryInput');
+  if (pilotCountry) {
+    pilotCountry.value = countryCode;
+  }
+
+  // 5. Update pricing table
+  updatePricingDisplay();
+
+  // 6. Save in localStorage
+  localStorage.setItem('ribhus_country', countryCode);
+  localStorage.setItem('ribhus_currency', cfg.currency);
+
+  // 7. Sync language if requested
+  if (syncLanguage) {
+    setLanguage(cfg.defaultLang, false);
+  }
+}
+
+function setLanguage(lang, syncCurrency = false) {
   if (!i18nDict[lang]) lang = 'en';
+  currentLangCode = lang;
 
   const dict = i18nDict[lang];
   document.querySelectorAll('[data-i18n]').forEach(el => {
     const key = el.getAttribute('data-i18n');
+    // Skip tier3.currency since that is dynamically handled by updatePricingDisplay
+    if (key === 'pricing.tier3.currency') return;
     if (dict[key]) {
       el.textContent = dict[key];
     }
@@ -662,28 +842,45 @@ function setLanguage(lang) {
 
   document.documentElement.lang = lang;
   localStorage.setItem('ribhus_lang', lang);
+
+  // Re-apply pricing display with language-specific prefix/separators
+  updatePricingDisplay();
 }
 
-async function initLanguage() {
+async function initCountryAndLanguage() {
+  const savedCountry = localStorage.getItem('ribhus_country');
   const savedLang = localStorage.getItem('ribhus_lang');
 
-  if (savedLang) {
-    setLanguage(savedLang);
+  if (savedCountry) {
+    setCountry(savedCountry, !savedLang);
+    if (savedLang) setLanguage(savedLang, false);
   } else {
-    // 1. Immediate detection from browser language and timezone (zero latency)
+    // 1. Instant fallback detection (zero latency)
     const browserLang = (navigator.language || navigator.userLanguage || '').toLowerCase();
-    const isGermanBrowser = browserLang.startsWith('de');
+    let detectedCountry = 'DE';
 
-    let isGermanTZ = false;
+    let tz = '';
     try {
-      const tz = Intl.DateTimeFormat().resolvedOptions().timeZone || '';
-      if (tz.includes('Berlin') || tz.includes('Vienna') || tz.includes('Zurich') || tz.includes('Busingen')) {
-        isGermanTZ = true;
-      }
+      tz = Intl.DateTimeFormat().resolvedOptions().timeZone || '';
     } catch (e) {}
 
-    let initialLang = (isGermanBrowser || isGermanTZ) ? 'de' : 'en';
-    setLanguage(initialLang);
+    if (tz.includes('London') || browserLang === 'en-gb') {
+      detectedCountry = 'GB';
+    } else if (tz.includes('Kolkata') || browserLang === 'en-in') {
+      detectedCountry = 'IN';
+    } else if (tz.includes('Zurich')) {
+      detectedCountry = 'CH';
+    } else if (tz.includes('Vienna')) {
+      detectedCountry = 'AT';
+    } else if (tz.includes('Berlin') || browserLang.startsWith('de')) {
+      detectedCountry = 'DE';
+    } else if (tz.includes('New_York') || tz.includes('Chicago') || tz.includes('Los_Angeles') || tz.includes('America')) {
+      detectedCountry = 'US';
+    } else {
+      detectedCountry = 'DE'; // Default European focus
+    }
+
+    setCountry(detectedCountry, true);
 
     // 2. High-accuracy country-level IP geolocation detection (asynchronous)
     try {
@@ -694,30 +891,95 @@ async function initLanguage() {
 
       if (res.ok) {
         const data = await res.json();
-        const deCountries = ['DE', 'AT', 'CH', 'LI', 'LU'];
-        if (data && data.country_code && deCountries.includes(data.country_code.toUpperCase())) {
-          // If in DACH country and user hasn't manually set a language preference
-          if (!localStorage.getItem('ribhus_lang')) {
-            setLanguage('de');
+        if (data && data.country_code) {
+          const code = data.country_code.toUpperCase();
+          if (!localStorage.getItem('ribhus_country')) {
+            let mappedCountry = 'DE';
+            if (countryConfig[code]) {
+              mappedCountry = code;
+            } else if (['AT', 'DE', 'LU', 'LI'].includes(code)) {
+              mappedCountry = code === 'AT' ? 'AT' : 'DE';
+            } else if (code === 'CH') {
+              mappedCountry = 'CH';
+            } else if (code === 'GB') {
+              mappedCountry = 'GB';
+            } else if (code === 'IN') {
+              mappedCountry = 'IN';
+            } else {
+              mappedCountry = 'US';
+            }
+            setCountry(mappedCountry, !localStorage.getItem('ribhus_lang'));
           }
         }
       }
     } catch (err) {
-      // Fallback silently to browser/timezone language already set above
+      // Fallback silently to already applied detection
     }
   }
 
-  // Bind click listeners for manual toggle buttons
+  // Setup Country Dropdown Toggle & Click Handlers
+  const countryWrap = document.getElementById('countrySelectorWrap');
+  const countryBtn = document.getElementById('countryBtn');
+
+  if (countryBtn && countryWrap) {
+    countryBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      countryWrap.classList.toggle('open');
+      const isOpen = countryWrap.classList.contains('open');
+      countryBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+
+    document.querySelectorAll('.country-option').forEach(opt => {
+      opt.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const code = opt.getAttribute('data-country');
+        setCountry(code, true);
+        countryWrap.classList.remove('open');
+        countryBtn.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    // Close on click outside
+    document.addEventListener('click', (e) => {
+      if (!countryWrap.contains(e.target)) {
+        countryWrap.classList.remove('open');
+        countryBtn.setAttribute('aria-expanded', 'false');
+      }
+    });
+
+    // Close on Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        countryWrap.classList.remove('open');
+        countryBtn.setAttribute('aria-expanded', 'false');
+      }
+    });
+  }
+
+  // Setup Mobile Country Select
+  const mobileCountry = document.getElementById('mobileCountrySelect');
+  if (mobileCountry) {
+    mobileCountry.addEventListener('change', (e) => {
+      setCountry(e.target.value, true);
+    });
+  }
+
+  // Setup Language Switcher Buttons
   document.querySelectorAll('.lang-btn').forEach(btn => {
     btn.addEventListener('click', (e) => {
       e.preventDefault();
       const targetLang = btn.getAttribute('data-lang');
-      setLanguage(targetLang);
+      setLanguage(targetLang, false);
     });
   });
+
+  // Re-run Lucide icon injection for newly injected elements
+  if (typeof lucide !== 'undefined' && lucide.createIcons) {
+    lucide.createIcons();
+  }
 }
 
 // Hook into DOMContentLoaded
 document.addEventListener('DOMContentLoaded', () => {
-  initLanguage();
+  initCountryAndLanguage();
 });
