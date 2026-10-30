@@ -98,62 +98,19 @@
   <!-- ═══════════════════════════════════════════════
        2. HERO SECTION
   ═══════════════════════════════════════════════ -->
-  <section class="hero" id="home">
-    <div class="hero-container">
-      <div class="hero-card">
-        <div class="hero-left">
-          <span class="hero-eyebrow"><span class="eyebrow-pulsar"></span> Civil Engineer-Led BIM Studio · Berlin &amp; DACH</span>
-          <h1 class="hero-title" data-i18n="hero.title">Audit-Ready BIM Models Engineered for Energy Performance</h1>
-          <p class="hero-subtitle" data-i18n="hero.subtitle">When modelling for energy performance, clean, accurate geometry isn't a nice-to-have — it is the entire foundation of your audit. We deliver coordinate-precise ArchiCAD, Revit, and IFC4 models with floor-by-floor thermal zones, wall volumes, and opening schedules in 24–48 hours.</p>
-          <div class="hero-actions">
-            <a href="#pilot" class="btn btn-primary" data-i18n="hero.btnPilot">Start a Free Pilot</a>
-            <a href="#projects" class="btn btn-ghost" data-i18n="hero.btnProjects">Explore Energy Projects</a>
-          </div>
-          <div class="hero-trust">
-            <span>✓ Civil Engineering-Led QA</span>
-            <span>✓ Direct Thermal Engine Export</span>
-            <span>✓ NDA on Request</span>
-          </div>
-        </div>
-        <div class="hero-right">
-          <div class="hero-image-wrap">
-            <div class="hud-laser-line"></div>
-            <div class="hud-bracket hud-bracket-tl"></div>
-            <div class="hud-bracket hud-bracket-tr"></div>
-            <div class="hud-bracket hud-bracket-bl"></div>
-            <div class="hud-bracket hud-bracket-br"></div>
-
-            <img src="assets/hero_render_luxury.jpg" alt="High-Efficiency Residential BIM Architecture Render — Ribhus" class="hero-img" loading="eager" />
-
-            <div class="hud-chip hud-chip-top-left">
-              <span class="blip-live"></span>
-              <div>
-                <div class="hud-chip-title">24–48h Turnaround</div>
-                <div class="hud-chip-sub">SLA Guaranteed</div>
-              </div>
-            </div>
-
-            <div class="hud-chip hud-chip-top-right">
-              <i data-lucide="shield-check" style="color: #10B981; width: 16px; height: 16px;"></i>
-              <div>
-                <div class="hud-chip-title">IFC 4.3 Certified</div>
-                <div class="hud-chip-sub">Thermal Ready</div>
-              </div>
-            </div>
-
-            <div class="hud-chip hud-chip-bottom">
-              <i data-lucide="layers" style="color: #C5A880; width: 16px; height: 16px;"></i>
-              <div>
-                <div class="hud-chip-title">2,682 Elements · 232 Zones</div>
-                <div class="hud-chip-sub">Volume: 6,595.83 m³ Geometrically Locked</div>
-              </div>
-            </div>
-
-            <div class="hud-chip hud-chip-coords">
-              <span>X: 124.50m · Y: 89.20m · Z: +18.50m</span>
-            </div>
-          </div>
-        </div>
+  <section class="hero-fullscreen" id="home">
+    <div class="hero-bg-overlay"></div>
+    <div class="section-container hero-content-center">
+      <h1 class="hero-title-main" data-i18n="hero.title">Audit-Ready BIM Models Engineered for Energy Performance</h1>
+      <p class="hero-subtitle-main" data-i18n="hero.subtitle">When modelling for energy performance, clean, accurate geometry isn't a nice-to-have — it is the entire foundation of your audit. We deliver coordinate-precise ArchiCAD, Revit, and IFC4 models with floor-by-floor thermal zones, wall volumes, and opening schedules in 24–48 hours.</p>
+      <div class="hero-actions-main">
+        <a href="#pilot" class="btn btn-hero-primary" data-i18n="hero.btnPilot">Start a Free Pilot</a>
+        <a href="#projects" class="btn btn-hero-ghost" data-i18n="hero.btnProjects">Explore Energy Projects</a>
+      </div>
+      <div class="hero-trust-bar">
+        <span><i data-lucide="check"></i> <strong data-i18n="hero.trust1">Civil Engineering-Led QA</strong></span>
+        <span><i data-lucide="check"></i> <strong data-i18n="hero.trust2">Direct Thermal Engine Export</strong></span>
+        <span><i data-lucide="check"></i> <strong data-i18n="hero.trust3">NDA on Request</strong></span>
       </div>
     </div>
   </section>
@@ -342,55 +299,18 @@
 
       <div class="steps-grid">
         <div class="step-card reveal-up" style="--delay: 0ms">
-          <div class="step-anim-container">
-            <svg viewBox="0 0 140 100" fill="none" xmlns="http://www.w3.org/2000/svg" class="step-anim-svg">
-              <rect width="140" height="100" rx="10" fill="#0B132B" stroke="rgba(197,168,128,0.3)" stroke-width="1"/>
-              <path d="M45 20 L85 20 L100 35 L100 80 L45 80 Z" fill="#1E293B" stroke="#38BDF8" stroke-width="1.5"/>
-              <polygon points="85,20 85,35 100,35" fill="#334155" stroke="#38BDF8" stroke-width="1"/>
-              <line x1="55" y1="45" x2="90" y2="45" stroke="#00D2FF" stroke-width="1.5"/>
-              <line x1="55" y1="55" x2="80" y2="55" stroke="#C5A880" stroke-width="1.5"/>
-              <line x1="55" y1="65" x2="88" y2="65" stroke="#38BDF8" stroke-width="1.5"/>
-              <circle cx="55" cy="45" r="2" fill="#10B981"/>
-              <circle cx="90" cy="45" r="2" fill="#10B981"/>
-              <text x="70" y="92" fill="#94A3B8" font-family="monospace" font-size="8" text-anchor="middle">PDF · DWG · SCANS</text>
-            </svg>
-          </div>
           <div class="step-number-badge">1</div>
           <h3 data-i18n="process.step1.title">Send your plans</h3>
-          <p data-i18n="process.step1.desc">Upload PDFs, DWG files or scans at any European scale. Everything stays under strict NDA upon request.</p>
+          <p data-i18n="process.step1.desc">Upload PDFs, DWG files or scans at any scale. Everything stays under strict NDA upon request.</p>
         </div>
 
         <div class="step-card reveal-up" style="--delay: 100ms">
-          <div class="step-anim-container">
-            <svg viewBox="0 0 140 100" fill="none" xmlns="http://www.w3.org/2000/svg" class="step-anim-svg">
-              <rect width="140" height="100" rx="10" fill="#0B132B" stroke="rgba(197,168,128,0.3)" stroke-width="1"/>
-              <rect x="30" y="22" width="80" height="52" rx="6" fill="#1E293B" stroke="#C5A880" stroke-width="1.2"/>
-              <line x1="30" y1="40" x2="110" y2="40" stroke="rgba(197,168,128,0.3)" stroke-width="1"/>
-              <text x="40" y="34" fill="#C5A880" font-family="monospace" font-size="8" font-weight="700">SQM SCOPE</text>
-              <text x="70" y="58" fill="#FFFFFF" font-family="'Plus Jakarta Sans',sans-serif" font-size="14" font-weight="800" text-anchor="middle">€ FIXED</text>
-              <circle cx="100" cy="34" r="3" fill="#10B981"/>
-              <text x="70" y="92" fill="#94A3B8" font-family="monospace" font-size="8" text-anchor="middle">IN &lt;4 HOURS · ZERO HOURLY</text>
-            </svg>
-          </div>
           <div class="step-number-badge">2</div>
           <h3 data-i18n="process.step2.title">Get a fixed quote</h3>
           <p data-i18n="process.step2.desc">Within hours you receive one price based on floor area, level of detail and complexity. No hourly billing surprises.</p>
         </div>
 
         <div class="step-card reveal-up" style="--delay: 200ms">
-          <div class="step-anim-container">
-            <svg viewBox="0 0 140 100" fill="none" xmlns="http://www.w3.org/2000/svg" class="step-anim-svg">
-              <rect width="140" height="100" rx="10" fill="#0B132B" stroke="rgba(197,168,128,0.3)" stroke-width="1"/>
-              <polygon points="70,22 105,38 70,54 35,38" fill="rgba(197,168,128,0.25)" stroke="#C5A880" stroke-width="1.5"/>
-              <polygon points="35,38 70,54 70,78 35,62" fill="#1E293B" stroke="#C5A880" stroke-width="1.5"/>
-              <polygon points="70,54 105,38 105,62 70,78" fill="#0F172A" stroke="#C5A880" stroke-width="1.5"/>
-              <rect x="18" y="46" width="32" height="14" rx="3" fill="#2563EB"/>
-              <text x="34" y="56" fill="#FFFFFF" font-family="monospace" font-size="7.5" font-weight="700" text-anchor="middle">.PLN</text>
-              <rect x="90" y="46" width="32" height="14" rx="3" fill="#10B981"/>
-              <text x="106" y="56" fill="#FFFFFF" font-family="monospace" font-size="7.5" font-weight="700" text-anchor="middle">IFC4</text>
-              <text x="70" y="92" fill="#94A3B8" font-family="monospace" font-size="8" text-anchor="middle">24–48h DELIVERY SLA</text>
-            </svg>
-          </div>
           <div class="step-number-badge">3</div>
           <h3 data-i18n="process.step3.title">Receive your model</h3>
           <p data-i18n="process.step3.desc">Standard residential models arrive in 24–48 hours. Larger multi-storey or commercial projects get their own timeline in the quote.</p>
@@ -468,7 +388,7 @@
           <div class="project-card" onclick="window.location.href='projects/three-building-complex-energy-bim.html'">
             <div class="project-img-wrap">
               <img src="assets/project_complex_7storey.jpg" alt="Coordinated 3-Building Complex Energy Model" loading="lazy" />
-              <span class="project-tag">Energy Audit · 7 Storeys</span>
+              
               <div class="project-hover-overlay">
                 <span><i data-lucide="arrow-up-right"></i> View Project</span>
               </div>
@@ -486,17 +406,17 @@
             </div>
           </div>
 
-          <!-- 2. 12-Storey Residential Building — Berlin -->
+          <!-- 2. 12-Storey Residential Building -->
           <div class="project-card" onclick="window.location.href='projects/berlin-12storey-thermal-bim.html'">
             <div class="project-img-wrap">
               <img src="assets/project_berlin_residential.jpg" alt="12-Storey Residential Building Berlin Thermal BIM" loading="lazy" />
-              <span class="project-tag">Thermal Simulation · Berlin</span>
+              
               <div class="project-hover-overlay">
                 <span><i data-lucide="arrow-up-right"></i> View Project</span>
               </div>
             </div>
             <div class="project-info">
-              <h3>12-Storey Residential Building — Berlin</h3>
+              <h3>12-Storey Residential Building</h3>
               <p>11,073 m² across 12 levels modeled for energy simulation from day one. Direct IFC4 export into thermal engines with zero geometric approximations (538 windows, 171 doors).</p>
               <div class="project-footer">
                 <div class="project-meta-spec">
@@ -508,17 +428,17 @@
             </div>
           </div>
 
-          <!-- 3. Modern German Residential Villa -->
+          <!-- 3. Modern High-Efficiency Villa -->
           <div class="project-card" onclick="window.location.href='projects/german-residential-villa.html'">
             <div class="project-img-wrap">
-              <img src="assets/project_german_villa.jpg" alt="Modern German Residential Villa" loading="lazy" />
-              <span class="project-tag">German Residential BIM</span>
+              <img src="assets/project_german_villa.jpg" alt="Modern High-Efficiency Villa" loading="lazy" />
+              
               <div class="project-hover-overlay">
                 <span><i data-lucide="arrow-up-right"></i> View Project</span>
               </div>
             </div>
             <div class="project-info">
-              <h3>Modern German Residential Villa</h3>
+              <h3>Modern High-Efficiency Villa</h3>
               <p>Single-family high-efficiency villa modeled in ArchiCAD with continuous thermal envelope assemblies, U-value classifications, and solar exposure detailing for GEG audits.</p>
               <div class="project-footer">
                 <div class="project-meta-spec">
@@ -530,17 +450,17 @@
             </div>
           </div>
 
-                    <!-- 4. Celekohr GmbH — 150+ European Residential BIM Models -->
+                    <!-- 4. Residential BIM Production Portfolio -->
           <div class="project-card" onclick="window.location.href='projects/celekhor-german-bim.html'">
             <div class="project-img-wrap">
-              <img src="assets/3d_bim_portfolio.jpg" alt="Celekohr GmbH — 150+ European Residential BIM Models" loading="lazy" />
-              <span class="project-tag">German BIM Portfolio · 150+ Models</span>
+              <img src="assets/3d_bim_portfolio.jpg" alt="Residential BIM Production Portfolio" loading="lazy" />
+              
               <div class="project-hover-overlay">
                 <span><i data-lucide="arrow-up-right"></i> View Project</span>
               </div>
             </div>
             <div class="project-info">
-              <h3>Celekohr GmbH — 150+ German BIM Models</h3>
+              <h3>Residential BIM Production Portfolio</h3>
               <p>Continuous production of residential and commercial BIM models at LOD 200–300 in ArchiCAD with IFC 4.3 export for German energy audit compliance.</p>
               <div class="project-footer">
                 <div class="project-meta-spec">
@@ -556,7 +476,7 @@
           <div class="project-card" onclick="window.location.href='projects/truss-bridge-renovation.html'">
             <div class="project-img-wrap">
               <img src="assets/truss_gusset_1.jpg" alt="Truss bridge renovation 17 DWG sheets AutoCAD" loading="lazy" />
-              <span class="project-tag">Structural Detailing · IS 800</span>
+              
               <div class="project-hover-overlay">
                 <span><i data-lucide="arrow-up-right"></i> View Project</span>
               </div>
@@ -696,26 +616,8 @@
             </div>
           </div>
 
-          <div class="qa-seal-wrap">
-            <svg viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg" class="qa-seal-anim-svg">
-              <circle cx="90" cy="90" r="85" fill="#0B132B" stroke="#C5A880" stroke-width="2" stroke-dasharray="6 3" class="rotate-slow-ring"/>
-              <circle cx="90" cy="90" r="74" fill="#0F172A" stroke="rgba(197,168,128,0.4)" stroke-width="1"/>
-              <circle cx="90" cy="90" r="60" fill="rgba(37,99,235,0.08)" stroke="#00D2FF" stroke-width="1.5" stroke-dasharray="3 3"/>
-              <line x1="90" y1="10" x2="90" y2="170" stroke="rgba(197,168,128,0.3)" stroke-width="1"/>
-              <line x1="10" y1="90" x2="170" y2="90" stroke="rgba(197,168,128,0.3)" stroke-width="1"/>
-              <circle cx="90" cy="90" r="8" fill="#C5A880"/>
-              <circle cx="90" cy="90" r="3" fill="#0B132B"/>
-              <text x="90" y="72" fill="#FFFFFF" font-family="'Plus Jakarta Sans',sans-serif" font-size="10" font-weight="800" text-anchor="middle" letter-spacing="1">CIVIL ENGINEER</text>
-              <text x="90" y="116" fill="#C5A880" font-family="monospace" font-size="9" font-weight="700" text-anchor="middle">QA VERIFIED · DTU</text>
-              <text x="90" y="128" fill="#00D2FF" font-family="monospace" font-size="7.5" text-anchor="middle">ISO 13790 / GEG</text>
-            </svg>
-            <div class="qa-seal-text">
-              <h4>Civil Engineering Quality Assurance</h4>
-              <p>Every ArchiCAD, Revit and IFC model is personally checked by DTU Civil Engineers before export. Zero dimensional drift, fully defended under audit.</p>
-            </div>
-          </div>
-          <div class="about-cta-bar" style="margin-top: 20px;">
-            <a href="mailto:contact@theribhus.com" class="btn btn-primary">Email the founders (contact@theribhus.com)</a>
+          <div class="about-cta-bar" style="margin-top: 24px;">
+            <a href="mailto:contact@theribhus.com" class="btn btn-primary">Contact Us</a>
           </div>
         </div>
 

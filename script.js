@@ -27,8 +27,8 @@ const projectsData = {
   },
 
   berlin12: {
-    title: "12-Storey Residential Building — Berlin, Germany",
-    tag: "Thermal Simulation · Berlin",
+    title: "12-Storey Residential Building (Thermal Simulation IFC4)",
+    tag: "Thermal Simulation · 11,073 m²",
     subtitle: "11,073 m² across 12 levels modeled for energy simulation from day one. Direct IFC4 export into thermal engines with zero geometric approximations.",
     service: "Thermal Simulation & EPBD Compliance",
     timeline: "Direct Simulation Pipeline",
@@ -47,8 +47,8 @@ const projectsData = {
   },
 
   germanvilla: {
-    title: "Modern German Residential Villa — Energy Envelope BIM",
-    tag: "German Residential BIM",
+    title: "Modern High-Efficiency Villa — Energy Envelope BIM",
+    tag: "Residential Energy BIM",
     subtitle: "Single-family high-efficiency villa modeled in ArchiCAD with continuous thermal envelope assemblies, U-value classifications, and solar exposure detailing for GEG audits.",
     service: "Residential Energy BIM",
     timeline: "36 Hours Delivery",
@@ -69,7 +69,7 @@ const projectsData = {
   truss: {
     title: "Truss Bridge Renovation — Gusset Plates & Girder Connections | IS 800:2007",
     tag: "Structural Detailing · IS 800",
-    subtitle: "Delivered 17 detailed 2D AutoCAD (DWG) sheets of gusset plate and girder bolted connections in 8 days for a consulting firm in Rajasthan.",
+    subtitle: "Delivered 17 detailed 2D AutoCAD (DWG) sheets of gusset plate and girder bolted connections in 8 days for a consulting engineering firm.",
     service: "Structural Steel Detailing",
     timeline: "8 Days (On-Time Delivery)",
     tools: "AutoCAD 2D, IS 800:2007 Standards, DWG",
@@ -664,15 +664,16 @@ function setLanguage(lang) {
   localStorage.setItem('ribhus_lang', lang);
 }
 
-function initLanguage() {
-  let lang = localStorage.getItem('ribhus_lang');
+async function initLanguage() {
+  const savedLang = localStorage.getItem('ribhus_lang');
 
-  if (!lang) {
-    // 1. Detect from browser language
+  if (savedLang) {
+    setLanguage(savedLang);
+  } else {
+    // 1. Immediate detection from browser language and timezone (zero latency)
     const browserLang = (navigator.language || navigator.userLanguage || '').toLowerCase();
-    const isGerman = browserLang.startsWith('de');
+    const isGermanBrowser = browserLang.startsWith('de');
 
-    // 2. Detect from timezone (Germany, Austria, Switzerland)
     let isGermanTZ = false;
     try {
       const tz = Intl.DateTimeFormat().resolvedOptions().timeZone || '';
@@ -681,12 +682,32 @@ function initLanguage() {
       }
     } catch (e) {}
 
-    lang = (isGerman || isGermanTZ) ? 'de' : 'en';
+    let initialLang = (isGermanBrowser || isGermanTZ) ? 'de' : 'en';
+    setLanguage(initialLang);
+
+    // 2. High-accuracy country-level IP geolocation detection (asynchronous)
+    try {
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 2500);
+      const res = await fetch('https://ipapi.co/json/', { signal: controller.signal });
+      clearTimeout(timeoutId);
+
+      if (res.ok) {
+        const data = await res.json();
+        const deCountries = ['DE', 'AT', 'CH', 'LI', 'LU'];
+        if (data && data.country_code && deCountries.includes(data.country_code.toUpperCase())) {
+          // If in DACH country and user hasn't manually set a language preference
+          if (!localStorage.getItem('ribhus_lang')) {
+            setLanguage('de');
+          }
+        }
+      }
+    } catch (err) {
+      // Fallback silently to browser/timezone language already set above
+    }
   }
 
-  setLanguage(lang);
-
-  // Bind click listeners
+  // Bind click listeners for manual toggle buttons
   document.querySelectorAll('.lang-btn').forEach(btn => {
     btn.addEventListener('click', (e) => {
       e.preventDefault();
