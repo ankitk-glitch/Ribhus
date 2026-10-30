@@ -2460,3 +2460,17 @@ ul { list-style: none; }
   font-weight: 700;
   color: var(--text-dark);
 }
+
+/* Ribhus SVG Brand Logo */
+.ribhus-svg {
+  width: 34px;
+  height: 34px;
+  display: block;
+  flex-shrink: 0;
+}
+
+/* Ensure Hero section is always 100% visible immediately */
+.hero-left, .hero-right {
+  opacity: 1 !important;
+  transform: none !important;
+}
