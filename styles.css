@@ -1768,15 +1768,18 @@ ul { list-style: none; }
   color: var(--text-dark);
 }
 .cs-qa-text p {
-  font-size: 0.92rem;
+  font-size: 0.94rem;
   color: var(--text-mid);
   line-height: 1.6;
-  font-style: italic;
   margin-bottom: 10px;
 }
 .cs-qa-author {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
   font-size: 0.82rem;
-  color: var(--text-light);
+  font-weight: 600;
+  color: var(--accent);
 }
 
 .cs-sidebar {
