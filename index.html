@@ -1,654 +1,552 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ribhus | 2D Plans to 3D BIM Models</title>
-    
-    <!-- Open Graph Metadata -->
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="Ribhus — 2D Plans to 3D BIM Models">
-    <meta property="og:description" content="Convert any 2D blueprint or PDF into accurate 3D BIM models for European architects & energy consultants.">
-    <meta property="og:url" content="https://www.theribhus.com">
-    <meta property="og:image" content="https://ankitk-glitch.github.io/ankit.Portfolio/assets/images/3d_bim_portfolio.jpg">
-    <meta name="twitter:card" content="summary_large_image">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ribhus — BIM Conversion Studio for European Architects</title>
+  <meta name="description" content="On-demand 2D to 3D BIM conversion for European architects, real estate developers and energy consultants. ArchiCAD, Revit, IFC exports. 150+ German projects delivered." />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Ribhus — BIM Conversion Studio" />
+  <meta property="og:description" content="Expert 2D to 3D BIM conversion for European architects. Fast, accurate, GDPR-compliant." />
+  <meta property="og:url" content="https://theribhus.com" />
+  <meta property="og:image" content="https://theribhus.com/assets/hero_villa.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
 
-    <!-- Fonts: Plus Jakarta Sans (Headings) & Inter (Body) -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    
-    <link rel="stylesheet" href="styles.css?v=7">
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
 
-    <!-- Ambient 3D Blur Orbs (Scroll depth effect) -->
-    <div class="ambient-blur-container">
-        <div class="blur-orb orb-1"></div>
-        <div class="blur-orb orb-2"></div>
-        <div class="blur-orb orb-3"></div>
+  <!-- ═══════════════════════════════════════════════
+       NAVBAR
+  ═══════════════════════════════════════════════ -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="#" class="nav-logo">
+        <span class="logo-icon">⬡</span>
+        <span class="logo-text">Ribhus</span>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="#about">Why Ribhus</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#process">Process</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li class="nav-dropdown">
+          <a href="#">More <span class="dropdown-arrow">↓</span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#case-studies">Case Studies</a></li>
+            <li><a href="#blog">Resources</a></li>
+            <li><a href="#faq">FAQ</a></li>
+          </ul>
+        </li>
+      </ul>
+
+      <div class="nav-actions">
+        <button class="nav-search" aria-label="Search"><i data-lucide="search"></i></button>
+        <a href="#pilot" class="btn btn-primary">Contact Us</a>
+      </div>
+
+      <button class="nav-hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
     </div>
+  </nav>
 
-    <!-- Navigation Header -->
-    <header class="navbar" id="mainNavbar">
-        <div class="container nav-container">
-            <a href="#" class="logo-container">
-                <svg width="34" height="34" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" class="ribhus-svg">
-                    <path d="M25 80 V20 H55 C70 20 80 30 80 40 C80 50 70 60 55 60 H40 V80" stroke="#111827" stroke-width="8" stroke-linejoin="miter" fill="none"/>
-                    <path d="M50 60 L75 80" stroke="#111827" stroke-width="8" stroke-linecap="square"/>
-                    <line x1="10" y1="65" x2="90" y2="35" stroke="#E6A817" stroke-width="6" stroke-linecap="square"/>
-                </svg>
-                <div class="brand-badge-wrap">
-                    <span class="brand-title">Ribhus</span>
-                    <span class="brand-sub">BIM STUDIO · EUROPE</span>
-                </div>
-            </a>
-            
-            <nav class="nav-links">
-                <a href="#process">Process</a>
-                <a href="#projects">Projects</a>
-                <a href="#services">Services</a>
-                <a href="#pricing">Pricing</a>
-                <a href="#about">About us</a>
-                <a href="#contact">Contact</a>
-            </nav>
-            
-            <div class="nav-actions">
-                <div class="custom-lang-selector" id="country-selector-widget">
-                    <button class="lang-btn" onclick="toggleLangMenu(event)">
-                        <span id="current-flag">🇪🇺</span> <span id="current-country">Europe</span> <span class="arrow">▼</span>
-                    </button>
-                    <div class="lang-menu" id="lang-menu">
-                        <input type="text" id="lang-search" placeholder="Search country..." onkeyup="filterCountries()" onclick="event.stopPropagation()">
-                        <ul id="country-list">
-                            <li onclick="selectCountry('en', 'USD', '🇺🇸', 'United States')">🇺🇸 United States</li>
-                            <li onclick="selectCountry('en', 'GBP', '🇬🇧', 'United Kingdom')">🇬🇧 United Kingdom</li>
-                            <li onclick="selectCountry('de', 'EUR', '🇩🇪', 'Germany')">🇩🇪 Germany</li>
-                            <li onclick="selectCountry('fr', 'EUR', '🇫🇷', 'France')">🇫🇷 France</li>
-                            <li onclick="selectCountry('es', 'EUR', '🇪🇸', 'Spain')">🇪🇸 Spain</li>
-                            <li onclick="selectCountry('it', 'EUR', '🇮🇹', 'Italy')">🇮🇹 Italy</li>
-                            <li onclick="selectCountry('nl', 'EUR', '🇳🇱', 'Netherlands')">🇳🇱 Netherlands</li>
-                            <li onclick="selectCountry('pl', 'PLN', '🇵🇱', 'Poland')">🇵🇱 Poland</li>
-                            <li onclick="selectCountry('sv', 'SEK', '🇸🇪', 'Sweden')">🇸🇪 Sweden</li>
-                            <li onclick="selectCountry('en', 'INR', '🇮🇳', 'India')">🇮🇳 India</li>
-                            <li onclick="selectCountry('ja', 'JPY', '🇯🇵', 'Japan')">🇯🇵 Japan</li>
-                            <li onclick="selectCountry('zh-CN', 'CNY', '🇨🇳', 'China')">🇨🇳 China</li>
-                            <li onclick="selectCountry('ar', 'AED', '🇦🇪', 'UAE')">🇦🇪 UAE</li>
-                            <li onclick="selectCountry('en', 'AUD', '🇦🇺', 'Australia')">🇦🇺 Australia</li>
-                            <li onclick="selectCountry('en', 'CAD', '🇨🇦', 'Canada')">🇨🇦 Canada</li>
-                        </ul>
-                    </div>
-                </div>
-                <div id="google_translate_element" style="display:none;"></div>
-                <a href="#pilot-modal" onclick="openPilotUploadModal(event)" class="btn btn-pill-dark">Get a Quote</a>
-            </div>
+  <!-- Mobile menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <ul>
+      <li><a href="#about">Why Ribhus</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#process">Process</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#pilot">Contact Us</a></li>
+    </ul>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════
+       HERO SECTION
+  ═══════════════════════════════════════════════ -->
+  <section class="hero" id="home">
+    <div class="hero-container">
+      <div class="hero-card">
+        <div class="hero-left reveal-left">
+          <span class="hero-eyebrow">On-Demand BIM Conversion Studio</span>
+          <h1 class="hero-title">Transform 2D Plans into Accurate 3D BIM Models</h1>
+          <p class="hero-subtitle">Expert BIM conversion for European architects, real estate developers, and energy consultants. Delivered in 24–48 hours — Civil Engineer verified.</p>
+          <form class="hero-form" id="heroForm" onsubmit="handleHeroForm(event)">
+            <input type="email" placeholder="Enter your work email address..." required />
+            <button type="submit" class="btn btn-primary">Get a Free Quote</button>
+          </form>
+          <div class="hero-trust">
+            <span>✓ GDPR Compliant</span>
+            <span>✓ NDA Protected</span>
+            <span>✓ 24h Turnaround</span>
+          </div>
         </div>
-    </header>
-
-    <!-- 1. Hero Section (Exact Match to Template's Soft Sky-Blue Card) -->
-    <section class="hero-section">
-        <div class="container">
-            <div class="hero-card-allstate animate-on-scroll">
-                <div class="hero-left">
-                    <span class="hero-eyebrow">Welcome to Ribhus</span>
-                    <h1 class="hero-title">Manage Your<br>Property in 3D BIM</h1>
-                    <p class="hero-desc">
-                        Convert any 2D blueprint, scanned PDF, or CAD drawing into accurate, energy-compliant 3D BIM models. Built for architects, property developers, and energy consultants across Europe.
-                    </p>
-                    
-                    <form class="hero-inline-form" onsubmit="handleHeroSubmit(event)">
-                        <input type="email" id="heroEmailInput" placeholder="Enter your work email address..." required>
-                        <button type="submit" class="btn btn-pill-dark">Get a Quote</button>
-                    </form>
-
-                    <div class="hero-features-chips">
-                        <span class="chip-item">⚡ 24–48h Turnaround</span>
-                        <span class="chip-sep">•</span>
-                        <span class="chip-item">📐 ArchiCAD · Revit · IFC</span>
-                        <span class="chip-sep">•</span>
-                        <span class="chip-item">🔒 100% NDA Protected</span>
-                    </div>
-                </div>
-
-                <div class="hero-right">
-                    <div class="hero-3d-model-wrap">
-                        <img src="assets/hero_villa.jpg" alt="3D Architectural BIM Villa" class="hero-3d-img">
-                        <div class="floating-stat-badge">
-                            <span class="badge-dot"></span>
-                            <div>
-                                <strong>LOD 200 – 300</strong>
-                                <small>Dimensional QA Verified</small>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+        <div class="hero-right reveal-right">
+          <div class="hero-image-wrap">
+            <img src="assets/hero_villa.jpg" alt="3D BIM architectural model — Ribhus" class="hero-img" loading="eager" />
+            <div class="hero-badge hero-badge-1">
+              <span class="badge-number">150+</span>
+              <span class="badge-label">German Projects</span>
             </div>
+            <div class="hero-badge hero-badge-2">
+              <span class="badge-number">24h</span>
+              <span class="badge-label">Turnaround SLA</span>
+            </div>
+          </div>
         </div>
-    </section>
-
-    <!-- 2. Three Steps Section ("Everything should be this easy") -->
-    <section id="process" class="section process-section">
-        <div class="container text-center">
-            <span class="section-eyebrow animate-on-scroll">Three steps. Three minutes.</span>
-            <h2 class="section-heading animate-on-scroll delay-100">Everything should be this easy.</h2>
-            
-            <div class="steps-grid">
-                <div class="step-card animate-on-scroll delay-100">
-                    <div class="step-icon-wrap icon-peach">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
-                    </div>
-                    <h3>Answer questions</h3>
-                    <p>Upload your 2D plans, scanned blueprints, or hand sketches. Mention your target software and requirements in under 2 minutes.</p>
-                </div>
-
-                <div class="step-card animate-on-scroll delay-200">
-                    <div class="step-icon-wrap icon-green">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"></path><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>
-                    </div>
-                    <h3>Select a quote</h3>
-                    <p>Receive your transparent, fixed-price scope based on gross floor area and required LOD. No paperwork, no hidden application fees.</p>
-                </div>
-
-                <div class="step-card animate-on-scroll delay-300">
-                    <div class="step-icon-wrap icon-blue">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-                    </div>
-                    <h3>Get delivered</h3>
-                    <p>Your fully structured ArchiCAD, Revit, and IFC model packages are delivered in 24–48 hours, verified directly by licensed Civil Engineers.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 3. Our Recent Projects (Portfolio Carousel) -->
-    <section id="projects" class="section projects-section">
-        <div class="container">
-            <div class="projects-header animate-on-scroll">
-                <div>
-                    <span class="section-eyebrow">Best projects of the year</span>
-                    <h2 class="section-heading">Our recent projects</h2>
-                </div>
-                <div class="carousel-nav-arrows">
-                    <button class="arrow-btn" onclick="movePortfolio(-1)">&#10094;</button>
-                    <button class="arrow-btn" onclick="movePortfolio(1)">&#10095;</button>
-                </div>
-            </div>
-
-            <div class="portfolio-carousel-wrapper animate-on-scroll delay-100">
-                <div class="portfolio-carousel">
-                    <!-- Project 1 -->
-                    <div class="project-allstate-card" onclick="openModal(0)">
-                        <div class="card-img-wrap">
-                            <img src="assets/villa_1.jpg" alt="Residential House Planning & Design">
-                            <span class="rating-badge">★ 4.83 · LOD 300</span>
-                        </div>
-                        <div class="card-body">
-                            <h3>Sobha Heartland II Luxury Villa</h3>
-                            <p class="card-meta">Ground Floor & Exterior Envelope | 1,393 sq.ft.</p>
-                            <div class="card-footer-row">
-                                <span class="card-price"><span class="dynamic-price" data-eur="59">€59</span> <small>/ plan</small></span>
-                                <button class="btn btn-pill-dark btn-sm">View Model →</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Project 2 -->
-                    <div class="project-allstate-card" onclick="openModal(1)">
-                        <div class="card-img-wrap">
-                            <img src="assets/project_apartment.jpg" alt="4-Floor Residential Building (G+3)">
-                            <span class="rating-badge">★ 4.95 · LOD 300</span>
-                        </div>
-                        <div class="card-body">
-                            <h3>Munich G+3 Multi-Family Block</h3>
-                            <p class="card-meta">Full 4-Floor Architectural Layout | ARCHICAD & IFC</p>
-                            <div class="card-footer-row">
-                                <span class="card-price"><span class="dynamic-price" data-eur="189">€189</span> <small>/ project</small></span>
-                                <button class="btn btn-pill-dark btn-sm">View Model →</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Project 3 -->
-                    <div class="project-allstate-card" onclick="openModal(2)">
-                        <div class="card-img-wrap">
-                            <img src="assets/villa_2.jpg" alt="Vienna Commercial Renovation">
-                            <span class="rating-badge">★ 4.90 · LOD 300</span>
-                        </div>
-                        <div class="card-body">
-                            <h3>Vienna Commercial & Office Complex</h3>
-                            <p class="card-meta">3,200 m² As-Built BIM for Energy Auditing</p>
-                            <div class="card-footer-row">
-                                <span class="card-price"><span class="dynamic-price" data-eur="231">€231</span> <small>/ project</small></span>
-                                <button class="btn btn-pill-dark btn-sm">View Model →</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Project 4 -->
-                    <div class="project-allstate-card" onclick="openModal(3)">
-                        <div class="card-img-wrap">
-                            <img src="assets/villa_3.jpg" alt="Rotterdam Residential Row House">
-                            <span class="rating-badge">★ 4.88 · LOD 300</span>
-                        </div>
-                        <div class="card-body">
-                            <h3>Rotterdam Residential Row House</h3>
-                            <p class="card-meta">Thermal Envelope Tagging for EPC Energy Compliance</p>
-                            <div class="card-footer-row">
-                                <span class="card-price"><span class="dynamic-price" data-eur="149">€149</span> <small>/ project</small></span>
-                                <button class="btn btn-pill-dark btn-sm">View Model →</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 4. Split Feature Section ("And here's how? We do BIM better") -->
-    <section id="services" class="section split-feature-section">
-        <div class="container">
-            <div class="split-feature-grid">
-                <div class="split-visual-side animate-on-scroll">
-                    <div class="feature-img-card">
-                        <img src="assets/project_commercial.jpg" alt="BIM Engineering Deliverables" class="feature-3d-img">
-                        <div class="feature-card-glow"></div>
-                    </div>
-                </div>
-
-                <div class="split-text-side animate-on-scroll delay-100">
-                    <span class="section-eyebrow">Our best services</span>
-                    <h2 class="section-heading">And here's how? We do BIM modeling better</h2>
-                    
-                    <ul class="better-checklist">
-                        <li>
-                            <span class="check-icon">✓</span>
-                            <span><strong>Save up to 60–80%</strong> compared to traditional local hiring</span>
-                        </li>
-                        <li>
-                            <span class="check-icon">✓</span>
-                            <span><strong>Guaranteed 24–48 hour turnaround</strong> on residential drawing packages</span>
-                        </li>
-                        <li>
-                            <span class="check-icon">✓</span>
-                            <span><strong>Easily manage revisions online</strong> with transparent progress tracking</span>
-                        </li>
-                        <li>
-                            <span class="check-icon">✓</span>
-                            <span><strong>Zero paperwork, instant onboarding</strong> with complete mutual NDA protection</span>
-                        </li>
-                        <li>
-                            <span class="check-icon">✓</span>
-                            <span><strong>Direct coordination with licensed Civil Engineers</strong> throughout the project</span>
-                        </li>
-                    </ul>
-
-                    <a href="#pilot-modal" onclick="openPilotUploadModal(event)" class="btn btn-pill-dark">Explore BIM Services</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 5. Global Presence & Leadership (Civil Engineers Ankit & Madhav) -->
-    <section id="about" class="section global-presence-section">
-        <div class="container">
-            <div class="presence-header text-center animate-on-scroll">
-                <span class="section-eyebrow">Who we are</span>
-                <h2 class="section-heading">We are a trusted, boutique BIM engineering studio</h2>
-                <p class="presence-sub">
-                    Ribhus was co-founded by <strong>Ankit Kumar</strong> and <strong>Madhav Bhati</strong>, both Civil Engineers with hands-on international experience across 150+ residential and commercial BIM projects delivered for the German market.
-                </p>
-            </div>
-
-            <div class="presence-team-card animate-on-scroll delay-100">
-                <div class="team-photo-wrap">
-                    <img src="assets/team_office.jpg" alt="Engineering Collaboration" class="team-img">
-                </div>
-                <div class="team-stats-strip">
-                    <div class="stat-col">
-                        <span class="stat-number">150+</span>
-                        <span class="stat-label">Projects Delivered</span>
-                    </div>
-                    <div class="stat-col">
-                        <span class="stat-number">24–48h</span>
-                        <span class="stat-label">SLA Turnaround</span>
-                    </div>
-                    <div class="stat-col">
-                        <span class="stat-number">100%</span>
-                        <span class="stat-label">German Code Compliance</span>
-                    </div>
-                    <div class="stat-col">
-                        <span class="stat-number">2</span>
-                        <span class="stat-label">Civil Engineers</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 6. Value Pillars ("More than you might think") -->
-    <section class="section pillars-section">
-        <div class="container">
-            <div class="text-center animate-on-scroll">
-                <span class="section-eyebrow">Our company is different</span>
-                <h2 class="section-heading">More than you might think</h2>
-            </div>
-
-            <div class="pillars-grid animate-on-scroll delay-100">
-                <div class="pillar-card">
-                    <div class="pillar-icon">🏠</div>
-                    <h3>Your Geometry</h3>
-                    <p>Precise structural wall thicknesses, window/door schedules, floor-by-floor zoning down to millimetric tolerances against source blueprints.</p>
-                </div>
-
-                <div class="pillar-card">
-                    <div class="pillar-icon">⚡</div>
-                    <h3>Your Energy Data</h3>
-                    <p>IFC 4.3 models specifically structured for German building energy consultants, ensuring seamless downstream thermal analysis for GEG audits.</p>
-                </div>
-
-                <div class="pillar-card">
-                    <div class="pillar-icon">🛡️</div>
-                    <h3>Your Dedicated Capacity</h3>
-                    <p>Instant elasticity with zero overhead. Full mutual NDA protection on all submissions and direct technical review by experienced Civil Engineers.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 7. Transparent Pricing Section -->
-    <section id="pricing" class="section pricing-section">
-        <div class="container">
-            <div class="text-center animate-on-scroll">
-                <span class="section-eyebrow">Transparent Rates</span>
-                <h2 class="section-heading">Simple, Complexity-Based Pricing</h2>
-                <p class="section-sub">We don't believe in one-size-fits-all bundles. Every model is priced according to gross floor area, geometry, and required LOD.</p>
-            </div>
-
-            <div class="pricing-grid animate-on-scroll delay-100">
-                <div class="pricing-card-clean">
-                    <span class="price-category">RESIDENTIAL</span>
-                    <h3>Single-Family & Small Homes</h3>
-                    <div class="price-display"><span class="dynamic-price" data-eur="59">€59</span> – <span class="dynamic-price" data-eur="99">€99</span> <small>/ plan</small></div>
-                    <p class="pricing-desc">Ideal for energy consultants, private architects, and renovation assessments.</p>
-                    <ul class="pricing-bullets">
-                        <li>✓ Exterior & interior envelope</li>
-                        <li>✓ Wall, window, and roof geometry</li>
-                        <li>✓ ArchiCAD, Revit & IFC native files</li>
-                    </ul>
-                    <span class="turnaround-badge">⚡ 24–48 Hours Delivery</span>
-                    <a href="#pilot-modal" onclick="openPilotUploadModal(event)" class="btn btn-outline-pill">Get Started</a>
-                </div>
-
-                <div class="pricing-card-clean featured-card">
-                    <span class="featured-ribbon">MOST POPULAR</span>
-                    <span class="price-category">COMMERCIAL & MULTI-FAMILY</span>
-                    <h3>Multi-Story Residential (G+3)</h3>
-                    <div class="price-display"><span class="dynamic-price" data-eur="199">€199</span> – <span class="dynamic-price" data-eur="499">€499</span>+ <small>/ project</small></div>
-                    <p class="pricing-desc">Ideal for property developers, architectural practices, and large apartment blocks.</p>
-                    <ul class="pricing-bullets">
-                        <li>✓ Full multi-story volumetric zoning</li>
-                        <li>✓ Comprehensive door & window schedules</li>
-                        <li>✓ LOD 300 dimensional cross-verification</li>
-                    </ul>
-                    <span class="turnaround-badge">⚡ 3–5 Business Days</span>
-                    <a href="#pilot-modal" onclick="openPilotUploadModal(event)" class="btn btn-pill-dark">Claim Free Pilot</a>
-                </div>
-
-                <div class="pricing-card-clean">
-                    <span class="price-category">RETAINER CAPACITY</span>
-                    <h3>Studio Dedicated Team</h3>
-                    <div class="price-display">From <span class="dynamic-price" data-eur="1799">€1,799</span> <small>/ month</small></div>
-                    <p class="pricing-desc">Dedicated weekly BIM modeling capacity for growing studios needing elastic scale.</p>
-                    <ul class="pricing-bullets">
-                        <li>✓ Continuous weekly project throughput</li>
-                        <li>✓ Priority queue & dedicated Civil Engineer QA</li>
-                        <li>✓ Up to 70% cheaper than local hiring</li>
-                    </ul>
-                    <span class="turnaround-badge">⚡ Ongoing Capacity</span>
-                    <a href="#pilot-modal" onclick="openPilotUploadModal(event)" class="btn btn-outline-pill">Discuss Retainer</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 8. Subscribe / Free Pilot CTA Box (Powder Blue Template Container) -->
-    <section class="section newsletter-cta-section">
-        <div class="container">
-            <div class="cta-allstate-card animate-on-scroll">
-                <div class="cta-left">
-                    <span class="hero-eyebrow">Zero Commitment</span>
-                    <h2>Start Your Free Pilot Project Today</h2>
-                    <p>Test our engineering precision before making any commitment. Send us your most complex legacy plan, rough PDF blueprint, or CAD bottleneck.</p>
-                    
-                    <form class="hero-inline-form" onsubmit="handleHeroSubmit(event)">
-                        <input type="email" placeholder="Enter your work email address..." required>
-                        <button type="submit" class="btn btn-pill-dark">Start Free Pilot</button>
-                    </form>
-                </div>
-                <div class="cta-right">
-                    <img src="assets/hero_villa.jpg" alt="3D Model Render" class="cta-house-img">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 9. Clean Minimalist Light Footer -->
-    <footer id="contact" class="clean-footer">
-        <div class="container">
-            <div class="footer-top-grid">
-                <div class="footer-brand-col">
-                    <div class="logo-container">
-                        <svg width="34" height="34" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" class="ribhus-svg">
-                            <path d="M25 80 V20 H55 C70 20 80 30 80 40 C80 50 70 60 55 60 H40 V80" stroke="#111827" stroke-width="8" stroke-linejoin="miter" fill="none"/>
-                            <path d="M50 60 L75 80" stroke="#111827" stroke-width="8" stroke-linecap="square"/>
-                            <line x1="10" y1="65" x2="90" y2="35" stroke="#E6A817" stroke-width="6" stroke-linecap="square"/>
-                        </svg>
-                        <span class="brand-title">Ribhus</span>
-                    </div>
-                    <p class="footer-motto">On-demand 2D to 3D BIM modeling for architects, developers, and energy consultants across Europe.</p>
-                    <div class="footer-contact-actions">
-                        <a href="mailto:contact@ribhus.com" class="btn btn-pill-dark btn-sm">✉️ contact@ribhus.com</a>
-                        <a href="https://linkedin.com/company/theribhus" target="_blank" class="btn btn-outline-pill btn-sm">💼 LinkedIn</a>
-                    </div>
-                </div>
-
-                <div class="footer-links-col">
-                    <h4>Home</h4>
-                    <a href="#process">Process</a>
-                    <a href="#projects">Recent Projects</a>
-                    <a href="#pricing">Pricing</a>
-                    <a href="#services">Services</a>
-                </div>
-
-                <div class="footer-links-col">
-                    <h4>Company</h4>
-                    <a href="#about">About us</a>
-                    <a href="https://www.linkedin.com/in/ankitk-dtu/" target="_blank">Ankit Kumar</a>
-                    <a href="https://linkedin.com/company/theribhus" target="_blank">Madhav Bhati</a>
-                    <a href="#contact">Contact</a>
-                </div>
-
-                <div class="footer-links-col">
-                    <h4>Resources</h4>
-                    <a href="#pilot-modal" onclick="openPilotUploadModal(event)">Start Free Pilot</a>
-                    <a href="brochure.pdf" target="_blank">Capabilities Deck</a>
-                    <a href="#pricing">Cost Calculator</a>
-                    <a href="#services">DIN & IFC Standards</a>
-                </div>
-            </div>
-
-            <div class="footer-bottom-row">
-                <p>&copy; 2026 Ribhus. All rights reserved. | <a href="https://www.theribhus.com">www.theribhus.com</a></p>
-                <div class="footer-legal-links">
-                    <a href="#privacy">Privacy Policy</a>
-                    <a href="#terms">Terms of Service</a>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Modal Structure: Portfolio Gallery Modal -->
-    <div id="projectModal" class="modal">
-        <div class="modal-content">
-            <span class="close-btn" onclick="closeModal()">&times;</span>
-            <div class="modal-body">
-                <div class="modal-slider">
-                    <button class="modal-slider-btn left" onclick="moveModalImage(-1)">&#10094;</button>
-                    <div id="modalImagesContainer" class="modal-images-container"></div>
-                    <button class="modal-slider-btn right" onclick="moveModalImage(1)">&#10095;</button>
-                </div>
-                <div class="modal-details">
-                    <h3 id="modalTitle"></h3>
-                    <p id="modalScope"></p>
-                    <div id="modalHighlights"></div>
-                </div>
-            </div>
-        </div>
+      </div>
     </div>
+  </section>
 
-    <!-- Integrated Pilot Upload Modal (Syncs Directly to CRM) -->
-    <div id="pilotUploadModal" class="modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(17, 24, 39, 0.7); backdrop-filter: blur(12px); z-index: 99999; align-items: center; justify-content: center;">
-        <div class="pilot-modal-card">
-            <span onclick="closePilotUploadModal()" class="pilot-modal-close">&times;</span>
-            
-            <div id="pilotUploadFormWrap">
-                <span class="hero-eyebrow">Free Pilot • Zero Commitment</span>
-                <h3 class="modal-form-title">Start Your Pilot Project</h3>
-                <p class="modal-form-sub">Send your legacy 2D blueprints or CAD files. Our engineering team reviews them within 24 hours under mutual NDA.</p>
+  <!-- ═══════════════════════════════════════════════
+       THREE STEPS SECTION
+  ═══════════════════════════════════════════════ -->
+  <section class="steps-section" id="process">
+    <div class="section-container">
+      <p class="steps-eyebrow">Three steps. Three minutes.</p>
+      <h2 class="steps-heading">Everything should be this easy.</h2>
 
-                <form id="pilotUploadForm" onsubmit="handlePilotUploadSubmit(event)">
-                    <div class="form-row-2">
-                        <div>
-                            <label>Your Name *</label>
-                            <input type="text" id="upName" required placeholder="e.g. Klaus Weber">
-                        </div>
-                        <div>
-                            <label>Studio / Practice *</label>
-                            <input type="text" id="upCompany" required placeholder="e.g. Weber Architekten">
-                        </div>
-                    </div>
-
-                    <div class="form-row-2">
-                        <div>
-                            <label>Work Email *</label>
-                            <input type="email" id="upEmail" required placeholder="architect@studio.de">
-                        </div>
-                        <div>
-                            <label>Target Software</label>
-                            <select id="upSoftware">
-                                <option value="ArchiCAD (.pln / IFC)">ArchiCAD (.pln & IFC)</option>
-                                <option value="Revit (BIM LOD 200–350)">Revit (BIM LOD 200–350)</option>
-                                <option value="AutoCAD 2D-to-3D">AutoCAD 2D-to-3D</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label>Drawing / Blueprint Link (WeTransfer, Dropbox, Drive)</label>
-                        <input type="text" id="upLink" placeholder="https://wetransfer.com/... or Google Drive link">
-                    </div>
-
-                    <div class="form-group">
-                        <label>Project Scope / Specifications</label>
-                        <textarea id="upNotes" rows="3" placeholder="Describe drawing type, floor area (m²), level of detail, or target timeline..."></textarea>
-                    </div>
-
-                    <button type="submit" id="btnUploadSubmit" class="btn btn-pill-dark btn-block">
-                        Submit to Engineering Team (24h Turnaround)
-                    </button>
-                </form>
-            </div>
-
-            <div id="pilotUploadSuccess" style="display: none; text-align: center; padding: 2rem 1rem;">
-                <div class="success-icon-badge">✓</div>
-                <h3 style="color: #111827; font-size: 1.7rem; margin-bottom: 0.5rem; font-family: var(--font-heading);">Project Files Received!</h3>
-                <p id="pilotSuccessMsg" style="color: #555; font-size: 1rem; line-height: 1.6; margin-bottom: 2rem;">
-                    Thank you! Your files have been routed directly to our senior modeling team. We will review your specifications and send a confirmation quotation within 24 hours.
-                </p>
-                <button onclick="closePilotUploadModal()" class="btn btn-pill-dark">Close Window</button>
-            </div>
+      <div class="steps-grid">
+        <div class="step-card reveal-up" style="--delay: 0ms">
+          <div class="step-icon">
+            <i data-lucide="upload-cloud"></i>
+          </div>
+          <h3>Upload Your Plans</h3>
+          <p>Share your 2D PDFs, DWG files, or scanned blueprints. Any format, any scale — we handle it all securely.</p>
         </div>
+        <div class="step-card reveal-up" style="--delay: 100ms">
+          <div class="step-icon">
+            <i data-lucide="file-text"></i>
+          </div>
+          <h3>Receive a Fixed Quote</h3>
+          <p>Get a transparent, fixed-price quote within hours. Based on LOD level, floor area, and project complexity — no surprises.</p>
+        </div>
+        <div class="step-card reveal-up" style="--delay: 200ms">
+          <div class="step-icon">
+            <i data-lucide="box"></i>
+          </div>
+          <h3>Get Your BIM Model</h3>
+          <p>Receive your finished ArchiCAD, Revit, or IFC model in 24–48 hours. Quality-checked by a certified Civil Engineer.</p>
+        </div>
+      </div>
     </div>
+  </section>
 
-    <!-- Script Files -->
-    <script>
-        function openPilotUploadModal(e) {
-            if (e) e.preventDefault();
-            const modal = document.getElementById('pilotUploadModal');
-            if (modal) modal.style.display = 'flex';
-        }
+  <!-- ═══════════════════════════════════════════════
+       PROJECTS CAROUSEL SECTION
+  ═══════════════════════════════════════════════ -->
+  <section class="projects-section" id="projects">
+    <div class="section-container">
+      <div class="section-header">
+        <div>
+          <p class="section-eyebrow">Best projects of the year</p>
+          <h2 class="section-heading">Our Recent Projects</h2>
+        </div>
+        <div class="carousel-nav">
+          <button class="carousel-btn" id="prevBtn" aria-label="Previous"><i data-lucide="chevron-left"></i></button>
+          <button class="carousel-btn" id="nextBtn" aria-label="Next"><i data-lucide="chevron-right"></i></button>
+        </div>
+      </div>
 
-        function closePilotUploadModal() {
-            const modal = document.getElementById('pilotUploadModal');
-            if (modal) modal.style.display = 'none';
-        }
+      <div class="carousel-wrapper">
+        <div class="projects-carousel" id="projectsCarousel">
 
-        function handleHeroSubmit(e) {
-            e.preventDefault();
-            const input = e.target.querySelector('input');
-            const email = input ? input.value : '';
-            openPilotUploadModal();
-            const modalEmail = document.getElementById('upEmail');
-            if (modalEmail && email) modalEmail.value = email;
-        }
+          <div class="project-card">
+            <div class="project-img-wrap">
+              <img src="assets/villa_1.jpg" alt="German Residential Villa — BIM Model" loading="lazy" />
+              <span class="project-tag">Residential</span>
+            </div>
+            <div class="project-info">
+              <h3>German Residential Villa</h3>
+              <p>Single-family G+2 villa for a Munich-based architect. Full ArchiCAD model at LOD 300 including roof, windows, doors and structural elements.</p>
+              <div class="project-footer">
+                <span class="project-price">From €99</span>
+                <a href="#pilot" class="btn-link">View Project →</a>
+              </div>
+            </div>
+          </div>
 
-        async function handlePilotUploadSubmit(e) {
-            e.preventDefault();
-            const btn = document.getElementById('btnUploadSubmit');
-            btn.innerText = 'Transmitting Project to CRM...';
-            btn.disabled = true;
+          <div class="project-card">
+            <div class="project-img-wrap">
+              <img src="assets/villa_2.jpg" alt="Multi-Unit Apartment Complex — BIM" loading="lazy" />
+              <span class="project-tag">Multi-Family</span>
+            </div>
+            <div class="project-info">
+              <h3>Multi-Unit Apartment Block</h3>
+              <p>G+5 apartment complex in Frankfurt. Delivered Revit model with IFC 4.3 export for GEG energy compliance — in under 48 hours.</p>
+              <div class="project-footer">
+                <span class="project-price">From €349</span>
+                <a href="#pilot" class="btn-link">View Project →</a>
+              </div>
+            </div>
+          </div>
 
-            const payload = {
-                client_name: document.getElementById('upName').value.trim(),
-                company_name: document.getElementById('upCompany').value.trim(),
-                email: document.getElementById('upEmail').value.trim(),
-                country: 'Europe',
-                project_type: document.getElementById('upSoftware').value,
-                estimated_area: '',
-                drawings_link: document.getElementById('upLink').value.trim(),
-                message: document.getElementById('upNotes').value.trim()
-            };
+          <div class="project-card">
+            <div class="project-img-wrap">
+              <img src="assets/project_commercial.jpg" alt="Commercial Office BIM Model" loading="lazy" />
+              <span class="project-tag">Commercial</span>
+            </div>
+            <div class="project-info">
+              <h3>Commercial Office Complex</h3>
+              <p>Steel-framed co-working space in Hamburg. Detailed LOD 300 model from scanned PDFs — complete with MEP coordination layers.</p>
+              <div class="project-footer">
+                <span class="project-price">From €499</span>
+                <a href="#pilot" class="btn-link">View Project →</a>
+              </div>
+            </div>
+          </div>
 
-            // Post to CRM Dashboard endpoint
-            try {
-                await fetch('http://127.0.0.1:8000/api/inquiry', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(payload)
-                }).catch(() => null);
-            } catch (err) {}
+          <div class="project-card">
+            <div class="project-img-wrap">
+              <img src="assets/villa_3.jpg" alt="Truss Bridge BIM Model" loading="lazy" />
+              <span class="project-tag">Civil</span>
+            </div>
+            <div class="project-info">
+              <h3>Truss Bridge — 17 Drawing Sheets</h3>
+              <p>Structural BIM model of a steel truss bridge from legacy CAD drawings — 17 sheets converted to a fully parametric Revit model.</p>
+              <div class="project-footer">
+                <span class="project-price">Custom Quote</span>
+                <a href="#pilot" class="btn-link">View Project →</a>
+              </div>
+            </div>
+          </div>
 
-            // Send notification to contact@ribhus.com via Web3Forms free API
-            try {
-                await fetch('https://api.web3forms.com/submit', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                        access_key: 'e3940177-3e1f-4b47-bcf9-5f2fae7a02c3',
-                        subject: `New Free Pilot / Drawing Submission from ${payload.client_name} (${payload.company_name})`,
-                        from_name: 'theribhus.com Web Inbound',
-                        to: 'contact@ribhus.com',
-                        ...payload
-                    })
-                }).catch(() => null);
-            } catch (err) {}
+          <div class="project-card">
+            <div class="project-img-wrap">
+              <img src="assets/project_apartment.jpg" alt="Terraced Townhouse BIM" loading="lazy" />
+              <span class="project-tag">Residential</span>
+            </div>
+            <div class="project-info">
+              <h3>Terraced Townhouse Series</h3>
+              <p>Batch conversion of 12 identical townhouse units for a Stuttgart developer. Parametric ArchiCAD model — one click floor duplication.</p>
+              <div class="project-footer">
+                <span class="project-price">From €199</span>
+                <a href="#pilot" class="btn-link">View Project →</a>
+              </div>
+            </div>
+          </div>
 
-            document.getElementById('pilotUploadFormWrap').style.display = 'none';
-            document.getElementById('pilotUploadSuccess').style.display = 'block';
-            document.getElementById('pilotSuccessMsg').innerText = 
-                `Thank you ${payload.client_name}! We have received your project for ${payload.company_name} (${payload.project_type}). A review confirmation will be sent to ${payload.email} within 24 hours.`;
-        }
-    </script>
-    <script src="script.js"></script>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <!-- Google Translate Script -->
-    <script type="text/javascript">
-        function googleTranslateElementInit() {
-            new google.translate.TranslateElement({
-                pageLanguage: 'en',
-                layout: google.translate.TranslateElement.InlineLayout.SIMPLE
-            }, 'google_translate_element');
-        }
-    </script>
+  <!-- ═══════════════════════════════════════════════
+       FEATURE SPLIT SECTION — "How we do BIM better"
+  ═══════════════════════════════════════════════ -->
+  <section class="feature-section" id="services">
+    <div class="section-container">
+      <div class="feature-split">
+        <div class="feature-image reveal-left">
+          <img src="assets/hero_villa.jpg" alt="Ribhus precision BIM modeling" />
+        </div>
+        <div class="feature-content reveal-right">
+          <p class="section-eyebrow">Our best services</p>
+          <h2>And here's how? <br />We do BIM better.</h2>
+          <ul class="feature-checklist">
+            <li>
+              <span class="check-icon"><i data-lucide="check-circle-2"></i></span>
+              <div>
+                <strong>60–80% cost savings</strong> vs hiring a local BIM professional in Germany or Austria
+              </div>
+            </li>
+            <li>
+              <span class="check-icon"><i data-lucide="check-circle-2"></i></span>
+              <div>
+                <strong>24–48 hour guaranteed turnaround</strong> on all standard residential conversions
+              </div>
+            </li>
+            <li>
+              <span class="check-icon"><i data-lucide="check-circle-2"></i></span>
+              <div>
+                <strong>ArchiCAD, Revit & IFC 4.3 exports</strong> — submission-ready for German planning authorities
+              </div>
+            </li>
+            <li>
+              <span class="check-icon"><i data-lucide="check-circle-2"></i></span>
+              <div>
+                <strong>Civil Engineer QA/QC verification</strong> on every single delivered model
+              </div>
+            </li>
+            <li>
+              <span class="check-icon"><i data-lucide="check-circle-2"></i></span>
+              <div>
+                <strong>Full GDPR compliance & NDA-protected</strong> workflows — your IP stays yours
+              </div>
+            </li>
+          </ul>
+          <a href="#pilot" class="btn btn-primary">Start a Pilot Project</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════
+       ABOUT / WHO WE ARE SECTION
+  ═══════════════════════════════════════════════ -->
+  <section class="about-section" id="about">
+    <div class="section-container">
+      <div class="about-split">
+        <div class="about-content reveal-left">
+          <p class="section-eyebrow">Why us?</p>
+          <h2>We are a specialized, boutique architectural BIM conversion studio.</h2>
+          <p class="about-body">Founded by <strong>Ankit Kumar</strong> and <strong>Madhav Bhati</strong> — both Civil Engineers from Delhi Technological University — Ribhus was built to solve a real problem: European architects needed precise, fast, affordable BIM conversion. Not a generic offshore service, but a focused engineering studio that speaks your language and understands European building codes.</p>
+          <div class="about-actions">
+            <a href="#pilot" class="btn btn-primary">Contact Us</a>
+            <a href="#case-studies" class="btn btn-ghost">Read More →</a>
+          </div>
+          <div class="about-stats">
+            <div class="stat-item">
+              <span class="stat-number">150+</span>
+              <span class="stat-label">Projects Delivered</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">24–48h</span>
+              <span class="stat-label">Turnaround SLA</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">LOD 300</span>
+              <span class="stat-label">Max Detail Level</span>
+            </div>
+          </div>
+        </div>
+        <div class="about-image reveal-right">
+          <img src="assets/team_office.jpg" alt="Ribhus team at work — Civil Engineers Ankit Kumar and Madhav Bhati" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════
+       VALUE PROPOSITIONS — "More than you might think"
+  ═══════════════════════════════════════════════ -->
+  <section class="values-section">
+    <div class="section-container">
+      <p class="section-eyebrow centered">Our company offers</p>
+      <h2 class="section-heading centered">More than you might think.</h2>
+
+      <div class="values-grid">
+        <div class="value-card reveal-up" style="--delay: 0ms">
+          <div class="value-icon"><i data-lucide="layers"></i></div>
+          <h3>Your Architecture</h3>
+          <p>Dimensionally precise wall, window, door, roof and staircase models from any 2D source. Every element parametrically placed — no guesswork.</p>
+          <a href="#services" class="btn-link">Learn More →</a>
+        </div>
+        <div class="value-card reveal-up" style="--delay: 100ms">
+          <div class="value-icon"><i data-lucide="zap"></i></div>
+          <h3>Your Energy Compliance</h3>
+          <p>IFC 4.3 exports structured for German GEG / DIN energy audits. We know what energy consultants need in their BIM files — and we build it in.</p>
+          <a href="#services" class="btn-link">Learn More →</a>
+        </div>
+        <div class="value-card reveal-up" style="--delay: 200ms">
+          <div class="value-icon"><i data-lucide="users"></i></div>
+          <h3>Your Studio Capacity</h3>
+          <p>An elastic on-demand BIM team that scales with your workload — no local hiring overhead, no HR costs, no slow onboarding. Just results.</p>
+          <a href="#services" class="btn-link">Learn More →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════
+       CASE STUDIES — "Read our latest case studies"
+  ═══════════════════════════════════════════════ -->
+  <section class="blog-section" id="case-studies">
+    <div class="section-container">
+      <div class="section-header">
+        <div>
+          <p class="section-eyebrow">Our trending projects</p>
+          <h2 class="section-heading">Read our latest case studies</h2>
+        </div>
+        <div class="carousel-nav">
+          <button class="carousel-btn" aria-label="Previous"><i data-lucide="chevron-left"></i></button>
+          <button class="carousel-btn active" aria-label="Next"><i data-lucide="chevron-right"></i></button>
+        </div>
+      </div>
+
+      <div class="blog-grid">
+        <article class="blog-card reveal-up" style="--delay: 0ms">
+          <div class="blog-img">
+            <img src="assets/villa_1.jpg" alt="150+ German projects case study" loading="lazy" />
+            <span class="blog-category">Residential BIM</span>
+          </div>
+          <div class="blog-body">
+            <div class="blog-meta">
+              <span>By Ankit Kumar</span>
+              <span>Oct 15, 2026</span>
+            </div>
+            <h3>How We Delivered 150+ BIM Models for German Architects in Under 6 Months</h3>
+            <p>A behind-the-scenes look at our workflow, quality control process, and how we maintained LOD 300 accuracy across a high-volume project pipeline.</p>
+            <a href="#pilot" class="btn btn-sm">Read More →</a>
+          </div>
+        </article>
+
+        <article class="blog-card reveal-up" style="--delay: 100ms">
+          <div class="blog-img">
+            <img src="assets/villa_3.jpg" alt="Truss Bridge BIM case study" loading="lazy" />
+            <span class="blog-category">Civil BIM</span>
+          </div>
+          <div class="blog-body">
+            <div class="blog-meta">
+              <span>By Madhav Bhati</span>
+              <span>Sep 28, 2026</span>
+            </div>
+            <h3>Converting 17 Legacy CAD Sheets of a Truss Bridge into a Parametric Revit Model</h3>
+            <p>How we tackled a complex civil engineering conversion — from scanned hand-drawn sheets to a fully coordinated structural BIM model in one week.</p>
+            <a href="#pilot" class="btn btn-sm">Read More →</a>
+          </div>
+        </article>
+
+        <article class="blog-card reveal-up" style="--delay: 200ms">
+          <div class="blog-img">
+            <img src="assets/project_commercial.jpg" alt="QA/QC BIM process case study" loading="lazy" />
+            <span class="blog-category">Quality Control</span>
+          </div>
+          <div class="blog-body">
+            <div class="blog-meta">
+              <span>By Ankit Kumar</span>
+              <span>Oct 05, 2026</span>
+            </div>
+            <h3>Our 30+ Monthly QA Checks: How Ribhus Ensures Zero-Error BIM Delivery</h3>
+            <p>Every model we deliver goes through a rigorous checklist: dimension accuracy, layer naming, clash detection, and IFC schema validation — every time.</p>
+            <a href="#pilot" class="btn btn-sm">Read More →</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════
+       CTA BANNER — Free Pilot
+  ═══════════════════════════════════════════════ -->
+  <section class="cta-banner" id="pilot">
+    <div class="section-container">
+      <div class="cta-inner">
+        <div class="cta-text">
+          <h2>Start Your Free Pilot Project</h2>
+          <p>Test our engineering precision before any commitment. Send us your most complex legacy plan or scanned PDF — we'll model it, free. No credit card, no contract.</p>
+        </div>
+        <form class="cta-form" id="pilotForm" onsubmit="handlePilotForm(event)">
+          <input type="email" placeholder="Enter your email address..." required />
+          <button type="submit" class="btn btn-white">Start Free Pilot</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════
+       FOOTER
+  ═══════════════════════════════════════════════ -->
+  <footer class="footer">
+    <div class="section-container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a href="#" class="nav-logo">
+            <span class="logo-icon">⬡</span>
+            <span class="logo-text">Ribhus</span>
+          </a>
+          <p>The primary channel for sharing relevant news, updates and information about Ribhus BIM Studio.</p>
+        </div>
+
+        <div class="footer-links">
+          <div class="footer-col">
+            <h4>Home</h4>
+            <ul>
+              <li><a href="#services">Services</a></li>
+              <li><a href="#projects">Projects</a></li>
+              <li><a href="#pricing">Listings</a></li>
+              <li><a href="#about">About</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>Company</h4>
+            <ul>
+              <li><a href="#about">About us</a></li>
+              <li><a href="#about">Community</a></li>
+              <li><a href="#case-studies">Case Studies</a></li>
+              <li><a href="#pilot">Contact</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>Resource</h4>
+            <ul>
+              <li><a href="#">Privacy Info</a></li>
+              <li><a href="#">Customers</a></li>
+              <li><a href="#">Guides</a></li>
+              <li><a href="#">Blog</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>Social</h4>
+            <ul>
+              <li><a href="https://www.instagram.com/ribhus_bim/" target="_blank">Instagram</a></li>
+              <li><a href="https://www.linkedin.com/company/ribhus" target="_blank">LinkedIn</a></li>
+              <li><a href="mailto:contact@ribhus.com">Email Us</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© All rights reserved 2026 Ribhus</p>
+        <div class="footer-legal">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms & Conditions</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ═══════════════════════════════════════════════
+       PILOT UPLOAD MODAL
+  ═══════════════════════════════════════════════ -->
+  <div class="modal-overlay" id="modalOverlay">
+    <div class="modal-box">
+      <button class="modal-close" onclick="closeModal()"><i data-lucide="x"></i></button>
+      <h3>Start Your Free Pilot</h3>
+      <p>We'll convert one room or floor plan for free so you can see our quality firsthand.</p>
+      <form id="uploadForm" onsubmit="submitModal(event)">
+        <div class="form-group">
+          <label>Your Name</label>
+          <input type="text" name="name" placeholder="e.g. Thomas Müller" required />
+        </div>
+        <div class="form-group">
+          <label>Work Email</label>
+          <input type="email" name="email" placeholder="thomas@studio.de" required />
+        </div>
+        <div class="form-group">
+          <label>Project Type</label>
+          <select name="type">
+            <option>Residential (Single-family)</option>
+            <option>Residential (Multi-storey)</option>
+            <option>Commercial / Office</option>
+            <option>Civil / Infrastructure</option>
+            <option>Retainer / Monthly</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Message / Notes</label>
+          <textarea name="message" rows="3" placeholder="Describe your project briefly..."></textarea>
+        </div>
+        <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_KEY" />
+        <button type="submit" class="btn btn-primary" style="width:100%">Send Request</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+  <script>lucide.createIcons();</script>
 </body>
 </html>
