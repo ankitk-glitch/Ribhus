@@ -66,8 +66,12 @@
           </button>
           <div class="country-dropdown" id="countryDropdown" role="menu">
             <div class="country-dropdown-header">Select Country &amp; Currency</div>
-            <div class="country-options-list">
-              <button class="country-option active" data-country="DE" type="button" role="menuitem">
+            <div class="country-search-wrap">
+              <i data-lucide="search" class="search-icon"></i>
+              <input type="text" id="countrySearchInput" class="country-search-input" placeholder="Search country or currency..." autocomplete="off" />
+            </div>
+            <div class="country-options-list" id="countryOptionsList">
+              <button class="country-option active" data-country="DE" data-currency="EUR" data-symbol="€" data-name="Germany (Deutschland)" data-flag="🇩🇪" data-search="germany deutschland de eur euro" type="button" role="menuitem">
                 <span class="opt-flag">🇩🇪</span>
                 <div class="opt-info">
                   <span class="opt-country">Germany (Deutschland)</span>
@@ -75,7 +79,7 @@
                 </div>
                 <i data-lucide="check" class="opt-check"></i>
               </button>
-              <button class="country-option" data-country="AT" type="button" role="menuitem">
+              <button class="country-option" data-country="AT" data-currency="EUR" data-symbol="€" data-name="Austria (Österreich)" data-flag="🇦🇹" data-search="austria oesterreich at eur euro" type="button" role="menuitem">
                 <span class="opt-flag">🇦🇹</span>
                 <div class="opt-info">
                   <span class="opt-country">Austria (Österreich)</span>
@@ -83,7 +87,7 @@
                 </div>
                 <i data-lucide="check" class="opt-check"></i>
               </button>
-              <button class="country-option" data-country="CH" type="button" role="menuitem">
+              <button class="country-option" data-country="CH" data-currency="CHF" data-symbol="CHF " data-name="Switzerland (Schweiz)" data-flag="🇨🇭" data-search="switzerland schweiz ch chf" type="button" role="menuitem">
                 <span class="opt-flag">🇨🇭</span>
                 <div class="opt-info">
                   <span class="opt-country">Switzerland (Schweiz)</span>
@@ -91,7 +95,7 @@
                 </div>
                 <i data-lucide="check" class="opt-check"></i>
               </button>
-              <button class="country-option" data-country="GB" type="button" role="menuitem">
+              <button class="country-option" data-country="GB" data-currency="GBP" data-symbol="£" data-name="United Kingdom" data-flag="🇬🇧" data-search="united kingdom uk britain england gb gbp pound" type="button" role="menuitem">
                 <span class="opt-flag">🇬🇧</span>
                 <div class="opt-info">
                   <span class="opt-country">United Kingdom</span>
@@ -99,19 +103,267 @@
                 </div>
                 <i data-lucide="check" class="opt-check"></i>
               </button>
-              <button class="country-option" data-country="US" type="button" role="menuitem">
+              <button class="country-option" data-country="US" data-currency="USD" data-symbol="$" data-name="United States" data-flag="🇺🇸" data-search="united states usa america us usd dollar" type="button" role="menuitem">
                 <span class="opt-flag">🇺🇸</span>
                 <div class="opt-info">
-                  <span class="opt-country">United States &amp; Global</span>
+                  <span class="opt-country">United States</span>
                   <span class="opt-meta">USD ($) · English</span>
                 </div>
                 <i data-lucide="check" class="opt-check"></i>
               </button>
-              <button class="country-option" data-country="IN" type="button" role="menuitem">
+              <button class="country-option" data-country="CA" data-currency="CAD" data-symbol="CA$" data-name="Canada" data-flag="🇨🇦" data-search="canada ca cad dollar" type="button" role="menuitem">
+                <span class="opt-flag">🇨🇦</span>
+                <div class="opt-info">
+                  <span class="opt-country">Canada</span>
+                  <span class="opt-meta">CAD (CA$) · English</span>
+                </div>
+                <i data-lucide="check" class="opt-check"></i>
+              </button>
+              <button class="country-option" data-country="AU" data-currency="AUD" data-symbol="A$" data-name="Australia" data-flag="🇦🇺" data-search="australia au aud dollar" type="button" role="menuitem">
+                <span class="opt-flag">🇦🇺</span>
+                <div class="opt-info">
+                  <span class="opt-country">Australia</span>
+                  <span class="opt-meta">AUD (A$) · English</span>
+                </div>
+                <i data-lucide="check" class="opt-check"></i>
+              </button>
+              <button class="country-option" data-country="NZ" data-currency="NZD" data-symbol="NZ$" data-name="New Zealand" data-flag="🇳🇿" data-search="new zealand nz nzd dollar" type="button" role="menuitem">
+                <span class="opt-flag">🇳🇿</span>
+                <div class="opt-info">
+                  <span class="opt-country">New Zealand</span>
+                  <span class="opt-meta">NZD (NZ$) · English</span>
+                </div>
+                <i data-lucide="check" class="opt-check"></i>
+              </button>
+              <button class="country-option" data-country="FR" data-currency="EUR" data-symbol="€" data-name="France" data-flag="🇫🇷" data-search="france fr eur euro" type="button" role="menuitem">
+                <span class="opt-flag">🇫🇷</span>
+                <div class="opt-info">
+                  <span class="opt-country">France</span>
+                  <span class="opt-meta">EUR (€) · English</span>
+                </div>
+                <i data-lucide="check" class="opt-check"></i>
+              </button>
+              <button class="country-option" data-country="NL" data-currency="EUR" data-symbol="€" data-name="Netherlands" data-flag="🇳🇱" data-search="netherlands holland nl eur euro" type="button" role="menuitem">
+                <span class="opt-flag">🇳🇱</span>
+                <div class="opt-info">
+                  <span class="opt-country">Netherlands</span>
+                  <span class="opt-meta">EUR (€) · English</span>
+                </div>
+                <i data-lucide="check" class="opt-check"></i>
+              </button>
+              <button class="country-option" data-country="IT" data-currency="EUR" data-symbol="€" data-name="Italy (Italia)" data-flag="🇮🇹" data-search="italy italia it eur euro" type="button" role="menuitem">
+                <span class="opt-flag">🇮🇹</span>
+                <div class="opt-info">
+                  <span class="opt-country">Italy (Italia)</span>
+                  <span class="opt-meta">EUR (€) · English</span>
+                </div>
+                <i data-lucide="check" class="opt-check"></i>
+              </button>
+              <button class="country-option" data-country="ES" data-currency="EUR" data-symbol="€" data-name="Spain (España)" data-flag="🇪🇸" data-search="spain espana es eur euro" type="button" role="menuitem">
+                <span class="opt-flag">🇪🇸</span>
+                <div class="opt-info">
+                  <span class="opt-country">Spain (España)</span>
+                  <span class="opt-meta">EUR (€) · English</span>
+                </div>
+                <i data-lucide="check" class="opt-check"></i>
+              </button>
+              <button class="country-option" data-country="IE" data-currency="EUR" data-symbol="€" data-name="Ireland" data-flag="🇮🇪" data-search="ireland ie eur euro" type="button" role="menuitem">
+                <span class="opt-flag">🇮🇪</span>
+                <div class="opt-info">
+                  <span class="opt-country">Ireland</span>
+                  <span class="opt-meta">EUR (€) · English</span>
+                </div>
+                <i data-lucide="check" class="opt-check"></i>
+              </button>
+              <button class="country-option" data-country="BE" data-currency="EUR" data-symbol="€" data-name="Belgium" data-flag="🇧🇪" data-search="belgium be eur euro" type="button" role="menuitem">
+                <span class="opt-flag">🇧🇪</span>
+                <div class="opt-info">
+                  <span class="opt-country">Belgium</span>
+                  <span class="opt-meta">EUR (€) · English</span>
+                </div>
+                <i data-lucide="check" class="opt-check"></i>
+              </button>
+              <button class="country-option" data-country="SE" data-currency="SEK" data-symbol="kr " data-name="Sweden (Sverige)" data-flag="🇸🇪" data-search="sweden sverige se sek kr krona" type="button" role="menuitem">
+                <span class="opt-flag">🇸🇪</span>
+                <div class="opt-info">
+                  <span class="opt-country">Sweden (Sverige)</span>
+                  <span class="opt-meta">SEK (kr) · English</span>
+                </div>
+                <i data-lucide="check" class="opt-check"></i>
+              </button>
+              <button class="country-option" data-country="NO" data-currency="NOK" data-symbol="kr " data-name="Norway (Norge)" data-flag="🇳🇴" data-search="norway norge no nok kr krone" type="button" role="menuitem">
+                <span class="opt-flag">🇳🇴</span>
+                <div class="opt-info">
+                  <span class="opt-country">Norway (Norge)</span>
+                  <span class="opt-meta">NOK (kr) · English</span>
+                </div>
+                <i data-lucide="check" class="opt-check"></i>
+              </button>
+              <button class="country-option" data-country="DK" data-currency="DKK" data-symbol="kr " data-name="Denmark (Danmark)" data-flag="🇩🇰" data-search="denmark danmark dk dkk kr krone" type="button" role="menuitem">
+                <span class="opt-flag">🇩🇰</span>
+                <div class="opt-info">
+                  <span class="opt-country">Denmark (Danmark)</span>
+                  <span class="opt-meta">DKK (kr) · English</span>
+                </div>
+                <i data-lucide="check" class="opt-check"></i>
+              </button>
+              <button class="country-option" data-country="FI" data-currency="EUR" data-symbol="€" data-name="Finland (Suomi)" data-flag="🇫🇮" data-search="finland suomi fi eur euro" type="button" role="menuitem">
+                <span class="opt-flag">🇫🇮</span>
+                <div class="opt-info">
+                  <span class="opt-country">Finland (Suomi)</span>
+                  <span class="opt-meta">EUR (€) · English</span>
+                </div>
+                <i data-lucide="check" class="opt-check"></i>
+              </button>
+              <button class="country-option" data-country="PL" data-currency="PLN" data-symbol="zł " data-name="Poland (Polska)" data-flag="🇵🇱" data-search="poland polska pl pln zloty" type="button" role="menuitem">
+                <span class="opt-flag">🇵🇱</span>
+                <div class="opt-info">
+                  <span class="opt-country">Poland (Polska)</span>
+                  <span class="opt-meta">PLN (zł) · English</span>
+                </div>
+                <i data-lucide="check" class="opt-check"></i>
+              </button>
+              <button class="country-option" data-country="PT" data-currency="EUR" data-symbol="€" data-name="Portugal" data-flag="🇵🇹" data-search="portugal pt eur euro" type="button" role="menuitem">
+                <span class="opt-flag">🇵🇹</span>
+                <div class="opt-info">
+                  <span class="opt-country">Portugal</span>
+                  <span class="opt-meta">EUR (€) · English</span>
+                </div>
+                <i data-lucide="check" class="opt-check"></i>
+              </button>
+              <button class="country-option" data-country="CZ" data-currency="CZK" data-symbol="Kč " data-name="Czech Republic (Česko)" data-flag="🇨🇿" data-search="czech republic cesko cz czk koruna" type="button" role="menuitem">
+                <span class="opt-flag">🇨🇿</span>
+                <div class="opt-info">
+                  <span class="opt-country">Czech Republic (Česko)</span>
+                  <span class="opt-meta">CZK (Kč) · English</span>
+                </div>
+                <i data-lucide="check" class="opt-check"></i>
+              </button>
+              <button class="country-option" data-country="AE" data-currency="AED" data-symbol="AED " data-name="United Arab Emirates" data-flag="🇦🇪" data-search="united arab emirates uae dubai abu dhabi ae aed dirham" type="button" role="menuitem">
+                <span class="opt-flag">🇦🇪</span>
+                <div class="opt-info">
+                  <span class="opt-country">United Arab Emirates</span>
+                  <span class="opt-meta">AED · English</span>
+                </div>
+                <i data-lucide="check" class="opt-check"></i>
+              </button>
+              <button class="country-option" data-country="SA" data-currency="SAR" data-symbol="SAR " data-name="Saudi Arabia" data-flag="🇸🇦" data-search="saudi arabia sa sar riyal" type="button" role="menuitem">
+                <span class="opt-flag">🇸🇦</span>
+                <div class="opt-info">
+                  <span class="opt-country">Saudi Arabia</span>
+                  <span class="opt-meta">SAR · English</span>
+                </div>
+                <i data-lucide="check" class="opt-check"></i>
+              </button>
+              <button class="country-option" data-country="QA" data-currency="QAR" data-symbol="QAR " data-name="Qatar" data-flag="🇶🇦" data-search="qatar qa qar riyal" type="button" role="menuitem">
+                <span class="opt-flag">🇶🇦</span>
+                <div class="opt-info">
+                  <span class="opt-country">Qatar</span>
+                  <span class="opt-meta">QAR · English</span>
+                </div>
+                <i data-lucide="check" class="opt-check"></i>
+              </button>
+              <button class="country-option" data-country="KW" data-currency="KWD" data-symbol="KWD " data-name="Kuwait" data-flag="🇰🇼" data-search="kuwait kw kwd dinar" type="button" role="menuitem">
+                <span class="opt-flag">🇰🇼</span>
+                <div class="opt-info">
+                  <span class="opt-country">Kuwait</span>
+                  <span class="opt-meta">KWD · English</span>
+                </div>
+                <i data-lucide="check" class="opt-check"></i>
+              </button>
+              <button class="country-option" data-country="BH" data-currency="BHD" data-symbol="BHD " data-name="Bahrain" data-flag="🇧🇭" data-search="bahrain bh bhd dinar" type="button" role="menuitem">
+                <span class="opt-flag">🇧🇭</span>
+                <div class="opt-info">
+                  <span class="opt-country">Bahrain</span>
+                  <span class="opt-meta">BHD · English</span>
+                </div>
+                <i data-lucide="check" class="opt-check"></i>
+              </button>
+              <button class="country-option" data-country="OM" data-currency="OMR" data-symbol="OMR " data-name="Oman" data-flag="🇴🇲" data-search="oman om omr rial" type="button" role="menuitem">
+                <span class="opt-flag">🇴🇲</span>
+                <div class="opt-info">
+                  <span class="opt-country">Oman</span>
+                  <span class="opt-meta">OMR · English</span>
+                </div>
+                <i data-lucide="check" class="opt-check"></i>
+              </button>
+              <button class="country-option" data-country="SG" data-currency="SGD" data-symbol="S$" data-name="Singapore" data-flag="🇸🇬" data-search="singapore sg sgd dollar" type="button" role="menuitem">
+                <span class="opt-flag">🇸🇬</span>
+                <div class="opt-info">
+                  <span class="opt-country">Singapore</span>
+                  <span class="opt-meta">SGD (S$) · English</span>
+                </div>
+                <i data-lucide="check" class="opt-check"></i>
+              </button>
+              <button class="country-option" data-country="IN" data-currency="INR" data-symbol="₹" data-name="India" data-flag="🇮🇳" data-search="india in inr rupee" type="button" role="menuitem">
                 <span class="opt-flag">🇮🇳</span>
                 <div class="opt-info">
                   <span class="opt-country">India</span>
                   <span class="opt-meta">INR (₹) · English</span>
+                </div>
+                <i data-lucide="check" class="opt-check"></i>
+              </button>
+              <button class="country-option" data-country="JP" data-currency="JPY" data-symbol="¥" data-name="Japan (日本)" data-flag="🇯🇵" data-search="japan jp jpy yen" type="button" role="menuitem">
+                <span class="opt-flag">🇯🇵</span>
+                <div class="opt-info">
+                  <span class="opt-country">Japan (日本)</span>
+                  <span class="opt-meta">JPY (¥) · English</span>
+                </div>
+                <i data-lucide="check" class="opt-check"></i>
+              </button>
+              <button class="country-option" data-country="KR" data-currency="KRW" data-symbol="₩" data-name="South Korea (대한민국)" data-flag="🇰🇷" data-search="south korea kr krw won" type="button" role="menuitem">
+                <span class="opt-flag">🇰🇷</span>
+                <div class="opt-info">
+                  <span class="opt-country">South Korea (대한민국)</span>
+                  <span class="opt-meta">KRW (₩) · English</span>
+                </div>
+                <i data-lucide="check" class="opt-check"></i>
+              </button>
+              <button class="country-option" data-country="HK" data-currency="HKD" data-symbol="HK$" data-name="Hong Kong" data-flag="🇭🇰" data-search="hong kong hk hkd dollar" type="button" role="menuitem">
+                <span class="opt-flag">🇭🇰</span>
+                <div class="opt-info">
+                  <span class="opt-country">Hong Kong</span>
+                  <span class="opt-meta">HKD (HK$) · English</span>
+                </div>
+                <i data-lucide="check" class="opt-check"></i>
+              </button>
+              <button class="country-option" data-country="MY" data-currency="MYR" data-symbol="RM " data-name="Malaysia" data-flag="🇲🇾" data-search="malaysia my myr ringgit" type="button" role="menuitem">
+                <span class="opt-flag">🇲🇾</span>
+                <div class="opt-info">
+                  <span class="opt-country">Malaysia</span>
+                  <span class="opt-meta">MYR (RM) · English</span>
+                </div>
+                <i data-lucide="check" class="opt-check"></i>
+              </button>
+              <button class="country-option" data-country="ZA" data-currency="ZAR" data-symbol="R " data-name="South Africa" data-flag="🇿🇦" data-search="south africa za zar rand" type="button" role="menuitem">
+                <span class="opt-flag">🇿🇦</span>
+                <div class="opt-info">
+                  <span class="opt-country">South Africa</span>
+                  <span class="opt-meta">ZAR (R) · English</span>
+                </div>
+                <i data-lucide="check" class="opt-check"></i>
+              </button>
+              <button class="country-option" data-country="BR" data-currency="BRL" data-symbol="R$ " data-name="Brazil (Brasil)" data-flag="🇧🇷" data-search="brazil brasil br brl real" type="button" role="menuitem">
+                <span class="opt-flag">🇧🇷</span>
+                <div class="opt-info">
+                  <span class="opt-country">Brazil (Brasil)</span>
+                  <span class="opt-meta">BRL (R$) · English</span>
+                </div>
+                <i data-lucide="check" class="opt-check"></i>
+              </button>
+              <button class="country-option" data-country="MX" data-currency="MXN" data-symbol="Mex$ " data-name="Mexico" data-flag="🇲🇽" data-search="mexico mx mxn peso" type="button" role="menuitem">
+                <span class="opt-flag">🇲🇽</span>
+                <div class="opt-info">
+                  <span class="opt-country">Mexico</span>
+                  <span class="opt-meta">MXN (Mex$) · English</span>
+                </div>
+                <i data-lucide="check" class="opt-check"></i>
+              </button>
+              <button class="country-option" data-country="GLOBAL" data-currency="USD" data-symbol="$" data-name="Global / International" data-flag="🌐" data-search="global international world other usd dollar" type="button" role="menuitem">
+                <span class="opt-flag">🌐</span>
+                <div class="opt-info">
+                  <span class="opt-country">Global / International</span>
+                  <span class="opt-meta">USD ($) · English</span>
                 </div>
                 <i data-lucide="check" class="opt-check"></i>
               </button>
@@ -143,12 +395,43 @@
       <div class="mobile-sel-row">
         <span class="mobile-sel-label">Country:</span>
         <select class="mobile-country-select" id="mobileCountrySelect">
-          <option value="DE">🇩🇪 Germany (EUR € · DE)</option>
-          <option value="AT">🇦🇹 Austria (EUR € · DE)</option>
-          <option value="CH">🇨🇭 Switzerland (CHF · DE)</option>
-          <option value="GB">🇬🇧 United Kingdom (GBP £ · EN)</option>
-          <option value="US">🇺🇸 United States & Global (USD $ · EN)</option>
-          <option value="IN">🇮🇳 India (INR ₹ · EN)</option>
+          <option value="DE">🇩🇪 Germany (Deutschland) (EUR · €)</option>
+          <option value="AT">🇦🇹 Austria (Österreich) (EUR · €)</option>
+          <option value="CH">🇨🇭 Switzerland (Schweiz) (CHF · CHF)</option>
+          <option value="GB">🇬🇧 United Kingdom (GBP · £)</option>
+          <option value="US">🇺🇸 United States (USD · $)</option>
+          <option value="CA">🇨🇦 Canada (CAD · CA$)</option>
+          <option value="AU">🇦🇺 Australia (AUD · A$)</option>
+          <option value="NZ">🇳🇿 New Zealand (NZD · NZ$)</option>
+          <option value="FR">🇫🇷 France (EUR · €)</option>
+          <option value="NL">🇳🇱 Netherlands (EUR · €)</option>
+          <option value="IT">🇮🇹 Italy (Italia) (EUR · €)</option>
+          <option value="ES">🇪🇸 Spain (España) (EUR · €)</option>
+          <option value="IE">🇮🇪 Ireland (EUR · €)</option>
+          <option value="BE">🇧🇪 Belgium (EUR · €)</option>
+          <option value="SE">🇸🇪 Sweden (Sverige) (SEK · kr)</option>
+          <option value="NO">🇳🇴 Norway (Norge) (NOK · kr)</option>
+          <option value="DK">🇩🇰 Denmark (Danmark) (DKK · kr)</option>
+          <option value="FI">🇫🇮 Finland (Suomi) (EUR · €)</option>
+          <option value="PL">🇵🇱 Poland (Polska) (PLN · zł)</option>
+          <option value="PT">🇵🇹 Portugal (EUR · €)</option>
+          <option value="CZ">🇨🇿 Czech Republic (Česko) (CZK · Kč)</option>
+          <option value="AE">🇦🇪 United Arab Emirates (AED · AED)</option>
+          <option value="SA">🇸🇦 Saudi Arabia (SAR · SAR)</option>
+          <option value="QA">🇶🇦 Qatar (QAR · QAR)</option>
+          <option value="KW">🇰🇼 Kuwait (KWD · KWD)</option>
+          <option value="BH">🇧🇭 Bahrain (BHD · BHD)</option>
+          <option value="OM">🇴🇲 Oman (OMR · OMR)</option>
+          <option value="SG">🇸🇬 Singapore (SGD · S$)</option>
+          <option value="IN">🇮🇳 India (INR · ₹)</option>
+          <option value="JP">🇯🇵 Japan (日本) (JPY · ¥)</option>
+          <option value="KR">🇰🇷 South Korea (대한민국) (KRW · ₩)</option>
+          <option value="HK">🇭🇰 Hong Kong (HKD · HK$)</option>
+          <option value="MY">🇲🇾 Malaysia (MYR · RM)</option>
+          <option value="ZA">🇿🇦 South Africa (ZAR · R)</option>
+          <option value="BR">🇧🇷 Brazil (Brasil) (BRL · R$)</option>
+          <option value="MX">🇲🇽 Mexico (MXN · Mex$)</option>
+          <option value="GLOBAL">🌐 Global / International (USD · $)</option>
         </select>
       </div>
       <div class="mobile-sel-row">

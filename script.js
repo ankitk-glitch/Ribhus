@@ -673,149 +673,220 @@ const i18nDict = {
 };
 
 /* ═══════════════════════════════════════════════
-   COUNTRY, CURRENCY & LANGUAGE CONFIGURATION
+   GLOBAL COUNTRY, CURRENCY & LANGUAGE ENGINE (WHOLE WORLD)
 ═══════════════════════════════════════════════ */
-const countryConfig = {
-  DE: {
-    name: 'Germany',
-    flag: '🇩🇪',
-    currency: 'EUR',
-    symbol: '€',
-    defaultLang: 'de',
-    prices: {
-      tier1: '49–99',
-      tier2: '100–299',
-      tier3: '1,500',
-      tier3DE: '1.500',
-      prefixEN: 'From €',
-      prefixDE: 'Ab €'
-    }
-  },
-  AT: {
-    name: 'Austria',
-    flag: '🇦🇹',
-    currency: 'EUR',
-    symbol: '€',
-    defaultLang: 'de',
-    prices: {
-      tier1: '49–99',
-      tier2: '100–299',
-      tier3: '1,500',
-      tier3DE: '1.500',
-      prefixEN: 'From €',
-      prefixDE: 'Ab €'
-    }
-  },
-  CH: {
-    name: 'Switzerland',
-    flag: '🇨🇭',
-    currency: 'CHF',
-    symbol: 'CHF ',
-    defaultLang: 'de',
-    prices: {
-      tier1: '48–96',
-      tier2: '98–288',
-      tier3: '1,450',
-      tier3DE: '1.450',
-      prefixEN: 'From CHF ',
-      prefixDE: 'Ab CHF '
-    }
-  },
-  GB: {
-    name: 'United Kingdom',
-    flag: '🇬🇧',
-    currency: 'GBP',
-    symbol: '£',
-    defaultLang: 'en',
-    prices: {
-      tier1: '42–85',
-      tier2: '85–255',
-      tier3: '1,275',
-      tier3DE: '1.275',
-      prefixEN: 'From £',
-      prefixDE: 'Ab £'
-    }
-  },
-  US: {
-    name: 'United States',
-    flag: '🇺🇸',
-    currency: 'USD',
-    symbol: '$',
-    defaultLang: 'en',
-    prices: {
-      tier1: '55–109',
-      tier2: '109–325',
-      tier3: '1,650',
-      tier3DE: '1.650',
-      prefixEN: 'From $',
-      prefixDE: 'Ab $'
-    }
-  },
-  IN: {
-    name: 'India',
-    flag: '🇮🇳',
-    currency: 'INR',
-    symbol: '₹',
-    defaultLang: 'en',
-    prices: {
-      tier1: '4,400–8,900',
-      tier2: '9,000–26,900',
-      tier3: '1,35,000',
-      tier3DE: '1.35.000',
-      prefixEN: 'From ₹',
-      prefixDE: 'Ab ₹'
-    }
+
+// 1. Dynamic Unicode Flag generator for ANY 2-letter ISO Country Code in the world
+function getFlagEmoji(countryCode) {
+  if (!countryCode || countryCode.length !== 2) return '🌐';
+  try {
+    return countryCode.toUpperCase().replace(/./g, char => 
+      String.fromCodePoint(127397 + char.charCodeAt(0))
+    );
+  } catch (e) {
+    return '🌐';
   }
+}
+
+// 2. Comprehensive Currency Rates & Formats
+const currencyRates = {
+  EUR: { symbol: '€', rate: 1.0, prefix: true },
+  USD: { symbol: '$', rate: 1.08, prefix: true },
+  GBP: { symbol: '£', rate: 0.85, prefix: true },
+  CHF: { symbol: 'CHF ', rate: 0.96, prefix: true },
+  CAD: { symbol: 'CA$', rate: 1.48, prefix: true },
+  AUD: { symbol: 'A$', rate: 1.66, prefix: true },
+  NZD: { symbol: 'NZ$', rate: 1.82, prefix: true },
+  AED: { symbol: 'AED ', rate: 3.97, prefix: true },
+  SAR: { symbol: 'SAR ', rate: 4.05, prefix: true },
+  QAR: { symbol: 'QAR ', rate: 3.93, prefix: true },
+  KWD: { symbol: 'KWD ', rate: 0.33, prefix: true },
+  BHD: { symbol: 'BHD ', rate: 0.41, prefix: true },
+  OMR: { symbol: 'OMR ', rate: 0.42, prefix: true },
+  SGD: { symbol: 'S$', rate: 1.45, prefix: true },
+  INR: { symbol: '₹', rate: 90.0, prefix: true },
+  JPY: { symbol: '¥', rate: 165.0, prefix: true },
+  KRW: { symbol: '₩', rate: 1480.0, prefix: true },
+  HKD: { symbol: 'HK$', rate: 8.45, prefix: true },
+  MYR: { symbol: 'RM ', rate: 4.80, prefix: true },
+  SEK: { symbol: 'kr ', rate: 11.5, prefix: true },
+  NOK: { symbol: 'kr ', rate: 11.8, prefix: true },
+  DKK: { symbol: 'kr ', rate: 7.46, prefix: true },
+  PLN: { symbol: 'zł ', rate: 4.30, prefix: true },
+  CZK: { symbol: 'Kč ', rate: 25.2, prefix: true },
+  ZAR: { symbol: 'R ', rate: 19.5, prefix: true },
+  BRL: { symbol: 'R$ ', rate: 6.20, prefix: true },
+  MXN: { symbol: 'Mex$ ', rate: 21.8, prefix: true }
+};
+
+// 3. Predefined Global Countries
+const worldCountries = {
+  DE: { name: 'Germany', currency: 'EUR', lang: 'de' },
+  AT: { name: 'Austria', currency: 'EUR', lang: 'de' },
+  CH: { name: 'Switzerland', currency: 'CHF', lang: 'de' },
+  GB: { name: 'United Kingdom', currency: 'GBP', lang: 'en' },
+  US: { name: 'United States', currency: 'USD', lang: 'en' },
+  CA: { name: 'Canada', currency: 'CAD', lang: 'en' },
+  AU: { name: 'Australia', currency: 'AUD', lang: 'en' },
+  NZ: { name: 'New Zealand', currency: 'NZD', lang: 'en' },
+  FR: { name: 'France', currency: 'EUR', lang: 'en' },
+  NL: { name: 'Netherlands', currency: 'EUR', lang: 'en' },
+  IT: { name: 'Italy', currency: 'EUR', lang: 'en' },
+  ES: { name: 'Spain', currency: 'EUR', lang: 'en' },
+  IE: { name: 'Ireland', currency: 'EUR', lang: 'en' },
+  BE: { name: 'Belgium', currency: 'EUR', lang: 'en' },
+  SE: { name: 'Sweden', currency: 'SEK', lang: 'en' },
+  NO: { name: 'Norway', currency: 'NOK', lang: 'en' },
+  DK: { name: 'Denmark', currency: 'DKK', lang: 'en' },
+  FI: { name: 'Finland', currency: 'EUR', lang: 'en' },
+  PL: { name: 'Poland', currency: 'PLN', lang: 'en' },
+  PT: { name: 'Portugal', currency: 'EUR', lang: 'en' },
+  CZ: { name: 'Czech Republic', currency: 'CZK', lang: 'en' },
+  AE: { name: 'United Arab Emirates', currency: 'AED', lang: 'en' },
+  SA: { name: 'Saudi Arabia', currency: 'SAR', lang: 'en' },
+  QA: { name: 'Qatar', currency: 'QAR', lang: 'en' },
+  KW: { name: 'Kuwait', currency: 'KWD', lang: 'en' },
+  BH: { name: 'Bahrain', currency: 'BHD', lang: 'en' },
+  OM: { name: 'Oman', currency: 'OMR', lang: 'en' },
+  SG: { name: 'Singapore', currency: 'SGD', lang: 'en' },
+  IN: { name: 'India', currency: 'INR', lang: 'en' },
+  JP: { name: 'Japan', currency: 'JPY', lang: 'en' },
+  KR: { name: 'South Korea', currency: 'KRW', lang: 'en' },
+  HK: { name: 'Hong Kong', currency: 'HKD', lang: 'en' },
+  MY: { name: 'Malaysia', currency: 'MYR', lang: 'en' },
+  ZA: { name: 'South Africa', currency: 'ZAR', lang: 'en' },
+  BR: { name: 'Brazil', currency: 'BRL', lang: 'en' },
+  MX: { name: 'Mexico', currency: 'MXN', lang: 'en' },
+  GLOBAL: { name: 'Global / Other', currency: 'USD', lang: 'en' }
 };
 
 let currentCountryCode = 'DE';
 let currentLangCode = 'en';
 
+// Helper to calculate realistic converted prices
+function getPricesForCurrency(currencyCode, isGerman) {
+  const curr = currencyRates[currencyCode] || currencyRates.USD;
+  const rate = curr.rate || 1.0;
+  const sym = curr.symbol || '$';
+
+  let t1, t2, t3;
+
+  if (currencyCode === 'EUR') {
+    t1 = '49–99';
+    t2 = '100–299';
+    t3 = isGerman ? '1.500' : '1,500';
+  } else if (currencyCode === 'USD') {
+    t1 = '55–109';
+    t2 = '109–325';
+    t3 = isGerman ? '1.650' : '1,650';
+  } else if (currencyCode === 'GBP') {
+    t1 = '42–85';
+    t2 = '85–255';
+    t3 = isGerman ? '1.275' : '1,275';
+  } else if (currencyCode === 'CHF') {
+    t1 = '48–96';
+    t2 = '98–288';
+    t3 = isGerman ? '1.450' : '1,450';
+  } else if (currencyCode === 'INR') {
+    t1 = '4,400–8,900';
+    t2 = '9,000–26,900';
+    t3 = '1,35,000';
+  } else if (currencyCode === 'AED') {
+    t1 = '195–395';
+    t2 = '395–1,190';
+    t3 = isGerman ? '5.950' : '5,950';
+  } else if (currencyCode === 'SAR') {
+    t1 = '200–400';
+    t2 = '405–1,210';
+    t3 = isGerman ? '6.075' : '6,075';
+  } else if (currencyCode === 'CAD') {
+    t1 = '75–149';
+    t2 = '149–445';
+    t3 = isGerman ? '2.250' : '2,250';
+  } else if (currencyCode === 'AUD') {
+    t1 = '80–165';
+    t2 = '165–495';
+    t3 = isGerman ? '2.490' : '2,490';
+  } else if (currencyCode === 'SGD') {
+    t1 = '70–145';
+    t2 = '145–435';
+    t3 = isGerman ? '2.175' : '2,175';
+  } else if (currencyCode === 'JPY') {
+    t1 = '8,000–16,300';
+    t2 = '16,500–49,500';
+    t3 = '247,500';
+  } else {
+    // Dynamic math for any other currency
+    const calc = (base) => {
+      let v = base * rate;
+      if (rate >= 50) v = Math.round(v / 100) * 100;
+      else if (rate >= 5) v = Math.round(v / 10) * 10;
+      else v = Math.round(v);
+      return isGerman ? v.toLocaleString('de-DE') : v.toLocaleString('en-US');
+    };
+    t1 = calc(49) + '–' + calc(99);
+    t2 = calc(100) + '–' + calc(299);
+    t3 = calc(1500);
+  }
+
+  const prefix = isGerman ? ('Ab ' + sym) : ('From ' + sym);
+
+  return { symbol: sym, tier1: t1, tier2: t2, tier3: t3, prefix: prefix };
+}
+
 function updatePricingDisplay() {
-  const cfg = countryConfig[currentCountryCode] || countryConfig.DE;
   const isDe = currentLangCode === 'de';
+  const cInfo = worldCountries[currentCountryCode] || { currency: 'EUR' };
+  const p = getPricesForCurrency(cInfo.currency, isDe);
 
   // 1. Update currency symbols
   document.querySelectorAll('[data-currency-symbol]').forEach(el => {
-    el.textContent = cfg.symbol;
+    el.textContent = p.symbol;
   });
 
   // 2. Update tier 1 and tier 2 amounts
-  const t1 = document.querySelector('[data-currency-amount="tier1"]');
-  if (t1) t1.textContent = cfg.prices.tier1;
+  const t1 = document.querySelector('[data-currency-amount=tier1]');
+  if (t1) t1.textContent = p.tier1;
 
-  const t2 = document.querySelector('[data-currency-amount="tier2"]');
-  if (t2) t2.textContent = cfg.prices.tier2;
+  const t2 = document.querySelector('[data-currency-amount=tier2]');
+  if (t2) t2.textContent = p.tier2;
 
   // 3. Update tier 3 prefix and amount
   const t3Prefix = document.querySelector('[data-currency-prefix]');
-  if (t3Prefix) {
-    t3Prefix.textContent = isDe ? cfg.prices.prefixDE : cfg.prices.prefixEN;
-  }
+  if (t3Prefix) t3Prefix.textContent = p.prefix;
 
-  const t3 = document.querySelector('[data-currency-amount="tier3"]');
-  if (t3) {
-    t3.textContent = isDe ? cfg.prices.tier3DE : cfg.prices.tier3;
-  }
+  const t3 = document.querySelector('[data-currency-amount=tier3]');
+  if (t3) t3.textContent = p.tier3;
 }
 
 function setCountry(countryCode, syncLanguage = true) {
-  if (!countryConfig[countryCode]) {
-    countryCode = 'DE';
-  }
+  countryCode = (countryCode || 'DE').toUpperCase();
   currentCountryCode = countryCode;
-  const cfg = countryConfig[countryCode];
 
-  // 1. Update trigger button
+  let country = worldCountries[countryCode];
+  if (!country) {
+    // Fallback: create dynamic entry for this international country
+    country = {
+      name: countryCode,
+      currency: currencyRates[countryCode] ? countryCode : 'USD',
+      lang: ['DE', 'AT', 'CH', 'LI', 'LU'].includes(countryCode) ? 'de' : 'en'
+    };
+    worldCountries[countryCode] = country;
+  }
+
+  const flag = getFlagEmoji(countryCode === 'GLOBAL' ? 'US' : countryCode);
+  const currInfo = currencyRates[country.currency] || currencyRates.USD;
+
+  // 1. Update trigger button in Navbar
   const flagEl = document.getElementById('currentCountryFlag');
   const nameEl = document.getElementById('currentCountryName');
   const currEl = document.getElementById('currentCountryCurrency');
 
-  if (flagEl) flagEl.textContent = cfg.flag;
-  if (nameEl) nameEl.textContent = cfg.name;
-  if (currEl) currEl.textContent = `${cfg.symbol.trim()} ${cfg.currency}`;
+  if (flagEl) flagEl.textContent = countryCode === 'GLOBAL' ? '🌐' : flag;
+  if (nameEl) nameEl.textContent = country.name;
+  if (currEl) currEl.textContent = currInfo.symbol.trim() + ' ' + country.currency;
 
-  // 2. Update active state in dropdown
+  // 2. Update active state in dropdown list
   document.querySelectorAll('.country-option').forEach(opt => {
     if (opt.getAttribute('data-country') === countryCode) {
       opt.classList.add('active');
@@ -833,7 +904,7 @@ function setCountry(countryCode, syncLanguage = true) {
   // 4. Update pilot form hidden input
   const pilotCountry = document.getElementById('pilotCountryInput');
   if (pilotCountry) {
-    pilotCountry.value = countryCode;
+    pilotCountry.value = country.name + ' (' + countryCode + ')';
   }
 
   // 5. Update pricing table
@@ -841,11 +912,11 @@ function setCountry(countryCode, syncLanguage = true) {
 
   // 6. Save in localStorage
   localStorage.setItem('ribhus_country', countryCode);
-  localStorage.setItem('ribhus_currency', cfg.currency);
+  localStorage.setItem('ribhus_currency', country.currency);
 
   // 7. Sync language if requested
   if (syncLanguage) {
-    setLanguage(cfg.defaultLang, false);
+    setLanguage(country.lang, false);
   }
 }
 
@@ -856,7 +927,6 @@ function setLanguage(lang, syncCurrency = false) {
   const dict = i18nDict[lang];
   document.querySelectorAll('[data-i18n]').forEach(el => {
     const key = el.getAttribute('data-i18n');
-    // Skip tier3.currency since that is dynamically handled by updatePricingDisplay
     if (key === 'pricing.tier3.currency') return;
     if (dict[key]) {
       el.textContent = dict[key];
@@ -875,7 +945,7 @@ function setLanguage(lang, syncCurrency = false) {
   document.documentElement.lang = lang;
   localStorage.setItem('ribhus_lang', lang);
 
-  // Re-apply pricing display with language-specific prefix/separators
+  // Re-apply pricing display with language-specific prefix
   updatePricingDisplay();
 }
 
@@ -896,21 +966,18 @@ async function initCountryAndLanguage() {
       tz = Intl.DateTimeFormat().resolvedOptions().timeZone || '';
     } catch (e) {}
 
-    if (tz.includes('London') || browserLang === 'en-gb') {
-      detectedCountry = 'GB';
-    } else if (tz.includes('Kolkata') || browserLang === 'en-in') {
-      detectedCountry = 'IN';
-    } else if (tz.includes('Zurich')) {
-      detectedCountry = 'CH';
-    } else if (tz.includes('Vienna')) {
-      detectedCountry = 'AT';
-    } else if (tz.includes('Berlin') || browserLang.startsWith('de')) {
-      detectedCountry = 'DE';
-    } else if (tz.includes('New_York') || tz.includes('Chicago') || tz.includes('Los_Angeles') || tz.includes('America')) {
-      detectedCountry = 'US';
-    } else {
-      detectedCountry = 'DE'; // Default European focus
-    }
+    if (tz.includes('London') || browserLang === 'en-gb') detectedCountry = 'GB';
+    else if (tz.includes('Kolkata') || browserLang === 'en-in') detectedCountry = 'IN';
+    else if (tz.includes('Zurich')) detectedCountry = 'CH';
+    else if (tz.includes('Vienna')) detectedCountry = 'AT';
+    else if (tz.includes('Paris') || browserLang.startsWith('fr')) detectedCountry = 'FR';
+    else if (tz.includes('Sydney') || tz.includes('Melbourne') || browserLang === 'en-au') detectedCountry = 'AU';
+    else if (tz.includes('Toronto') || tz.includes('Vancouver') || browserLang === 'en-ca') detectedCountry = 'CA';
+    else if (tz.includes('Dubai')) detectedCountry = 'AE';
+    else if (tz.includes('Singapore')) detectedCountry = 'SG';
+    else if (tz.includes('Berlin') || browserLang.startsWith('de')) detectedCountry = 'DE';
+    else if (tz.includes('America') || tz.includes('New_York') || tz.includes('Chicago')) detectedCountry = 'US';
+    else detectedCountry = 'DE';
 
     setCountry(detectedCountry, true);
 
@@ -926,32 +993,19 @@ async function initCountryAndLanguage() {
         if (data && data.country_code) {
           const code = data.country_code.toUpperCase();
           if (!localStorage.getItem('ribhus_country')) {
-            let mappedCountry = 'DE';
-            if (countryConfig[code]) {
-              mappedCountry = code;
-            } else if (['AT', 'DE', 'LU', 'LI'].includes(code)) {
-              mappedCountry = code === 'AT' ? 'AT' : 'DE';
-            } else if (code === 'CH') {
-              mappedCountry = 'CH';
-            } else if (code === 'GB') {
-              mappedCountry = 'GB';
-            } else if (code === 'IN') {
-              mappedCountry = 'IN';
-            } else {
-              mappedCountry = 'US';
-            }
-            setCountry(mappedCountry, !localStorage.getItem('ribhus_lang'));
+            setCountry(code, !localStorage.getItem('ribhus_lang'));
           }
         }
       }
     } catch (err) {
-      // Fallback silently to already applied detection
+      // Fallback silently to initial detection
     }
   }
 
   // Setup Country Dropdown Toggle & Click Handlers
   const countryWrap = document.getElementById('countrySelectorWrap');
   const countryBtn = document.getElementById('countryBtn');
+  const searchInput = document.getElementById('countrySearchInput');
 
   if (countryBtn && countryWrap) {
     countryBtn.addEventListener('click', (e) => {
@@ -959,8 +1013,32 @@ async function initCountryAndLanguage() {
       countryWrap.classList.toggle('open');
       const isOpen = countryWrap.classList.contains('open');
       countryBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      if (isOpen && searchInput) {
+        setTimeout(() => searchInput.focus(), 50);
+      }
     });
 
+    // Real-time Country Search Filter
+    if (searchInput) {
+      searchInput.addEventListener('input', (e) => {
+        const query = e.target.value.toLowerCase().trim();
+        document.querySelectorAll('.country-option').forEach(opt => {
+          const searchData = (opt.getAttribute('data-search') || '').toLowerCase();
+          const countryName = (opt.getAttribute('data-name') || '').toLowerCase();
+          const countryCode = (opt.getAttribute('data-country') || '').toLowerCase();
+          const currency = (opt.getAttribute('data-currency') || '').toLowerCase();
+
+          if (!query || searchData.includes(query) || countryName.includes(query) || countryCode.includes(query) || currency.includes(query)) {
+            opt.style.display = 'flex';
+          } else {
+            opt.style.display = 'none';
+          }
+        });
+      });
+      searchInput.addEventListener('click', (e) => e.stopPropagation());
+    }
+
+    // Country Option Click
     document.querySelectorAll('.country-option').forEach(opt => {
       opt.addEventListener('click', (e) => {
         e.stopPropagation();
@@ -1005,7 +1083,7 @@ async function initCountryAndLanguage() {
     });
   });
 
-  // Re-run Lucide icon injection for newly injected elements
+  // Re-run Lucide icon injection
   if (typeof lucide !== 'undefined' && lucide.createIcons) {
     lucide.createIcons();
   }
