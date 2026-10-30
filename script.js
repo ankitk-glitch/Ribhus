@@ -421,3 +421,54 @@ async function submitModal(e) {
     }, 2000);
   }
 }
+
+/* ─── FULL PILOT FORM HANDLER ─────────────────── */
+async function handleFullPilotForm(e) {
+  e.preventDefault();
+  const form = e.target;
+  const btn = document.getElementById('pilotSubmitBtn');
+  const data = new FormData(form);
+  data.append('subject', 'New Energy-Audit BIM Pilot Request — theribhus.com');
+
+  const origText = btn.textContent;
+  btn.textContent = 'Submitting Request...';
+  btn.disabled = true;
+
+  try {
+    const res = await fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      body: data
+    });
+    const json = await res.json();
+    if (json.success) {
+      btn.textContent = '✓ Pilot Request Sent! We reply in 24h';
+      btn.style.background = '#059669';
+      setTimeout(() => {
+        form.reset();
+        btn.textContent = origText;
+        btn.style.background = '';
+        btn.disabled = false;
+      }, 3500);
+    } else {
+      throw new Error(json.message || 'Submission error');
+    }
+  } catch (err) {
+    const nameVal = form.querySelector('input[name="name"]')?.value || '';
+    const emailVal = form.querySelector('input[name="email"]')?.value || '';
+    const compVal = form.querySelector('input[name="company"]')?.value || '';
+    const typeVal = form.querySelector('select[name="type"]')?.value || '';
+    const filesVal = form.querySelector('input[name="source_files"]')?.value || '';
+    const detailsVal = form.querySelector('textarea[name="details"]')?.value || '';
+
+    const subject = encodeURIComponent(`Free Pilot Request: ${nameVal} (${typeVal})`);
+    const body = encodeURIComponent(
+      `Name: ${nameVal}\nEmail: ${emailVal}\nCompany: ${compVal}\nProject Type: ${typeVal}\nSource Files: ${filesVal}\n\nDetails:\n${detailsVal}`
+    );
+    window.location.href = `mailto:contact@theribhus.com?subject=${subject}&body=${body}`;
+    btn.textContent = 'Opening Mail Client...';
+    setTimeout(() => {
+      btn.textContent = origText;
+      btn.disabled = false;
+    }, 2500);
+  }
+}
