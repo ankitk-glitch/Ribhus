@@ -881,10 +881,12 @@ function setCountry(countryCode, syncLanguage = true) {
   const flagEl = document.getElementById('currentCountryFlag');
   const nameEl = document.getElementById('currentCountryName');
   const currEl = document.getElementById('currentCountryCurrency');
+  const langEl = document.getElementById('currentCountryLang');
 
   if (flagEl) flagEl.textContent = countryCode === 'GLOBAL' ? '🌐' : flag;
   if (nameEl) nameEl.textContent = country.name;
   if (currEl) currEl.textContent = currInfo.symbol.trim() + ' ' + country.currency;
+  if (langEl) langEl.textContent = (country.lang || 'en').toUpperCase();
 
   // 2. Update active state in dropdown list
   document.querySelectorAll('.country-option').forEach(opt => {
@@ -933,17 +935,11 @@ function setLanguage(lang, syncCurrency = false) {
     }
   });
 
-  // Update button active state
-  document.querySelectorAll('.lang-btn').forEach(btn => {
-    if (btn.getAttribute('data-lang') === lang) {
-      btn.classList.add('active');
-    } else {
-      btn.classList.remove('active');
-    }
-  });
-
   document.documentElement.lang = lang;
   localStorage.setItem('ribhus_lang', lang);
+
+  const langEl = document.getElementById('currentCountryLang');
+  if (langEl) langEl.textContent = lang.toUpperCase();
 
   // Re-apply pricing display with language-specific prefix
   updatePricingDisplay();
@@ -1073,15 +1069,6 @@ async function initCountryAndLanguage() {
       setCountry(e.target.value, true);
     });
   }
-
-  // Setup Language Switcher Buttons
-  document.querySelectorAll('.lang-btn').forEach(btn => {
-    btn.addEventListener('click', (e) => {
-      e.preventDefault();
-      const targetLang = btn.getAttribute('data-lang');
-      setLanguage(targetLang, false);
-    });
-  });
 
   // Re-run Lucide icon injection
   if (typeof lucide !== 'undefined' && lucide.createIcons) {

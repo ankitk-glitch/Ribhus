@@ -58,10 +58,11 @@
       <div class="nav-actions">
         <!-- Country & Currency Selector -->
         <div class="country-selector-wrap" id="countrySelectorWrap">
-          <button class="country-btn" id="countryBtn" type="button" aria-expanded="false" aria-haspopup="true" title="Select Country & Currency">
+          <button class="country-btn" id="countryBtn" type="button" aria-expanded="false" aria-haspopup="true" title="Select Country, Currency &amp; Language">
             <span class="country-flag" id="currentCountryFlag">🇩🇪</span>
             <span class="country-name" id="currentCountryName">Germany</span>
             <span class="country-curr-badge" id="currentCountryCurrency">€ EUR</span>
+            <span class="country-lang-badge" id="currentCountryLang">DE</span>
             <i data-lucide="chevron-down" class="country-chevron"></i>
           </button>
           <div class="country-dropdown" id="countryDropdown" role="menu">
@@ -371,11 +372,6 @@
           </div>
         </div>
 
-        <div class="lang-switcher" id="langSwitcher" aria-label="Language Selector">
-          <button class="lang-btn" data-lang="en">EN</button>
-          <span class="lang-sep">|</span>
-          <button class="lang-btn active" data-lang="de">DE</button>
-        </div>
         <a href="mailto:contact@theribhus.com" class="nav-email-link" title="Direct Email">
           <i data-lucide="mail"></i>
           <span>contact@theribhus.com</span>
@@ -431,16 +427,8 @@
           <option value="ZA">🇿🇦 South Africa (ZAR · R)</option>
           <option value="BR">🇧🇷 Brazil (Brasil) (BRL · R$)</option>
           <option value="MX">🇲🇽 Mexico (MXN · Mex$)</option>
-          <option value="GLOBAL">🌐 Global / International (USD · $)</option>
+          <option value="GLOBAL">🌐 Global / International (USD · $ · EN)</option>
         </select>
-      </div>
-      <div class="mobile-sel-row">
-        <span class="mobile-sel-label">Language:</span>
-        <div class="lang-switcher">
-          <button class="lang-btn" data-lang="en">EN</button>
-          <span class="lang-sep">|</span>
-          <button class="lang-btn active" data-lang="de">DE</button>
-        </div>
       </div>
     </div>
     <ul>

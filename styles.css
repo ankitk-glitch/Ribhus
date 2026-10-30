@@ -2883,6 +2883,18 @@ ul { list-style: none; }
   letter-spacing: 0.02em;
 }
 
+.country-lang-badge {
+  font-size: 0.7rem;
+  font-weight: 800;
+  background: var(--obsidian);
+  color: #FFFFFF;
+  padding: 2px 6px;
+  border-radius: 4px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  line-height: 1.1;
+}
+
 .country-chevron {
   width: 14px;
   height: 14px;
