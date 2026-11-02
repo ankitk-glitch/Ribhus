@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>BIM Models for Energy Audits | Ribhus Studio</title>
-  <meta name="description" content="Audit-ready ArchiCAD, Revit and IFC models from 2D plans in 24–48 hours. Civil engineer-led BIM studio for energy consultants. Free pilot." />
+  <title>3D-CAD- & IFC-Gebäudemodelle für Energieberater – ab 49 € | Ribhus BIM Studio</title>
+  <meta name="description" content="3D-CAD- & IFC-Gebäudemodelle für Energieberater ab 49 €. 24–48h Turnaround für Hottgenroth, Solar-Computer & ZUB Helena. 100% Passgenauigkeits-Garantie." />
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Ribhus: BIM models built for energy audits" />
   <meta property="og:description" content="Audit-ready ArchiCAD, Revit and IFC models from 2D plans in 24–48 hours. Civil engineer-led BIM studio for energy consultants." />
@@ -23,7 +23,7 @@
   <!-- Lucide Icons CDN -->
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
 
-  <link rel="stylesheet" href="styles.css?v=4.0" />
+  <link rel="stylesheet" href="styles.css?v=5.0" />
 </head>
 <body>
 
@@ -43,11 +43,13 @@
       </a>
 
       <ul class="nav-links">
-        <li><a href="#services" data-i18n="nav.services">Services</a></li>
-        <li><a href="#process" data-i18n="nav.process">Process</a></li>
-        <li><a href="#projects" data-i18n="nav.projects">Projects</a></li>
-        <li><a href="#pricing" data-i18n="nav.pricing">Pricing</a></li>
-        <li><a href="#about" data-i18n="nav.about">About</a></li>
+        <li><a href="#services" data-i18n="nav.services">Dienste</a></li>
+        <li><a href="#software">Software</a></li>
+        <li><a href="#process" data-i18n="nav.process">Ablauf</a></li>
+        <li><a href="#projects" data-i18n="nav.projects">Projekte</a></li>
+        <li><a href="#sample-downloads" data-i18n="hero.btnSample">Test-IFC</a></li>
+        <li><a href="#pricing" data-i18n="nav.pricing">Preise</a></li>
+        <li><a href="#about" data-i18n="nav.about">Über uns</a></li>
       </ul>
 
       <div class="nav-actions">
@@ -438,46 +440,127 @@
   </div>
 
   <!-- ═══════════════════════════════════════════════
-       2. HERO SECTION
+       2. HERO SECTION (Above the fold)
   ═══════════════════════════════════════════════ -->
   <section class="hero-fullscreen" id="home">
     <div class="hero-bg-overlay"></div>
     <div class="section-container hero-content-center">
-      <h1 class="hero-title-main" data-i18n="hero.title">Audit-Ready BIM Models Engineered for Energy Performance</h1>
-      <p class="hero-subtitle-main" data-i18n="hero.subtitle">When modelling for energy performance, clean, accurate geometry isn't a nice-to-have — it is the entire foundation of your audit. We deliver coordinate-precise ArchiCAD, Revit, and IFC4 models with floor-by-floor thermal zones, wall volumes, and opening schedules in 24–48 hours.</p>
+      <div class="hero-eyebrow-badge" data-i18n="hero.eyebrow">Bauingenieur-geführte BIM-Modellierung · Deutschland &amp; DACH</div>
+      <h1 class="hero-title-main" data-i18n="hero.title">3D-CAD- &amp; IFC-Gebäudemodelle für Energieberater – ab 49 €</h1>
+      <p class="hero-subtitle-main" data-i18n="hero.subtitle">Sparen Sie bis zu 70 % Zeichenzeit bei iSFP- und GEG-Nachweisen. Wir wandeln Ihre 2D-Bestandspläne, PDFs und Skizzen in saubere, audit-bereite IFC4- und CAD-Modelle für Hottgenroth, Solar-Computer und ZUB Helena – verlässlich in 24–48 Stunden.</p>
       <div class="hero-actions-main">
-        <a href="#pilot" class="btn btn-hero-primary" data-i18n="hero.btnPilot">Start a Free Pilot</a>
-        <a href="#projects" class="btn btn-hero-ghost" data-i18n="hero.btnProjects">Explore Energy Projects</a>
+        <a href="#pilot" class="btn btn-hero-primary" data-i18n="hero.btnPilot">Kostenlosen Testlauf starten (1 Raum / Plan gratis)</a>
+        <a href="#sample-downloads" class="btn btn-hero-ghost" data-i18n="hero.btnSample">Test-IFC-Datei herunterladen</a>
       </div>
       <div class="hero-trust-bar">
-        <span><i data-lucide="check"></i> <strong data-i18n="hero.trust1">Civil Engineering-Led QA</strong></span>
-        <span><i data-lucide="check"></i> <strong data-i18n="hero.trust2">Direct Thermal Engine Export</strong></span>
-        <span><i data-lucide="check"></i> <strong data-i18n="hero.trust3">NDA on Request</strong></span>
+        <span><i data-lucide="shield-check"></i> <strong data-i18n="hero.trust1">100% Passgenauigkeits-Garantie (Geld-zurück bei Importfehlern)</strong></span>
+        <span><i data-lucide="check"></i> <strong data-i18n="hero.trust2">DIN V 18599 &amp; GEG-konforme Geometrie</strong></span>
+        <span><i data-lucide="zap"></i> <strong data-i18n="hero.trust3">24–48 Stunden Express-Lieferung</strong></span>
+        <span><i data-lucide="lock"></i> <strong data-i18n="hero.trust4">NDA / Vertraulichkeit auf Wunsch</strong></span>
       </div>
     </div>
   </section>
 
   <!-- ═══════════════════════════════════════════════
-       3. TRUST BAR (Directly under the hero)
+       2B. SOFTWARE COMPATIBILITY BAR (Directly below Hero)
+  ═══════════════════════════════════════════════ -->
+  <section class="software-compat-section" id="software">
+    <div class="section-container">
+      <div class="software-compat-header">
+        <span class="compat-lead-tag" data-i18n="software.lead">100% Kompatibilität garantiert</span>
+        <p class="software-compat-caption" data-i18n="software.caption">Nahtlose IFC-Schnittstellen für alle führenden deutschen Energieberater-Softwarelösungen.</p>
+      </div>
+      <div class="software-compat-grid">
+        <div class="software-badge-card">
+          <div class="software-icon-wrap software-hottgenroth">
+            <i data-lucide="flame"></i>
+          </div>
+          <div class="software-info">
+            <strong class="software-name">Hottgenroth</strong>
+            <span class="software-desc">Energieberater 18599 3D PLUS</span>
+          </div>
+          <span class="compat-status-pill">IFC 4.3 Direct</span>
+        </div>
+
+        <div class="software-badge-card">
+          <div class="software-icon-wrap software-solar">
+            <i data-lucide="sun"></i>
+          </div>
+          <div class="software-info">
+            <strong class="software-name">Solar-Computer</strong>
+            <span class="software-desc">Gebäudeerfassung 3D / GBIS</span>
+          </div>
+          <span class="compat-status-pill">DIN V 18599</span>
+        </div>
+
+        <div class="software-badge-card">
+          <div class="software-icon-wrap software-zub">
+            <i data-lucide="cpu"></i>
+          </div>
+          <div class="software-info">
+            <strong class="software-name">ZUB Helena</strong>
+            <span class="software-desc">GEG &amp; Energieausweise</span>
+          </div>
+          <span class="compat-status-pill">Fehlerfreier Import</span>
+        </div>
+
+        <div class="software-badge-card">
+          <div class="software-icon-wrap software-archicad">
+            <i data-lucide="box"></i>
+          </div>
+          <div class="software-info">
+            <strong class="software-name">Graphisoft ArchiCAD</strong>
+            <span class="software-desc">Native .PLN &amp; BIMx</span>
+          </div>
+          <span class="compat-status-pill">v25 – v28</span>
+        </div>
+
+        <div class="software-badge-card">
+          <div class="software-icon-wrap software-revit">
+            <i data-lucide="layers"></i>
+          </div>
+          <div class="software-info">
+            <strong class="software-name">Autodesk Revit</strong>
+            <span class="software-desc">Native .RVT Bauteile</span>
+          </div>
+          <span class="compat-status-pill">2022 – 2025</span>
+        </div>
+
+        <div class="software-badge-card">
+          <div class="software-icon-wrap software-ifc">
+            <i data-lucide="check-circle-2"></i>
+          </div>
+          <div class="software-info">
+            <strong class="software-name">OpenBIM / IFC 4.3</strong>
+            <span class="software-desc">ISO 16739 Standard</span>
+          </div>
+          <span class="compat-status-pill">Audit-Ready</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════
+       3. TRUST BAR (Directly under the software bar)
   ═══════════════════════════════════════════════ -->
   <section class="trust-bar-section">
     <div class="section-container">
       <div class="trust-bar-grid">
         <div class="trust-bar-item">
-          <span class="trust-label" data-i18n="trustbar.speed.label">Speed</span>
-          <strong data-i18n="trustbar.speed.val">24–48 h turnaround on standard residential</strong>
+          <span class="trust-label" data-i18n="trustbar.speed.label">Lieferzeit</span>
+          <strong data-i18n="trustbar.speed.val">24–48 Std. Express für Wohngebäude</strong>
         </div>
         <div class="trust-bar-item">
-          <span class="trust-label" data-i18n="trustbar.detail.label">Detail</span>
-          <strong data-i18n="trustbar.detail.val">LOD 200–300 models</strong>
+          <span class="trust-label" data-i18n="trustbar.detail.label">Präzision</span>
+          <strong data-i18n="trustbar.detail.val">LOD 200–300 &amp; DIN 277 Konformität</strong>
         </div>
         <div class="trust-bar-item">
-          <span class="trust-label" data-i18n="trustbar.formats.label">Formats</span>
-          <strong data-i18n="trustbar.formats.val">ArchiCAD · Revit · IFC 4.3 · DWG</strong>
+          <span class="trust-label" data-i18n="trustbar.formats.label">Schnittstellen</span>
+          <strong data-i18n="trustbar.formats.val">Hottgenroth · Solar-Computer · IFC 4.3</strong>
         </div>
         <div class="trust-bar-item">
-          <span class="trust-label" data-i18n="trustbar.exp.label">Experience</span>
-          <strong data-i18n="trustbar.exp.val">150+ models used in German energy audits</strong>
+          <span class="trust-label" data-i18n="trustbar.exp.label">Erfahrung</span>
+          <strong data-i18n="trustbar.exp.val">Bauingenieur-Kompetenz aus über 150+ modellierten Gebäuden für deutsche Energieberatungen und iSFP-Projekte nach DIN V 18599.</strong>
         </div>
       </div>
     </div>
@@ -842,80 +925,197 @@
   </section>
 
   <!-- ═══════════════════════════════════════════════
-       8. PRICING (Three tiers)
+       7B. SAMPLE IFC DOWNLOADS (Tangible Proof)
+  ═══════════════════════════════════════════════ -->
+  <section class="sample-downloads-section" id="sample-downloads">
+    <div class="section-container">
+      <div class="section-header-centered">
+        <p class="section-eyebrow" data-i18n="samples.eyebrow">Praxistest &amp; Verifikation</p>
+        <h2 class="section-heading" data-i18n="samples.heading">Überzeugen Sie sich selbst: Testdateien herunterladen</h2>
+        <p class="section-subheading" data-i18n="samples.subheading">Laden Sie unsere Beispieldateien herunter und importieren Sie sie direkt in Ihr System, um die IFC-Struktur und Geometrie vorab zu prüfen.</p>
+      </div>
+
+      <div class="samples-grid">
+        <!-- Sample 1 -->
+        <div class="sample-card reveal-up">
+          <div class="sample-card-header">
+            <div class="sample-icon"><i data-lucide="home"></i></div>
+            <div class="sample-badge">Paket 1: Hülle</div>
+          </div>
+          <h3 class="sample-title" data-i18n="samples.card1.title">Muster-Einfamilienhaus (Bestand 1978)</h3>
+          <p class="sample-desc" data-i18n="samples.card1.desc">Vollständig geschlossene thermische Gebäudehülle mit Dachschrägen, Gauben und maßgenauen Fenstern/Türen für iSFP und GEG-Nachweise.</p>
+          <div class="sample-tags">
+            <span class="sample-tag"><i data-lucide="check"></i> Hüllflächenmodell</span>
+            <span class="sample-tag"><i data-lucide="check"></i> IFC 4.3 Schema</span>
+            <span class="sample-tag"><i data-lucide="check"></i> 280 m² Hüllfläche</span>
+          </div>
+          <div class="sample-actions">
+            <a href="assets/samples/Ribhus_Muster_Einfamilienhaus_Bestand1978.ifc" download="Ribhus_Muster_Einfamilienhaus_Bestand1978.ifc" class="btn btn-outline-dark" data-i18n="samples.card1.btn">
+              <i data-lucide="download"></i> Download IFC-Musterdatei (1.8 MB)
+            </a>
+          </div>
+        </div>
+
+        <!-- Sample 2 -->
+        <div class="sample-card featured reveal-up" style="--delay: 100ms">
+          <div class="sample-card-header">
+            <div class="sample-icon"><i data-lucide="building-2"></i></div>
+            <div class="sample-badge">Paket 2: Voll-BIM</div>
+          </div>
+          <h3 class="sample-title" data-i18n="samples.card2.title">Muster-Mehrfamilienhaus (8 Wohneinheiten)</h3>
+          <p class="sample-desc" data-i18n="samples.card2.desc">Vollständiges 3D-BIM-Gebäudemodell mit allen Innenwänden, Geschossdecken, DIN 277 Raumstempeln und Zonen für Raumheizlastberechnungen.</p>
+          <div class="sample-tags">
+            <span class="sample-tag"><i data-lucide="check"></i> Vollständiges 3D-Modell</span>
+            <span class="sample-tag"><i data-lucide="check"></i> IFC &amp; ArchiCAD PLN</span>
+            <span class="sample-tag"><i data-lucide="check"></i> DIN 277 Raumflächen</span>
+          </div>
+          <div class="sample-actions">
+            <a href="assets/samples/Ribhus_Muster_Mehrfamilienhaus_8WE.ifc" download="Ribhus_Muster_Mehrfamilienhaus_8WE.ifc" class="btn btn-primary" data-i18n="samples.card2.btn">
+              <i data-lucide="download"></i> Download IFC-Musterdatei (4.2 MB)
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="samples-footer-note">
+        <i data-lucide="info"></i>
+        <span data-i18n="samples.note">Kompatibel mit Hottgenroth Energieberater 18599, Solar-Computer GBIS, ZUB Helena, ArchiCAD, Revit und Solibri.</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════
+       8. PRICING (Direct Comparison vs Celekohr)
   ═══════════════════════════════════════════════ -->
   <section class="pricing-section" id="pricing">
     <div class="section-container">
       <div class="section-header-centered">
-        <p class="section-eyebrow">Transparent Fixed Pricing</p>
-        <h2 class="section-heading">Fixed prices, no hourly surprises.</h2>
-        <p class="section-subheading">Every project gets a fixed quote before work starts. These ranges are for standard drawings in clear condition.</p>
+        <p class="section-eyebrow" data-i18n="pricing.eyebrow">Transparente Festpreise</p>
+        <h2 class="section-heading" data-i18n="pricing.heading">Festpreise im Direktvergleich – Schneller &amp; Günstiger als der Markt.</h2>
+        <p class="section-subheading" data-i18n="pricing.subheading">Verbindliche Festpreisangebote vor Beginn. Keine Stundensurprises, 100% Passgenauigkeits-Garantie.</p>
       </div>
 
       <div class="pricing-grid">
-        <!-- Tier 1 -->
+        <!-- Paket 1: Thermische Gebäudehülle -->
         <div class="pricing-card reveal-up" style="--delay: 0ms">
-          <span class="pricing-tier-tag" data-i18n="pricing.tier1.tag">Small Residential</span>
-          <h3 data-i18n="pricing.tier1.title">Single project, small residential</h3>
-          <p class="pricing-best-for" data-i18n="pricing.tier1.best">Best for single-family homes and small units</p>
+          <span class="pricing-tier-tag" data-i18n="pricing.tier1.tag">Paket 1: Thermische Hülle</span>
+          <h3 data-i18n="pricing.tier1.title">Thermische Gebäudehülle</h3>
+          <p class="pricing-best-for" data-i18n="pricing.tier1.best">iSFP, Energieausweise &amp; GEG-Nachweise</p>
+          
           <div class="pricing-price">
+            <span class="pricing-prefix" data-i18n="pricing.prefix">ab </span>
             <span class="currency" data-currency-symbol>€</span>
-            <span class="amount" data-currency-amount="tier1">49–99</span>
-            <span class="unit" data-i18n="pricing.tier1.unit">/ unit</span>
+            <span class="amount" data-currency-amount="tier1">49</span>
+            <span class="unit" data-i18n="pricing.tier1.unit">/ Gebäude</span>
           </div>
+
+          <div class="pricing-vs-celekohr" data-i18n="pricing.tier1.vs">Celekohr: 79 € · 38% Ersparnis</div>
+
           <div class="pricing-turnaround">
             <i data-lucide="clock"></i>
-            <span data-i18n="pricing.tier1.time">24–48 hours turnaround</span>
+            <span data-i18n="pricing.tier1.time">24–48 Stunden Turnaround</span>
           </div>
-          <a href="#pilot" class="btn btn-primary" style="width:100%" data-i18n="pricing.btn">Start with a Free Pilot</a>
+
+          <ul class="pricing-scope-list">
+            <li><i data-lucide="check"></i> <span data-i18n="pricing.tier1.f1">Vollständige thermische Gebäudehülle</span></li>
+            <li><i data-lucide="check"></i> <span data-i18n="pricing.tier1.f2">Dachneigung, Gauben &amp; Wandanschlüsse</span></li>
+            <li><i data-lucide="check"></i> <span data-i18n="pricing.tier1.f3">Exakte Fenster- &amp; Türöffnungsflächen</span></li>
+            <li><i data-lucide="check"></i> <span data-i18n="pricing.tier1.f4">IFC 4.3 für Hottgenroth &amp; Solar-Computer</span></li>
+          </ul>
+
+          <a href="#pilot" class="btn btn-primary" style="width:100%" onclick="selectProjectType('Thermische Gebäudehülle (iSFP / GEG) – ab 49 €')" data-i18n="pricing.tier1.btn">Jetzt Hüllfläche anfragen</a>
         </div>
 
-        <!-- Tier 2 (Highlighted) -->
+        <!-- Paket 2: Vollständiges 3D-BIM-Modell (Featured) -->
         <div class="pricing-card featured reveal-up" style="--delay: 100ms">
-          <div class="popular-badge" data-i18n="pricing.popular">Most Requested</div>
-          <span class="pricing-tier-tag" data-i18n="pricing.tier2.tag">Multi-Storey</span>
-          <h3 data-i18n="pricing.tier2.title">Multi-storey residential &amp; commercial</h3>
-          <p class="pricing-best-for" data-i18n="pricing.tier2.best">Best for apartment buildings and larger complexes</p>
+          <div class="popular-badge" data-i18n="pricing.popular">Meistgefragt / Full BIM</div>
+          <span class="pricing-tier-tag" data-i18n="pricing.tier2.tag">Paket 2: Vollmodell</span>
+          <h3 data-i18n="pricing.tier2.title">Vollständiges 3D-BIM-Modell</h3>
+          <p class="pricing-best-for" data-i18n="pricing.tier2.best">Umfassende Sanierung &amp; Raumheizlast</p>
+
           <div class="pricing-price">
+            <span class="pricing-prefix" data-i18n="pricing.prefix">ab </span>
             <span class="currency" data-currency-symbol>€</span>
-            <span class="amount" data-currency-amount="tier2">100–299</span>
-            <span class="unit" data-i18n="pricing.tier2.unit">/ building</span>
+            <span class="amount" data-currency-amount="tier2">129</span>
+            <span class="unit" data-i18n="pricing.tier2.unit">/ Gebäude</span>
           </div>
+
+          <div class="pricing-vs-celekohr" data-i18n="pricing.tier2.vs">Celekohr: 169 € · 24% Ersparnis</div>
+
           <div class="pricing-turnaround">
             <i data-lucide="calendar"></i>
-            <span data-i18n="pricing.tier2.time">Quoted within hours (3–5 days)</span>
+            <span data-i18n="pricing.tier2.time">48–72 Stunden Turnaround</span>
           </div>
-          <a href="#pilot" class="btn btn-primary" style="width:100%" data-i18n="pricing.btn">Start with a Free Pilot</a>
+
+          <ul class="pricing-scope-list">
+            <li><i data-lucide="check"></i> <span data-i18n="pricing.tier2.f1">Alles aus Paket 1 (Thermische Hülle)</span></li>
+            <li><i data-lucide="check"></i> <span data-i18n="pricing.tier2.f2">Alle Innenwände, Decken &amp; Treppen</span></li>
+            <li><i data-lucide="check"></i> <span data-i18n="pricing.tier2.f3">Raumstempel &amp; DIN 277 Netto-Raumflächen</span></li>
+            <li><i data-lucide="check"></i> <span data-i18n="pricing.tier2.f4">Native ArchiCAD (.pln) / Revit (.rvt) Datei</span></li>
+          </ul>
+
+          <a href="#pilot" class="btn btn-primary" style="width:100%" onclick="selectProjectType('Vollständiges 3D-BIM-Gebäude – ab 129 €')" data-i18n="pricing.tier2.btn">Vollmodell beauftragen</a>
         </div>
 
-        <!-- Tier 3 -->
+        <!-- Paket 3: Monats-Retainer -->
         <div class="pricing-card reveal-up" style="--delay: 200ms">
-          <span class="pricing-tier-tag" data-i18n="pricing.tier3.tag">Retainer</span>
-          <h3 data-i18n="pricing.tier3.title">Studio retainer</h3>
-          <p class="pricing-best-for" data-i18n="pricing.tier3.best">Best for consultancies with steady volume</p>
+          <span class="pricing-tier-tag" data-i18n="pricing.tier3.tag">Paket 3: Retainer</span>
+          <h3 data-i18n="pricing.tier3.title">Monats-Retainer (Dedicated)</h3>
+          <p class="pricing-best-for" data-i18n="pricing.tier3.best">Büros mit 10+ Projekten / Monat</p>
+
           <div class="pricing-price">
-            <span class="currency" data-currency-prefix data-i18n="pricing.tier3.currency">From €</span>
-            <span class="amount" data-currency-amount="tier3">1,500</span>
-            <span class="unit" data-i18n="pricing.tier3.unit">/ month</span>
+            <span class="pricing-prefix" data-i18n="pricing.prefix">ab </span>
+            <span class="currency" data-currency-symbol>€</span>
+            <span class="amount" data-currency-amount="tier3">1.200</span>
+            <span class="unit" data-i18n="pricing.tier3.unit">/ Monat</span>
           </div>
+
+          <div class="pricing-vs-celekohr">Express-Priorität &lt;24 Std.</div>
+
           <div class="pricing-turnaround">
             <i data-lucide="shield-check"></i>
-            <span data-i18n="pricing.tier3.time">Reserved monthly capacity</span>
+            <span data-i18n="pricing.tier3.time">Feste Kapazität / Express (&lt;24 Std.)</span>
           </div>
-          <a href="#pilot" class="btn btn-primary" style="width:100%" data-i18n="pricing.btn">Start with a Free Pilot</a>
+
+          <ul class="pricing-scope-list">
+            <li><i data-lucide="check"></i> <span data-i18n="pricing.tier3.f1">Fester persönlicher Modellierer (Bauingenieur)</span></li>
+            <li><i data-lucide="check"></i> <span data-i18n="pricing.tier3.f2">Prioritäre Bearbeitung (&lt;24 Std. Express)</span></li>
+            <li><i data-lucide="check"></i> <span data-i18n="pricing.tier3.f3">Unbegrenzte Modell-Revisionen</span></li>
+            <li><i data-lucide="check"></i> <span data-i18n="pricing.tier3.f4">Monatliche Sammelrechnung mit Zahlungsziel</span></li>
+          </ul>
+
+          <a href="#pilot" class="btn btn-primary" style="width:100%" onclick="selectProjectType('Monats-Retainer (ab 1.200 € / Monat)')" data-i18n="pricing.tier3.btn">Retainer besprechen</a>
+        </div>
+      </div>
+
+      <!-- The 100% Import Guarantee (Risk Reversal Box) -->
+      <div class="guarantee-box reveal-up">
+        <div class="guarantee-header-row">
+          <div class="guarantee-shield-icon">
+            <i data-lucide="shield-check"></i>
+          </div>
+          <div>
+            <div class="guarantee-tag" data-i18n="guarantee.tag">Risikofrei testen</div>
+            <h3 class="guarantee-title" data-i18n="guarantee.title">🛡️ Unsere 100% Passgenauigkeits-Garantie</h3>
+            <h4 class="guarantee-subtitle" data-i18n="guarantee.subtitle">Importiert Ihr Modell nicht fehlerfrei, zahlen Sie keinen Cent.</h4>
+          </div>
+        </div>
+        <div class="guarantee-body-text">
+          <p data-i18n="guarantee.body1">Wir wissen: Ein CAD-Modell nützt Ihnen nur, wenn die Hüllflächen und Raumgeometrien in Ihrer Software (Hottgenroth, Solar-Computer etc.) sofort stimmen.</p>
+          <p data-i18n="guarantee.body2">Sollte ein von uns geliefertes Modell beim Import Geometrie- oder Schichtenfehler aufweisen, beheben wir das Problem innerhalb von <strong>12 Stunden kostenfrei</strong>. Kann das Modell dennoch nicht für Ihre Berechnung genutzt werden, erhalten Sie <strong>100 % des Rechnungsbetrags erstattet</strong>.</p>
         </div>
       </div>
 
       <!-- Inclusions Box -->
       <div class="pricing-inclusions-box reveal-up">
-        <h4>Every tier includes:</h4>
+        <h4>Jedes Paket enthält verbindlich:</h4>
         <div class="inclusions-grid">
-          <div class="inc-item"><i data-lucide="check"></i> An ArchiCAD or Revit model plus an IFC 4.3 export</div>
-          <div class="inc-item"><i data-lucide="check"></i> Dimension and standards checks before delivery</div>
-          <div class="inc-item"><i data-lucide="check"></i> A fixed quote, agreed before we start</div>
-          <div class="inc-item"><i data-lucide="check"></i> NDA on request</div>
+          <div class="inc-item"><i data-lucide="check"></i> Sauberes ArchiCAD- (.pln) oder Revit-Modell (.rvt) plus zertifizierten IFC 4.3 Export</div>
+          <div class="inc-item"><i data-lucide="check"></i> Vollständige Maß- und Bauteilschichtenprüfung vor jeder Lieferung durch Bauingenieure</div>
+          <div class="inc-item"><i data-lucide="check"></i> Verbindliches Festpreisangebot vor Start – kein Stundensatzrisiko</div>
+          <div class="inc-item"><i data-lucide="check"></i> Vollständige Vertraulichkeit &amp; NDA auf Wunsch vor Datenübermittlung</div>
         </div>
-        <p class="pricing-footnote">Commercial buildings and heavily damaged scans are quoted individually. Not sure which tier fits? Send one drawing and we will tell you within hours.</p>
+        <p class="pricing-footnote">Größere Nichtwohngebäude oder historische Papierpläne werden individuell kalkuliert. Sie sind unsicher, welches Paket passt? Senden Sie uns einen Bestandsplan – Sie erhalten innerhalb weniger Stunden eine Einschätzung.</p>
       </div>
     </div>
   </section>
@@ -1029,54 +1229,69 @@
   </section>
 
   <!-- ═══════════════════════════════════════════════
-       11. FREE PILOT, CONTACT FORM & FOOTER
+       11. FREE PILOT & STREAMLINED INTAKE FORM
   ═══════════════════════════════════════════════ -->
   <section class="pilot-section" id="pilot">
     <div class="section-container">
       <div class="pilot-card reveal-up">
         <div class="pilot-header">
-          <p class="section-eyebrow" data-i18n="pilot.eyebrow">Zero-Risk Starting Point</p>
-          <h2 class="section-heading" data-i18n="pilot.heading">Try us on one drawing, free.</h2>
-          <p class="pilot-lead" data-i18n="pilot.lead">Send one room, one floor plan or one scanned PDF (up to 50 m²). We model it at no cost, so you can judge our accuracy and speed before you commit. No card, no contract.</p>
+          <p class="section-eyebrow" data-i18n="pilot.eyebrow">Risikofreier Start</p>
+          <h2 class="section-heading" data-i18n="pilot.heading">Kostenlosen Testlauf starten (1 Raum / Plan gratis)</h2>
+          <p class="pilot-lead" data-i18n="pilot.lead">Senden Sie uns einen Raum, einen Grundriss oder einen Scan (bis 50 m²). Wir modellieren ihn kostenlos, damit Sie Passgenauigkeit und Geschwindigkeit direkt in Ihrer Software prüfen können. Keine Zahlungsdaten, kein Vertrag.</p>
         </div>
 
         <form class="pilot-full-form" id="pilotFullForm" onsubmit="handleFullPilotForm(event)">
           <div class="form-row-2">
             <div class="form-group">
-              <label>Your Name *</label>
-              <input type="text" name="name" placeholder="e.g. Thomas Müller" required />
+              <label>Name &amp; Firma *</label>
+              <input type="text" name="name" placeholder="z.B. Thomas Müller, Müller Energieberatung GmbH" required />
             </div>
             <div class="form-group">
-              <label>Work Email *</label>
+              <label>Geschäftliche E-Mail *</label>
               <input type="email" name="email" placeholder="thomas@energie-consult.de" required />
             </div>
           </div>
 
           <div class="form-row-2">
             <div class="form-group">
-              <label>Company</label>
-              <input type="text" name="company" placeholder="e.g. Müller Energieberatung GmbH" />
+              <label>Projektart *</label>
+              <select name="type" id="pilotProjectType" required>
+                <option value="Kostenloser Testlauf (1 Raum / Plan gratis)" selected>Kostenloser Testlauf (1 Raum / Plan gratis)</option>
+                <option value="Thermische Gebäudehülle (iSFP / GEG) – ab 49 €">Thermische Gebäudehülle (iSFP / GEG) – ab 49 €</option>
+                <option value="Vollständiges 3D-BIM-Gebäude – ab 129 €">Vollständiges 3D-BIM-Gebäude – ab 129 €</option>
+                <option value="Mehrfamilienhaus / Nichtwohngebäude">Mehrfamilienhaus / Nichtwohngebäude</option>
+                <option value="Monats-Retainer (ab 1.200 € / Monat)">Monats-Retainer (ab 1.200 € / Monat)</option>
+              </select>
             </div>
             <div class="form-group">
-              <label>Project Type *</label>
-              <select name="type" required>
-                <option value="Residential single-family">Residential single-family</option>
-                <option value="Residential multi-storey">Residential multi-storey</option>
-                <option value="Commercial">Commercial</option>
-                <option value="Energy audit / IFC export" selected>Energy audit / IFC export</option>
-                <option value="Monthly retainer">Monthly retainer</option>
+              <label>Bevorzugte Berechnungs-Software *</label>
+              <select name="software" id="pilotSoftware" required>
+                <option value="Hottgenroth Energieberater" selected>Hottgenroth Energieberater 18599</option>
+                <option value="Solar-Computer (GBIS)">Solar-Computer (GBIS)</option>
+                <option value="ZUB Helena">ZUB Helena</option>
+                <option value="Graphisoft ArchiCAD">Graphisoft ArchiCAD (.pln)</option>
+                <option value="Autodesk Revit">Autodesk Revit (.rvt)</option>
+                <option value="Andere / Nur IFC 4.3">Andere / Nur OpenBIM IFC 4.3</option>
               </select>
             </div>
           </div>
 
           <div class="form-group">
-            <label>Source Files (Upload link or description)</label>
-            <input type="text" name="source_files" placeholder="Dropbox / WeTransfer / Google Drive link or describe file formats (PDF, DWG, scans)..." />
+            <label>Pläne übermitteln (PDF, DWG, Scans per Upload oder Cloud-Link)</label>
+            <div class="form-file-zone" onclick="document.getElementById('pilotFileInput').click()">
+              <input type="file" id="pilotFileInput" name="file_attachment" accept=".pdf,.dwg,.dxf,.png,.jpg,.jpeg,.zip" onchange="handleFileInputChange(this)" />
+              <div class="form-file-label">
+                <i data-lucide="upload-cloud"></i>
+                <span><strong>Dateien hier ablegen</strong> oder klicken zum Auswählen (PDF, DWG, Bilder bis 25 MB)</span>
+                <span id="selectedFileName" class="form-file-selected" style="display:none;"></span>
+              </div>
+            </div>
+            <input type="text" name="source_files" style="margin-top: 10px;" placeholder="Oder Cloud-Link einfügen (Dropbox, WeTransfer, Google Drive...)" />
           </div>
 
           <div class="form-group">
-            <label>Project Details</label>
-            <textarea name="details" rows="3" placeholder="Tell us about the level of detail (LOD 200 or 300), target deadline, software preference (ArchiCAD or Revit)..."></textarea>
+            <label>Projektdetails &amp; Besonderheiten</label>
+            <textarea name="details" rows="3" placeholder="Angaben zu Baujahr, Dachform (Gauben/Pultdach), Fristen oder spezifischen Schichtaufbauten..."></textarea>
           </div>
 
           <input type="hidden" name="country" id="pilotCountryInput" value="DE" />
@@ -1084,8 +1299,8 @@
           <input type="hidden" name="recipient" value="contact@theribhus.com" />
 
           <div class="pilot-submit-row">
-            <button type="submit" class="btn btn-primary" id="pilotSubmitBtn" data-i18n="pilot.submitBtn">Send Pilot Request</button>
-            <span class="pilot-promise" data-i18n="pilot.promise">We reply within one working day. NDA on request.</span>
+            <button type="submit" class="btn btn-primary" id="pilotSubmitBtn" data-i18n="pilot.submitBtn">Kostenlosen Testlauf anfragen</button>
+            <span class="pilot-promise" data-i18n="pilot.promise">Antwort innerhalb weniger Stunden. NDA / Vertraulichkeit auf Wunsch.</span>
           </div>
         </form>
       </div>
@@ -1168,7 +1383,7 @@
     </div>
   </footer>
 
-  <script src="script.js?v=4.0"></script>
+  <script src="script.js?v=5.0"></script>
   <script>lucide.createIcons();</script>
 </body>
 </html>

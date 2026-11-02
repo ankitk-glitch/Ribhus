@@ -398,12 +398,13 @@ async function handleFullPilotForm(e) {
     const emailVal = form.querySelector('input[name="email"]')?.value || '';
     const compVal = form.querySelector('input[name="company"]')?.value || '';
     const typeVal = form.querySelector('select[name="type"]')?.value || '';
+    const softVal = form.querySelector('select[name="software"]')?.value || '';
     const filesVal = form.querySelector('input[name="source_files"]')?.value || '';
     const detailsVal = form.querySelector('textarea[name="details"]')?.value || '';
 
-    const subject = encodeURIComponent(`Free Pilot Request: ${nameVal} (${typeVal})`);
+    const subject = encodeURIComponent(`BIM Pilot Request: ${nameVal} - ${typeVal} (${softVal})`);
     const body = encodeURIComponent(
-      `Name: ${nameVal}\nEmail: ${emailVal}\nCompany: ${compVal}\nProject Type: ${typeVal}\nSource Files: ${filesVal}\n\nDetails:\n${detailsVal}`
+      `Name: ${nameVal}\nEmail: ${emailVal}\nCompany: ${compVal}\nProject Type: ${typeVal}\nTarget Software: ${softVal}\nPlans / Cloud Link: ${filesVal}\n\nProject Details:\n${detailsVal}`
     );
     window.location.href = `mailto:contact@theribhus.com?subject=${subject}&body=${body}`;
     btn.textContent = 'Opening Mail Client...';
@@ -411,6 +412,14 @@ async function handleFullPilotForm(e) {
       btn.textContent = origText;
       btn.disabled = false;
     }, 2500);
+  }
+}
+
+function handleFileInputChange(input) {
+  const display = document.getElementById('selectedFileName');
+  if (display && input.files && input.files[0]) {
+    display.textContent = '✓ ' + input.files[0].name + ' (' + (input.files[0].size / 1024 / 1024).toFixed(2) + ' MB)';
+    display.style.display = 'block';
   }
 }
 
@@ -427,27 +436,42 @@ const i18nDict = {
     "nav.about": "About",
     "nav.pilot": "Free Pilot",
 
-    "hero.eyebrow": "Civil Engineer-Led BIM Studio · Berlin & DACH",
-    "hero.title": "Audit-Ready BIM Models Engineered for Energy Performance",
-    "hero.subtitle": "When modelling for energy performance, clean, accurate geometry isn't a nice-to-have — it is the entire foundation of your audit. We deliver coordinate-precise ArchiCAD, Revit, and IFC4 models with floor-by-floor thermal zones, wall volumes, and opening schedules in 24–48 hours.",
-    "hero.btnPilot": "Start a Free Pilot",
-    "hero.btnProjects": "Explore Energy Projects",
-    "hero.trust1": "✓ Civil Engineering-Led QA",
-    "hero.trust2": "✓ Direct Thermal Engine Export",
-    "hero.trust3": "✓ NDA on Request",
+    "hero.eyebrow": "Civil Engineer-Led BIM Modeling · Germany & DACH",
+    "hero.title": "3D CAD & IFC Building Models for Energy Consultants – From €49",
+    "hero.subtitle": "Save up to 70% drafting time on iSFP & GEG energy certificates. We convert your 2D plans, PDFs, and sketches into clean, audit-ready IFC4 and CAD models for Hottgenroth, Solar-Computer, and ZUB Helena — delivered reliably in 24–48 hours.",
+    "hero.btnPilot": "Start Free Pilot (1 Room / Plan Free)",
+    "hero.btnSample": "Download Sample IFC File",
+    "hero.trust1": "100% Import Accuracy Guarantee (Money-back if import fails)",
+    "hero.trust2": "DIN V 18599 & GEG-Compliant Geometry",
+    "hero.trust3": "24–48 Hour Express Delivery",
+    "hero.trust4": "NDA / Confidentiality on Request",
 
-    "trustbar.speed.label": "Speed",
-    "trustbar.speed.val": "24–48 h turnaround on standard residential",
-    "trustbar.detail.label": "Detail",
-    "trustbar.detail.val": "LOD 200–300 models",
-    "trustbar.formats.label": "Formats",
-    "trustbar.formats.val": "ArchiCAD · Revit · IFC 4.3 · DWG",
+    "software.lead": "100% Compatibility Guaranteed",
+    "software.caption": "Seamless IFC interfaces for all leading German energy consulting software solutions.",
+
+    "trustbar.speed.label": "Turnaround",
+    "trustbar.speed.val": "24–48 h express on standard residential",
+    "trustbar.detail.label": "Precision",
+    "trustbar.detail.val": "LOD 200–300 & DIN 277 compliance",
+    "trustbar.formats.label": "Interfaces",
+    "trustbar.formats.val": "Hottgenroth · Solar-Computer · IFC 4.3",
     "trustbar.exp.label": "Experience",
-    "trustbar.exp.val": "150+ models used in German energy audits",
+    "trustbar.exp.val": "Engineering expertise gained across 150+ modeled buildings for German energy audits and iSFP projects according to DIN V 18599.",
+
+    "samples.eyebrow": "Practical Test & Verification",
+    "samples.heading": "See for Yourself: Download Test IFC Files",
+    "samples.subheading": "Download our sample files and import them directly into your software to verify IFC structure and geometry in advance.",
+    "samples.card1.title": "Sample Single-Family Home (Built 1978)",
+    "samples.card1.desc": "Fully closed thermal building envelope with roof slopes, dormers, and precise window/door openings for iSFP and GEG compliance.",
+    "samples.card1.btn": "Download IFC Sample File (1.8 MB)",
+    "samples.card2.title": "Sample Multi-Family Building (8 Units)",
+    "samples.card2.desc": "Complete 3D BIM model with all interior partitions, slabs, DIN 277 room stamps and zones for room heating load calculations.",
+    "samples.card2.btn": "Download IFC Sample File (4.2 MB)",
+    "samples.note": "Compatible with Hottgenroth Energieberater 18599, Solar-Computer GBIS, ZUB Helena, ArchiCAD, Revit and Solibri.",
 
     "problem.eyebrow": "Why Energy Consultancies Outsource Modeling",
     "problem.heading": "An energy audit is only as good as the model under it.",
-    "problem.body": "Auditors and consultants receive plans as PDFs, DWGs or scans. Before any calculation can start, someone has to rebuild them as a model with correct wall thicknesses, floor heights, openings and room volumes. Hiring locally is slow and costly, and generic CAD outsourcing often returns models that fail your own checks. Ribhus is a small civil engineering studio that does only this one job, and does it to a standard you can build on.",
+    "problem.body": "Auditors and consultants receive plans as PDFs, DWGs or scans. Before any calculation can start, someone has to rebuild them as a model with correct wall thicknesses, floor heights, openings and room volumes. Hiring locally is slow and costly, and generic CAD outsourcing often returns models that fail your own checks. Ribhus is a specialized civil engineering studio that does only this one job, and does it to a standard you can build on.",
     "problem.card1.title": "Capacity when you need it",
     "problem.card1.desc": "We absorb peak workloads without hiring or training, so deadlines stop depending on headcount.",
     "problem.card2.title": "Checked before delivery",
@@ -470,7 +494,7 @@ const i18nDict = {
     "services.card2.desc": "Engineered specifically to feed thermal calculation engines directly. Continuous envelope definitions, room volume extractions, and zone assignments.",
     "services.card2.feat1": "Spatially defined thermal room boundaries",
     "services.card2.feat2": "Glazing ratio & solar gain data extraction",
-    "services.card2.feat3": "Direct import into SAP, PHPP & thermal tools",
+    "services.card2.feat3": "Direct import into Hottgenroth, Solar-Computer & ZUB",
 
     "services.card3.badge": "LiDAR & Point Cloud",
     "services.card3.title": "Scan-to-BIM & Legacy Blueprints",
@@ -498,29 +522,51 @@ const i18nDict = {
     "process.step3.desc": "Standard residential models arrive in 24–48 hours. Larger multi-storey or commercial projects get their own timeline in the quote.",
 
     "pricing.eyebrow": "Transparent Fixed Pricing",
-    "pricing.heading": "Fixed prices, no hourly surprises.",
-    "pricing.subheading": "Every project gets a fixed quote before work starts. These ranges are for standard drawings in clear condition.",
-    "pricing.tier1.tag": "Small Residential",
-    "pricing.tier1.title": "Single project, small residential",
-    "pricing.tier1.best": "Best for single-family homes and small units",
-    "pricing.tier1.price": "49–99",
-    "pricing.tier1.unit": "/ unit",
+    "pricing.heading": "Fixed Prices vs Celekohr – Faster & More Affordable.",
+    "pricing.subheading": "Every project receives a binding fixed quote before kickoff. Zero hourly surprises, backed by our 100% Import Accuracy Guarantee.",
+    "pricing.prefix": "from ",
+    "pricing.tier1.tag": "Package 1: Thermal Envelope",
+    "pricing.tier1.title": "Thermal Building Envelope",
+    "pricing.tier1.best": "iSFP, Energy Certificates & GEG Audits",
+    "pricing.tier1.unit": "/ building",
     "pricing.tier1.time": "24–48 hours turnaround",
-    "pricing.btn": "Start with a Free Pilot",
-    "pricing.popular": "Most Requested",
-    "pricing.tier2.tag": "Multi-Storey",
-    "pricing.tier2.title": "Multi-storey residential & commercial",
-    "pricing.tier2.best": "Best for apartment buildings and larger complexes",
-    "pricing.tier2.price": "100–299",
+    "pricing.tier1.vs": "Celekohr: €79 · 38% Savings",
+    "pricing.tier1.btn": "Request Envelope Model",
+    "pricing.tier1.f1": "Complete thermal building envelope",
+    "pricing.tier1.f2": "Roof slopes, dormers & connections",
+    "pricing.tier1.f3": "Precise window & door opening areas",
+    "pricing.tier1.f4": "IFC 4.3 for Hottgenroth & Solar-Computer",
+
+    "pricing.popular": "Most Popular / Full BIM",
+    "pricing.tier2.tag": "Package 2: Full BIM Model",
+    "pricing.tier2.title": "Complete 3D BIM Model",
+    "pricing.tier2.best": "Comprehensive Retrofit & Heating Load",
     "pricing.tier2.unit": "/ building",
-    "pricing.tier2.time": "Quoted within hours (3–5 days)",
-    "pricing.tier3.tag": "Retainer",
-    "pricing.tier3.title": "Studio retainer",
-    "pricing.tier3.best": "Best for consultancies with steady volume",
+    "pricing.tier2.time": "48–72 hours turnaround",
+    "pricing.tier2.vs": "Celekohr: €169 · 24% Savings",
+    "pricing.tier2.btn": "Order Full BIM Model",
+    "pricing.tier2.f1": "Everything in Package 1 (Thermal Envelope)",
+    "pricing.tier2.f2": "All interior partitions, slabs & stairs",
+    "pricing.tier2.f3": "Room stamps & DIN 277 net floor areas",
+    "pricing.tier2.f4": "Native ArchiCAD (.pln) / Revit (.rvt) file",
+
+    "pricing.tier3.tag": "Package 3: Dedicated Retainer",
+    "pricing.tier3.title": "Monthly Dedicated Retainer",
+    "pricing.tier3.best": "Offices with 10+ projects / month",
     "pricing.tier3.currency": "From €",
-    "pricing.tier3.price": "1,500",
     "pricing.tier3.unit": "/ month",
-    "pricing.tier3.time": "Reserved monthly capacity",
+    "pricing.tier3.time": "Reserved monthly capacity (<24h)",
+    "pricing.tier3.btn": "Discuss Retainer Plan",
+    "pricing.tier3.f1": "Dedicated personal modeler (Civil Engineer)",
+    "pricing.tier3.f2": "Priority turnaround (<24h express)",
+    "pricing.tier3.f3": "Unlimited model revisions",
+    "pricing.tier3.f4": "Consolidated monthly invoicing",
+
+    "guarantee.tag": "Zero-Risk Assurance",
+    "guarantee.title": "🛡️ Our 100% Import Accuracy Guarantee",
+    "guarantee.subtitle": "If your model doesn't import error-free, you don't pay a single cent.",
+    "guarantee.body1": "We understand: A CAD model is only useful if envelope surfaces and room geometry align perfectly in your software (Hottgenroth, Solar-Computer, etc.) right from the start.",
+    "guarantee.body2": "If any model we deliver exhibits geometric or layer issues upon import, we fix it within 12 hours free of charge. If the model still cannot be used for your calculations, you receive a 100% refund of the invoice amount.",
 
     "about.eyebrow": "About Ribhus",
     "about.heading": "Dependable BIM & Digital Building Support",
@@ -530,46 +576,61 @@ const i18nDict = {
     "about.p4": "At Ribhus, we aim to make dependable BIM support more accessible, flexible and efficient for firms that need additional modelling capacity without expanding their in-house teams.",
     "about.founder1.name": "Ankit Kumar",
     "about.founder1.role": "Co-Founder · Civil Engineer (B.Tech, DTU)",
-    "about.founder1.desc": "Architectural BIM modeling, 2D-to-3D conversion pipelines, ArchiCAD & Revit production, and certified IFC exports for European design and energy audit workflows.",
-    "about.founder1.quote": "\"A reliable model is more than geometry — it is the exact data source for downstream design and performance.\"",
+    "about.founder1.desc": "Architectural BIM modeling, 2D-to-3D conversion pipelines, ArchiCAD & Revit production, and certified IFC exports for European energy audit workflows.",
+    "about.founder1.quote": "A reliable model is more than geometry — it is the bedrock of simulation and engineering validation.",
     "about.founder2.name": "Madhav Bhati",
     "about.founder2.role": "Co-Founder · Civil Engineer (B.Tech, DTU)",
-    "about.founder2.desc": "Structural coordination, multi-level spatial verification, scan-to-BIM workflows, and rigorous QA processes ensuring zero geometric drift across digital twins.",
-    "about.founder2.quote": "\"Engineering precision means every wall assembly, room boundary, and dimension reflects the true building fabric.\"",
-    "about.cta": "Contact Us",
+    "about.founder2.desc": "Structural modeling coordination, dimensional quality control, scan-to-BIM reconstruction, and compliance checking for international client deliveries.",
+    "about.founder2.quote": "Precision in building geometry eliminates expensive rework down the line.",
+    "about.cta": "Talk to Our Founders",
 
     "pilot.eyebrow": "Zero-Risk Starting Point",
     "pilot.heading": "Try us on one drawing, free.",
     "pilot.lead": "Send one room, one floor plan or one scanned PDF (up to 50 m²). We model it at no cost, so you can judge our accuracy and speed before you commit. No card, no contract.",
     "pilot.submitBtn": "Send Pilot Request",
-    "pilot.promise": "We reply within one working day. NDA on request."
+    "pilot.promise": "We reply within one working day. NDA / Confidentiality on request."
   },
 
   de: {
-    "nav.services": "Leistungen",
+    "nav.services": "Dienste",
     "nav.process": "Ablauf",
     "nav.projects": "Projekte",
     "nav.pricing": "Preise",
     "nav.about": "Über uns",
     "nav.pilot": "Kostenloser Testlauf",
 
-    "hero.eyebrow": "Bauingenieur-geführtes BIM-Studio · Berlin & DACH",
-    "hero.title": "Audit-Bereite BIM-Modelle für Energieberatung & Effizienz",
-    "hero.subtitle": "Bei der energetischen Gebäudeanalyse ist präzise Geometrie unverzichtbar. Wir liefern audit-bereite ArchiCAD-, Revit- und IFC4-Modelle mit exakten Raumvolumen, thermischen Hüllflächen und Bauteilschichten in 24–48 Stunden.",
-    "hero.btnPilot": "Kostenlosen Testlauf starten",
-    "hero.btnProjects": "Projekte ansehen",
-    "hero.trust1": "✓ Bauingenieur-geführte QA",
-    "hero.trust2": "✓ Direkter Export für thermische Simulation",
-    "hero.trust3": "✓ NDA auf Wunsch",
+    "hero.eyebrow": "Bauingenieur-geführte BIM-Modellierung · Deutschland & DACH",
+    "hero.title": "3D-CAD- & IFC-Gebäudemodelle für Energieberater – ab 49 €",
+    "hero.subtitle": "Sparen Sie bis zu 70 % Zeichenzeit bei iSFP- und GEG-Nachweisen. Wir wandeln Ihre 2D-Bestandspläne, PDFs und Skizzen in saubere, audit-bereite IFC4- und CAD-Modelle für Hottgenroth, Solar-Computer und ZUB Helena – verlässlich in 24–48 Stunden.",
+    "hero.btnPilot": "Kostenlosen Testlauf starten (1 Raum / Plan gratis)",
+    "hero.btnSample": "Test-IFC-Datei herunterladen",
+    "hero.trust1": "100% Passgenauigkeits-Garantie (Geld-zurück bei Importfehlern)",
+    "hero.trust2": "DIN V 18599 & GEG-konforme Geometrie",
+    "hero.trust3": "24–48 Stunden Express-Lieferung",
+    "hero.trust4": "NDA / Vertraulichkeit auf Wunsch",
 
-    "trustbar.speed.label": "Geschwindigkeit",
-    "trustbar.speed.val": "24–48 Std. Turnaround für Wohngebäude",
-    "trustbar.detail.label": "Detaillierungsgrad",
-    "trustbar.detail.val": "LOD 200–300 Modelle",
-    "trustbar.formats.label": "Formate",
-    "trustbar.formats.val": "ArchiCAD · Revit · IFC 4.3 · DWG",
+    "software.lead": "100% Kompatibilität garantiert",
+    "software.caption": "Nahtlose IFC-Schnittstellen für alle führenden deutschen Energieberater-Softwarelösungen.",
+
+    "trustbar.speed.label": "Lieferzeit",
+    "trustbar.speed.val": "24–48 Std. Express für Wohngebäude",
+    "trustbar.detail.label": "Präzision",
+    "trustbar.detail.val": "LOD 200–300 & DIN 277 Konformität",
+    "trustbar.formats.label": "Schnittstellen",
+    "trustbar.formats.val": "Hottgenroth · Solar-Computer · IFC 4.3",
     "trustbar.exp.label": "Erfahrung",
-    "trustbar.exp.val": "150+ Modelle für deutsche Energieaudits",
+    "trustbar.exp.val": "Bauingenieur-Kompetenz aus über 150+ modellierten Gebäuden für deutsche Energieberatungen und iSFP-Projekte nach DIN V 18599.",
+
+    "samples.eyebrow": "Praxistest & Verifikation",
+    "samples.heading": "Überzeugen Sie sich selbst: Testdateien herunterladen",
+    "samples.subheading": "Laden Sie unsere Beispieldateien herunter und importieren Sie sie direkt in Ihr System, um die IFC-Struktur und Geometrie vorab zu prüfen.",
+    "samples.card1.title": "Muster-Einfamilienhaus (Bestand 1978)",
+    "samples.card1.desc": "Vollständig geschlossene thermische Gebäudehülle mit Dachschrägen, Gauben und maßgenauen Fenstern/Türen für iSFP und GEG-Nachweise.",
+    "samples.card1.btn": "Download IFC-Musterdatei (1.8 MB)",
+    "samples.card2.title": "Muster-Mehrfamilienhaus (8 Wohneinheiten)",
+    "samples.card2.desc": "Vollständiges 3D-BIM-Gebäudemodell mit allen Innenwänden, Geschossdecken, DIN 277 Raumstempeln und Zonen für Raumheizlastberechnungen.",
+    "samples.card2.btn": "Download IFC-Musterdatei (4.2 MB)",
+    "samples.note": "Kompatibel mit Hottgenroth Energieberater 18599, Solar-Computer GBIS, ZUB Helena, ArchiCAD, Revit und Solibri.",
 
     "problem.eyebrow": "Warum Energieberater die Modellierung auslagern",
     "problem.heading": "Ein Energieaudit ist nur so verlässlich wie das darunterliegende Modell.",
@@ -596,7 +657,7 @@ const i18nDict = {
     "services.card2.desc": "Speziell für thermische Simulationsprogramme vorbereitet: Geschlossene Hüllflächen, exakte Raumvolumen und thermische Zonen.",
     "services.card2.feat1": "Räumlich definierte thermische Raumgrenzen",
     "services.card2.feat2": "Fensterflächenanteil & Solarertragsdaten",
-    "services.card2.feat3": "Direktimport in SAP, PHPP & Hottgenroth",
+    "services.card2.feat3": "Direktimport in Hottgenroth, Solar-Computer & ZUB",
 
     "services.card3.badge": "LiDAR & Punktwolke",
     "services.card3.title": "Scan-to-BIM & Bestandspläne",
@@ -624,29 +685,51 @@ const i18nDict = {
     "process.step3.desc": "Wohngebäude-Modelle liefern wir in 24–48 Stunden als native ArchiCAD-, Revit- und IFC 4.3-Dateien.",
 
     "pricing.eyebrow": "Transparente Festpreise",
-    "pricing.heading": "Feste Pauschalpreise ohne Stundensurprises.",
-    "pricing.subheading": "Jedes Projekt erhält vor Beginn ein verbindliches Angebot. Diese Richtwerte gelten für Standardpläne.",
-    "pricing.tier1.tag": "Einfamilienhaus",
-    "pricing.tier1.title": "Einzelprojekt Einfamilienhaus & Wohnungen",
-    "pricing.tier1.best": "Ideal für Einfamilienhäuser und kleine Einheiten",
-    "pricing.tier1.price": "49–99",
-    "pricing.tier1.unit": "/ Einheit",
+    "pricing.heading": "Festpreise im Direktvergleich – Schneller & Günstiger als der Markt.",
+    "pricing.subheading": "Verbindliche Festpreisangebote vor Beginn. Keine Stundensurprises, 100% Passgenauigkeits-Garantie.",
+    "pricing.prefix": "ab ",
+    "pricing.tier1.tag": "Paket 1: Thermische Hülle",
+    "pricing.tier1.title": "Thermische Gebäudehülle",
+    "pricing.tier1.best": "iSFP, Energieausweise & GEG-Nachweise",
+    "pricing.tier1.unit": "/ Gebäude",
     "pricing.tier1.time": "24–48 Stunden Turnaround",
-    "pricing.btn": "Kostenlosen Testlauf starten",
-    "pricing.popular": "Meistgefragt",
-    "pricing.tier2.tag": "Mehrfamilienhaus",
-    "pricing.tier2.title": "Mehrfamilienhäuser & Gewerbe",
-    "pricing.tier2.best": "Ideal für Mehrfamilienhäuser und größere Komplexe",
-    "pricing.tier2.price": "100–299",
+    "pricing.tier1.vs": "Celekohr: 79 € · 38% Ersparnis",
+    "pricing.tier1.btn": "Jetzt Hüllfläche anfragen",
+    "pricing.tier1.f1": "Vollständige thermische Gebäudehülle",
+    "pricing.tier1.f2": "Dachneigung, Gauben & Wandanschlüsse",
+    "pricing.tier1.f3": "Exakte Fenster- & Türöffnungsflächen",
+    "pricing.tier1.f4": "IFC 4.3 für Hottgenroth & Solar-Computer",
+
+    "pricing.popular": "Meistgefragt / Full BIM",
+    "pricing.tier2.tag": "Paket 2: Vollmodell",
+    "pricing.tier2.title": "Vollständiges 3D-BIM-Modell",
+    "pricing.tier2.best": "Umfassende Sanierung & Raumheizlast",
     "pricing.tier2.unit": "/ Gebäude",
-    "pricing.tier2.time": "Angebot in wenigen Stunden (3–5 Tage)",
-    "pricing.tier3.tag": "Retainer",
-    "pricing.tier3.title": "Studio-Retainer",
-    "pricing.tier3.best": "Für Büros mit kontinuierlichem Monatsbedarf",
+    "pricing.tier2.time": "48–72 Stunden Turnaround",
+    "pricing.tier2.vs": "Celekohr: 169 € · 24% Ersparnis",
+    "pricing.tier2.btn": "Vollmodell beauftragen",
+    "pricing.tier2.f1": "Alles aus Paket 1 (Thermische Hülle)",
+    "pricing.tier2.f2": "Alle Innenwände, Decken & Treppen",
+    "pricing.tier2.f3": "Raumstempel & DIN 277 Netto-Raumflächen",
+    "pricing.tier2.f4": "Native ArchiCAD (.pln) / Revit (.rvt) Datei",
+
+    "pricing.tier3.tag": "Paket 3: Retainer",
+    "pricing.tier3.title": "Monats-Retainer (Dedicated)",
+    "pricing.tier3.best": "Büros mit 10+ Projekten / Monat",
     "pricing.tier3.currency": "Ab €",
-    "pricing.tier3.price": "1.500",
     "pricing.tier3.unit": "/ Monat",
-    "pricing.tier3.time": "Reservierte monatliche Kapazität",
+    "pricing.tier3.time": "Feste Kapazität / Express (<24 Std.)",
+    "pricing.tier3.btn": "Retainer besprechen",
+    "pricing.tier3.f1": "Fester persönlicher Modellierer (Bauingenieur)",
+    "pricing.tier3.f2": "Prioritäre Bearbeitung (<24 Std. Express)",
+    "pricing.tier3.f3": "Unbegrenzte Modell-Revisionen",
+    "pricing.tier3.f4": "Monatliche Sammelrechnung mit Zahlungsziel",
+
+    "guarantee.tag": "Risikofrei testen",
+    "guarantee.title": "🛡️ Unsere 100% Passgenauigkeits-Garantie",
+    "guarantee.subtitle": "Importiert Ihr Modell nicht fehlerfrei, zahlen Sie keinen Cent.",
+    "guarantee.body1": "Wir wissen: Ein CAD-Modell nützt Ihnen nur, wenn die Hüllflächen und Raumgeometrien in Ihrer Software (Hottgenroth, Solar-Computer etc.) sofort stimmen.",
+    "guarantee.body2": "Sollte ein von uns geliefertes Modell beim Import Geometrie- oder Schichtenfehler aufweisen, beheben wir das Problem innerhalb von 12 Stunden kostenfrei. Kann das Modell dennoch nicht für Ihre Berechnung genutzt werden, erhalten Sie 100 % des Rechnungsbetrags erstattet.",
 
     "about.eyebrow": "Studio-Führung",
     "about.heading": "Verlässlicher BIM- & Digital-Building-Support",
@@ -657,18 +740,18 @@ const i18nDict = {
     "about.founder1.name": "Ankit Kumar",
     "about.founder1.role": "Mitgründer · Bauingenieur (B.Tech, DTU)",
     "about.founder1.desc": "Architektur-BIM-Modellierung, 2D-zu-3D-Konvertierungspipelines, ArchiCAD- & Revit-Produktion sowie zertifizierte IFC-Exporte für europäische Planungs- und Energieaudit-Prozesse.",
-    "about.founder1.quote": "\"Ein verlässliches Modell ist mehr als Geometrie — es ist das verlässliche Datenfundament für Simulation und Ausführung.\"",
+    "about.founder1.quote": "Ein verlässliches Modell ist mehr als Geometrie — es ist das verlässliche Datenfundament für Simulation und Ausführung.",
     "about.founder2.name": "Madhav Bhati",
     "about.founder2.role": "Mitgründer · Bauingenieur (B.Tech, DTU)",
-    "about.founder2.desc": "Tragwerkskoordination, mehrgeschossige Raumverifikation, Scan-to-BIM-Workflows und lückenlose Qualitätssicherung für absolute Maßgenauigkeit im digitalen Zwilling.",
-    "about.founder2.quote": "\"Ingenieurmäßige Präzision bedeutet, dass jeder Wandaufbau, jeder Raum und jedes Maß der realen Bausubstanz entspricht.\"",
-    "about.cta": "Kontakt aufnehmen",
+    "about.founder2.desc": "Tragwerkskoordination, maßliche Qualitätskontrolle, Scan-to-BIM-Rekonstruktion und Normenprüfung für internationale Kundenprojekte.",
+    "about.founder2.quote": "Präzision in der Baugeometrie verhindert teure Nacharbeiten auf der Baustelle und in der Berechnung.",
+    "about.cta": "Mit den Gründern sprechen",
 
-    "pilot.eyebrow": "Risikofreier Einstieg",
-    "pilot.heading": "Testen Sie uns an einem Plan — völlig kostenlos.",
-    "pilot.lead": "Senden Sie uns einen Grundriss oder Scan (bis zu 50 m² BGF). Wir modellieren ihn kostenlos, damit Sie unsere Präzision und Geschwindigkeit unverbindlich testen können. Ohne Vertrag, ohne Kreditkarte.",
-    "pilot.submitBtn": "Kostenlosen Testlauf anfragen",
-    "pilot.promise": "Antwort innerhalb von 24 Stunden. NDA auf Wunsch."
+    "pilot.eyebrow": "Risikofreier Start",
+    "pilot.heading": "Kostenlosen Testlauf starten (1 Raum / Plan gratis)",
+    "pilot.lead": "Senden Sie uns einen Raum, einen Grundriss oder einen Scan (bis 50 m²). Wir modellieren ihn kostenlos, damit Sie Passgenauigkeit und Geschwindigkeit direkt in Ihrer Software prüfen können.",
+    "pilot.submitBtn": "Testlauf anfragen / Projekt einreichen",
+    "pilot.promise": "Antwort innerhalb weniger Stunden. NDA / Vertraulichkeit auf Wunsch."
   }
 };
 
@@ -772,51 +855,50 @@ function getPricesForCurrency(currencyCode, isGerman) {
   let t1, t2, t3;
 
   if (currencyCode === 'EUR') {
-    t1 = '49–99';
-    t2 = '100–299';
-    t3 = isGerman ? '1.500' : '1,500';
+    t1 = '49';
+    t2 = '129';
+    t3 = isGerman ? '1.200' : '1,200';
   } else if (currencyCode === 'USD') {
-    t1 = '55–109';
-    t2 = '109–325';
-    t3 = isGerman ? '1.650' : '1,650';
+    t1 = '55';
+    t2 = '145';
+    t3 = isGerman ? '1.350' : '1,350';
   } else if (currencyCode === 'GBP') {
-    t1 = '42–85';
-    t2 = '85–255';
-    t3 = isGerman ? '1.275' : '1,275';
+    t1 = '42';
+    t2 = '110';
+    t3 = isGerman ? '1.050' : '1,050';
   } else if (currencyCode === 'CHF') {
-    t1 = '48–96';
-    t2 = '98–288';
-    t3 = isGerman ? '1.450' : '1,450';
+    t1 = '48';
+    t2 = '125';
+    t3 = isGerman ? '1.180' : '1,180';
   } else if (currencyCode === 'INR') {
-    t1 = '4,400–8,900';
-    t2 = '9,000–26,900';
-    t3 = '1,35,000';
+    t1 = '4,400';
+    t2 = '11,500';
+    t3 = '1,08,000';
   } else if (currencyCode === 'AED') {
-    t1 = '195–395';
-    t2 = '395–1,190';
-    t3 = isGerman ? '5.950' : '5,950';
+    t1 = '200';
+    t2 = '530';
+    t3 = isGerman ? '4.900' : '4,900';
   } else if (currencyCode === 'SAR') {
-    t1 = '200–400';
-    t2 = '405–1,210';
-    t3 = isGerman ? '6.075' : '6,075';
+    t1 = '205';
+    t2 = '540';
+    t3 = isGerman ? '5.000' : '5,000';
   } else if (currencyCode === 'CAD') {
-    t1 = '75–149';
-    t2 = '149–445';
-    t3 = isGerman ? '2.250' : '2,250';
+    t1 = '75';
+    t2 = '198';
+    t3 = isGerman ? '1.850' : '1,850';
   } else if (currencyCode === 'AUD') {
-    t1 = '80–165';
-    t2 = '165–495';
-    t3 = isGerman ? '2.490' : '2,490';
+    t1 = '82';
+    t2 = '218';
+    t3 = isGerman ? '2.050' : '2,050';
   } else if (currencyCode === 'SGD') {
-    t1 = '70–145';
-    t2 = '145–435';
-    t3 = isGerman ? '2.175' : '2,175';
+    t1 = '72';
+    t2 = '192';
+    t3 = isGerman ? '1.800' : '1,800';
   } else if (currencyCode === 'JPY') {
-    t1 = '8,000–16,300';
-    t2 = '16,500–49,500';
-    t3 = '247,500';
+    t1 = '8,400';
+    t2 = '22,000';
+    t3 = '205,000';
   } else {
-    // Dynamic math for any other currency
     const calc = (base) => {
       let v = base * rate;
       if (rate >= 50) v = Math.round(v / 100) * 100;
@@ -824,12 +906,12 @@ function getPricesForCurrency(currencyCode, isGerman) {
       else v = Math.round(v);
       return isGerman ? v.toLocaleString('de-DE') : v.toLocaleString('en-US');
     };
-    t1 = calc(49) + '–' + calc(99);
-    t2 = calc(100) + '–' + calc(299);
-    t3 = calc(1500);
+    t1 = calc(49);
+    t2 = calc(129);
+    t3 = calc(1200);
   }
 
-  const prefix = isGerman ? ('Ab ' + sym) : ('From ' + sym);
+  const prefix = isGerman ? ('ab ') : ('from ');
 
   return { symbol: sym, tier1: t1, tier2: t2, tier3: t3, prefix: prefix };
 }
@@ -923,26 +1005,37 @@ function setCountry(countryCode, syncLanguage = true) {
 }
 
 function setLanguage(lang, syncCurrency = false) {
-  if (!i18nDict[lang]) lang = 'en';
+  if (!i18nDict[lang]) lang = 'de';
   currentLangCode = lang;
 
   const dict = i18nDict[lang];
   document.querySelectorAll('[data-i18n]').forEach(el => {
     const key = el.getAttribute('data-i18n');
-    if (key === 'pricing.tier3.currency') return;
+    if (key === 'pricing.tier3.currency' || key === 'pricing.prefix') return;
     if (dict[key]) {
-      el.textContent = dict[key];
+      if (dict[key].includes('<') && dict[key].includes('>')) {
+        el.innerHTML = dict[key];
+      } else {
+        el.textContent = dict[key];
+      }
     }
   });
-
-  document.documentElement.lang = lang;
-  localStorage.setItem('ribhus_lang', lang);
 
   const langEl = document.getElementById('currentCountryLang');
   if (langEl) langEl.textContent = lang.toUpperCase();
 
-  // Re-apply pricing display with language-specific prefix
   updatePricingDisplay();
+}
+
+function selectProjectType(val) {
+  const sel = document.getElementById('pilotProjectType');
+  if (sel) {
+    sel.value = val;
+  }
+  const pilotSec = document.getElementById('pilot');
+  if (pilotSec) {
+    pilotSec.scrollIntoView({ behavior: 'smooth' });
+  }
 }
 
 async function initCountryAndLanguage() {
