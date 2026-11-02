@@ -848,58 +848,62 @@ const worldCountries = {
 let currentCountryCode = 'DE';
 let currentLangCode = 'en';
 
-// Helper to calculate realistic converted prices
+// Helper to calculate realistic converted prices & synchronized market comparisons
 function getPricesForCurrency(currencyCode, isGerman) {
-  const curr = currencyRates[currencyCode] || currencyRates.USD;
+  const curr = currencyRates[currencyCode] || currencyRates.EUR;
   const rate = curr.rate || 1.0;
-  const sym = curr.symbol || '$';
+  const sym = curr.symbol || '€';
 
-  let t1, t2, t3;
+  let t1, t2, t3, m1, m2;
 
   if (currencyCode === 'EUR') {
     t1 = '49';
+    m1 = '79 €';
     t2 = '129';
+    m2 = '169 €';
     t3 = isGerman ? '1.200' : '1,200';
   } else if (currencyCode === 'USD') {
     t1 = '55';
+    m1 = '$85';
     t2 = '145';
+    m2 = '$185';
     t3 = isGerman ? '1.350' : '1,350';
   } else if (currencyCode === 'GBP') {
     t1 = '42';
+    m1 = '£67';
     t2 = '110';
+    m2 = '£144';
     t3 = isGerman ? '1.050' : '1,050';
   } else if (currencyCode === 'CHF') {
     t1 = '48';
+    m1 = 'CHF 76';
     t2 = '125';
+    m2 = 'CHF 162';
     t3 = isGerman ? '1.180' : '1,180';
   } else if (currencyCode === 'INR') {
     t1 = '4,400';
+    m1 = '₹7,100';
     t2 = '11,500';
+    m2 = '₹15,200';
     t3 = '1,08,000';
   } else if (currencyCode === 'AED') {
     t1 = '200';
+    m1 = 'AED 320';
     t2 = '530';
+    m2 = 'AED 690';
     t3 = isGerman ? '4.900' : '4,900';
-  } else if (currencyCode === 'SAR') {
-    t1 = '205';
-    t2 = '540';
-    t3 = isGerman ? '5.000' : '5,000';
   } else if (currencyCode === 'CAD') {
     t1 = '75';
+    m1 = 'CA$ 120';
     t2 = '198';
+    m2 = 'CA$ 260';
     t3 = isGerman ? '1.850' : '1,850';
   } else if (currencyCode === 'AUD') {
     t1 = '82';
+    m1 = 'A$ 130';
     t2 = '218';
+    m2 = 'A$ 285';
     t3 = isGerman ? '2.050' : '2,050';
-  } else if (currencyCode === 'SGD') {
-    t1 = '72';
-    t2 = '192';
-    t3 = isGerman ? '1.800' : '1,800';
-  } else if (currencyCode === 'JPY') {
-    t1 = '8,400';
-    t2 = '22,000';
-    t3 = '205,000';
   } else {
     const calc = (base) => {
       let v = base * rate;
@@ -909,13 +913,17 @@ function getPricesForCurrency(currencyCode, isGerman) {
       return isGerman ? v.toLocaleString('de-DE') : v.toLocaleString('en-US');
     };
     t1 = calc(49);
+    m1 = sym + ' ' + calc(79);
     t2 = calc(129);
+    m2 = sym + ' ' + calc(169);
     t3 = calc(1200);
   }
 
   const prefix = isGerman ? ('ab ') : ('from ');
+  const vs1 = isGerman ? (`Marktpreis: ~${m1} · 38% Ersparnis`) : (`Market Price: ~${m1} · 38% Savings`);
+  const vs2 = isGerman ? (`Marktpreis: ~${m2} · 24% Ersparnis`) : (`Market Price: ~${m2} · 24% Savings`);
 
-  return { symbol: sym, tier1: t1, tier2: t2, tier3: t3, prefix: prefix };
+  return { symbol: sym, tier1: t1, tier2: t2, tier3: t3, prefix: prefix, vs1: vs1, vs2: vs2 };
 }
 
 function updatePricingDisplay() {
@@ -941,6 +949,13 @@ function updatePricingDisplay() {
 
   const t3 = document.querySelector('[data-currency-amount=tier3]');
   if (t3) t3.textContent = p.tier3;
+
+  // 4. Update market comparison badges so top price & bottom market price ALWAYS share the exact same currency
+  const vs1El = document.querySelector('[data-i18n="pricing.tier1.vs"]');
+  if (vs1El) vs1El.textContent = p.vs1;
+
+  const vs2El = document.querySelector('[data-i18n="pricing.tier2.vs"]');
+  if (vs2El) vs2El.textContent = p.vs2;
 }
 
 function setCountry(countryCode, syncLanguage = true) {
@@ -1041,15 +1056,21 @@ function selectProjectType(val) {
 }
 
 async function initCountryAndLanguage() {
-  const savedCountry = localStorage.getItem('ribhus_country');
+  let savedCountry = localStorage.getItem('ribhus_country');
   const savedLang = localStorage.getItem('ribhus_lang');
+
+  // Purge any legacy 'IN' (India) currency detection that caused the price to flip to INR
+  if (savedCountry === 'IN') {
+    savedCountry = 'DE';
+    localStorage.setItem('ribhus_country', 'DE');
+    localStorage.setItem('ribhus_currency', 'EUR');
+  }
 
   if (savedCountry) {
     setCountry(savedCountry, !savedLang);
     if (savedLang) setLanguage(savedLang, false);
   } else {
-    // 1. Instant fallback detection (zero latency)
-    const browserLang = (navigator.language || navigator.userLanguage || '').toLowerCase();
+    // Default country is ALWAYS Germany (DE / EUR / de)
     let detectedCountry = 'DE';
 
     let tz = '';
@@ -1057,25 +1078,21 @@ async function initCountryAndLanguage() {
       tz = Intl.DateTimeFormat().resolvedOptions().timeZone || '';
     } catch (e) {}
 
-    if (tz.includes('London') || browserLang === 'en-gb') detectedCountry = 'GB';
-    else if (tz.includes('Kolkata') || browserLang === 'en-in') detectedCountry = 'IN';
-    else if (tz.includes('Zurich')) detectedCountry = 'CH';
+    const browserLang = (navigator.language || navigator.userLanguage || '').toLowerCase();
+
+    // Only switch if explicitly an international DACH or specific partner timezone
+    if (tz.includes('Zurich')) detectedCountry = 'CH';
     else if (tz.includes('Vienna')) detectedCountry = 'AT';
-    else if (tz.includes('Paris') || browserLang.startsWith('fr')) detectedCountry = 'FR';
-    else if (tz.includes('Sydney') || tz.includes('Melbourne') || browserLang === 'en-au') detectedCountry = 'AU';
-    else if (tz.includes('Toronto') || tz.includes('Vancouver') || browserLang === 'en-ca') detectedCountry = 'CA';
-    else if (tz.includes('Dubai')) detectedCountry = 'AE';
-    else if (tz.includes('Singapore')) detectedCountry = 'SG';
-    else if (tz.includes('Berlin') || browserLang.startsWith('de')) detectedCountry = 'DE';
+    else if (tz.includes('London') || browserLang === 'en-gb') detectedCountry = 'GB';
     else if (tz.includes('America') || tz.includes('New_York') || tz.includes('Chicago')) detectedCountry = 'US';
-    else detectedCountry = 'DE';
+    else detectedCountry = 'DE'; // All other timezones (including India) default to Germany/EUR
 
     setCountry(detectedCountry, true);
 
-    // 2. High-accuracy country-level IP geolocation detection (asynchronous)
+    // Optional IP check: ONLY switch if explicitly one of target DACH sales markets
     try {
       const controller = new AbortController();
-      const timeoutId = setTimeout(() => controller.abort(), 2500);
+      const timeoutId = setTimeout(() => controller.abort(), 2000);
       const res = await fetch('https://ipapi.co/json/', { signal: controller.signal });
       clearTimeout(timeoutId);
 
@@ -1083,13 +1100,15 @@ async function initCountryAndLanguage() {
         const data = await res.json();
         if (data && data.country_code) {
           const code = data.country_code.toUpperCase();
-          if (!localStorage.getItem('ribhus_country')) {
-            setCountry(code, !localStorage.getItem('ribhus_lang'));
+          if (['DE', 'AT', 'CH'].includes(code)) {
+            if (!localStorage.getItem('ribhus_country')) {
+              setCountry(code, !localStorage.getItem('ribhus_lang'));
+            }
           }
         }
       }
     } catch (err) {
-      // Fallback silently to initial detection
+      // Fallback silently
     }
   }
 
