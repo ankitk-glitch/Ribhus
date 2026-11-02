@@ -3641,8 +3641,7 @@ ul { list-style: none; }
 }
 
 /* 4. Pricing Enhancements & Market Comparison */
-.pricing-vs-market,
-.pricing-vs-celekohr {
+.pricing-vs-market {
   display: inline-flex;
   align-items: center;
   gap: 6px;
