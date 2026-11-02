@@ -3335,7 +3335,7 @@ ul { list-style: none; }
 }
 
 /* ═══════════════════════════════════════════════
-   GERMAN ENERGIEBERATER TARGETING & CELEKOHR PARITY
+   GERMAN ENERGIEBERATER TARGETING & MARKET PARITY
 ═══════════════════════════════════════════════ */
 
 /* 1. Hero Eyebrow Badge & Trust Bar Upgrades */
@@ -3640,7 +3640,8 @@ ul { list-style: none; }
   flex-shrink: 0;
 }
 
-/* 4. Pricing Enhancements & Celekohr Parity */
+/* 4. Pricing Enhancements & Market Comparison */
+.pricing-vs-market,
 .pricing-vs-celekohr {
   display: inline-flex;
   align-items: center;
