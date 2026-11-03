@@ -2343,42 +2343,43 @@ ul { list-style: none; }
   background: var(--card-bg);
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
-  padding: 24px 22px;
+  padding: 26px 24px;
   transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 .founder-card:hover {
   transform: translateY(-2px);
-  box-shadow: 0 10px 24px rgba(11, 19, 43, 0.06);
+  box-shadow: 0 12px 28px rgba(11, 19, 43, 0.07);
 }
 
 .founder-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 14px;
-  gap: 12px;
+  margin-bottom: 16px;
 }
 
 .founder-profile {
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 18px;
 }
 
 .founder-avatar {
-  width: 58px;
-  height: 58px;
-  border-radius: 50%;
+  width: 96px;
+  height: 96px;
+  border-radius: 18px;
   object-fit: cover;
   border: 2px solid var(--accent);
-  box-shadow: 0 4px 12px rgba(11, 19, 43, 0.1);
+  box-shadow: 0 6px 18px rgba(11, 19, 43, 0.12);
   flex-shrink: 0;
+  transition: transform 0.25s ease;
+}
+
+.founder-card:hover .founder-avatar {
+  transform: scale(1.02);
 }
 
 .founder-info h4 {
   font-family: var(--font-head);
-  font-size: 1.1rem;
+  font-size: 1.18rem;
   font-weight: 800;
   color: var(--text-dark);
   margin: 0 0 2px 0;
@@ -2387,29 +2388,41 @@ ul { list-style: none; }
 
 .founder-role {
   display: block;
-  font-size: 0.78rem;
+  font-size: 0.8rem;
   color: var(--text-light);
   font-weight: 600;
   line-height: 1.35;
 }
 
-.founder-linkedin {
-  color: #0a66c2;
-  transition: transform 0.2s, background-color 0.2s;
-  flex-shrink: 0;
-  display: flex;
+.founder-email {
+  display: inline-flex;
   align-items: center;
-  justify-content: center;
-  width: 34px;
-  height: 34px;
-  border-radius: 50%;
-  background: rgba(10, 102, 194, 0.08);
+  gap: 6px;
+  margin-top: 8px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--accent);
+  text-decoration: none;
+  padding: 5px 12px;
+  background: rgba(197, 168, 128, 0.12);
+  border: 1px solid rgba(197, 168, 128, 0.3);
+  border-radius: var(--radius-full);
+  transition: all 0.2s ease;
 }
-.founder-linkedin:hover {
-  transform: scale(1.1);
-  background: rgba(10, 102, 194, 0.16);
+
+.founder-email:hover {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(197, 168, 128, 0.35);
 }
-.founder-linkedin svg { width: 18px; height: 18px; }
+
+.founder-email svg {
+  width: 13px;
+  height: 13px;
+  flex-shrink: 0;
+}
 
 .founder-card p {
   font-size: 0.86rem;
@@ -2532,10 +2545,17 @@ ul { list-style: none; }
   .services-grid { grid-template-columns: 1fr; }
   .service-boundary-box { border-radius: var(--radius-md); text-align: left; }
   .founders-grid { grid-template-columns: 1fr; }
+  .founder-avatar { width: 84px; height: 84px; border-radius: 16px; }
   .form-row-2 { grid-template-columns: 1fr; gap: 14px; }
   .pilot-card { padding: 36px 20px; }
   .pilot-submit-row { flex-direction: column; align-items: stretch; }
   .pilot-submit-row button { width: 100%; }
+}
+
+@media (max-width: 480px) {
+  .founder-profile { gap: 14px; }
+  .founder-avatar { width: 76px; height: 76px; border-radius: 14px; }
+  .founder-email { font-size: 0.76rem; padding: 4px 10px; }
 }
 
 /* Breakdown lists & Zone pills for Case Studies */
