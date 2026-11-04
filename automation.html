@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>THE RIBHUS AUTOMATION — Enterprise Archicad 28 & 29 AI Workflow Platform</title>
+  <meta name="description" content="THE RIBHUS AUTOMATION: Official enterprise CAD automation platform for Archicad 28 & 29. Center Anchor (0,0), 100% original scale retention, authentic sheets guarantee, and 5 TB cloud vault." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+  <link rel="stylesheet" href="styles.css?v=8.2" />
+  <link rel="icon" type="image/png" href="assets/ribhus_emblem.png" />
+  <style>
+    :root {
+      --chatgpt-dark: #212121;
+      --chatgpt-card: #2f2f2f;
+      --chatgpt-sidebar: #171717;
+      --chatgpt-accent: #10a37f;
+      --chatgpt-border: #424242;
+    }
+    body.automation-page {
+      background-color: #0d1117;
+      color: #f0f6fc;
+      font-family: var(--font-body);
+    }
+    .auto-nav {
+      background: rgba(13, 17, 23, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      padding: 16px 0;
+    }
+    .auto-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(16, 185, 129, 0.12);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      color: #34d399;
+      font-size: 13px;
+      font-weight: 600;
+      padding: 6px 14px;
+      border-radius: 9999px;
+      margin-bottom: 24px;
+    }
+    .hero-title {
+      font-family: var(--font-head);
+      font-size: 54px;
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      margin-bottom: 20px;
+      background: linear-gradient(135deg, #ffffff 40%, #94a3b8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hero-subtitle {
+      font-size: 19px;
+      color: #94a3b8;
+      line-height: 1.6;
+      max-width: 780px;
+      margin-bottom: 36px;
+    }
+    .cta-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-bottom: 48px;
+    }
+    .btn-green {
+      background: #10a37f;
+      color: #ffffff;
+      font-weight: 600;
+      padding: 14px 28px;
+      border-radius: 12px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 10px 25px -5px rgba(16, 163, 127, 0.4);
+      transition: all 0.2s;
+    }
+    .btn-green:hover {
+      background: #0d8a6a;
+      transform: translateY(-2px);
+    }
+    .btn-glass {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: #f0f6fc;
+      font-weight: 600;
+      padding: 14px 28px;
+      border-radius: 12px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      transition: all 0.2s;
+    }
+    .btn-glass:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: rgba(255, 255, 255, 0.3);
+    }
+    .glass-card {
+      background: rgba(22, 27, 34, 0.8);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 18px;
+      padding: 32px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(16px);
+      transition: transform 0.2s, border-color 0.2s;
+    }
+    .glass-card:hover {
+      border-color: rgba(16, 185, 129, 0.4);
+      transform: translateY(-3px);
+    }
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 24px;
+      margin: 64px 0;
+    }
+    .feature-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      background: rgba(16, 163, 127, 0.15);
+      color: #34d399;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+    .feature-title {
+      font-family: var(--font-head);
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 10px;
+      color: #ffffff;
+    }
+    .feature-desc {
+      color: #94a3b8;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+    .code-pill {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      background: rgba(0, 0, 0, 0.4);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 3px 8px;
+      border-radius: 6px;
+      color: #a5f3fc;
+    }
+    .workflow-strip {
+      background: linear-gradient(180deg, #161b22 0%, #0d1117 100%);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 24px;
+      padding: 48px 36px;
+      margin: 64px 0;
+    }
+    .step-badge {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: #10a37f;
+      color: #ffffff;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 14px;
+      margin-right: 12px;
+    }
+    .ui-preview-mockup {
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 16px;
+      overflow: hidden;
+      background: #212121;
+      box-shadow: 0 30px 60px rgba(0,0,0,0.6);
+    }
+    .ui-preview-header {
+      background: #171717;
+      padding: 12px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid #333;
+    }
+    .window-dots {
+      display: flex;
+      gap: 6px;
+    }
+    .window-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+    }
+    .dot-red { background: #ff5f56; }
+    .dot-yellow { background: #ffbd2e; }
+    .dot-green { background: #27c93f; }
+  </style>
+</head>
+<body class="automation-page">
+
+  <!-- NAVBAR -->
+  <nav class="auto-nav">
+    <div class="auto-container flex items-center justify-between" style="display: flex; align-items: center; justify-content: space-between;">
+      <a href="index.html" style="display: flex; align-items: center; gap: 12px; text-decoration: none;">
+        <img src="assets/ribhus_emblem.png" alt="Ribhus" style="height: 38px; width: 38px; border-radius: 8px;" />
+        <div>
+          <div style="font-family: var(--font-head); font-weight: 800; font-size: 18px; color: #ffffff; letter-spacing: 0.05em;">THE RIBHUS AUTOMATION</div>
+          <div style="font-size: 11px; color: #10b981; font-weight: 600; letter-spacing: 0.08em;">ENTERPRISE CAD CLOUD</div>
+        </div>
+      </a>
+      <div style="display: flex; align-items: center; gap: 20px;">
+        <a href="download.html" style="color: #94a3b8; text-decoration: none; font-size: 14px; font-weight: 500;">Download</a>
+        <a href="vault.html" style="color: #94a3b8; text-decoration: none; font-size: 14px; font-weight: 500;">Cloud Vault</a>
+        <a href="privacy.html" style="color: #94a3b8; text-decoration: none; font-size: 14px; font-weight: 500;">Privacy</a>
+        <a href="download.html" class="btn-green" style="padding: 10px 20px; font-size: 13px;">Get Started</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO SECTION -->
+  <header style="padding: 80px 0 40px;">
+    <div class="auto-container">
+      <div class="hero-badge">
+        <i data-lucide="shield-check" style="width: 16px; height: 16px;"></i>
+        <span>Google OAuth 2.0 & Archicad 28 / 29 Certified</span>
+      </div>
+      <h1 class="hero-title">Architectural Precision.<br/>Automated at Machine Speed.</h1>
+      <p class="hero-subtitle">
+        <strong>THE RIBHUS AUTOMATION</strong> transforms complex German & European floor plans, sections, and elevations into flawless Archicad worksheets in seconds. Engineered for zero scaling distortion, authentic sheet generation, and strict Chief Architect vault gatekeeping.
+      </p>
+
+      <div class="cta-group">
+        <a href="download.html" class="btn-green">
+          <i data-lucide="download"></i>
+          <span>Download Desktop App (v2.4)</span>
+        </a>
+        <a href="vault.html" class="btn-glass">
+          <i data-lucide="folder-lock"></i>
+          <span>Chief Architect Vault</span>
+        </a>
+        <a href="http://localhost:8765" target="_blank" class="btn-glass" style="border-color: rgba(16, 163, 127, 0.4);">
+          <i data-lucide="play-circle" style="color: #34d399;"></i>
+          <span>Launch Local Console</span>
+        </a>
+      </div>
+
+      <!-- APP PREVIEW MOCKUP -->
+      <div class="ui-preview-mockup">
+        <div class="ui-preview-header">
+          <div class="window-dots">
+            <div class="window-dot dot-red"></div>
+            <div class="window-dot dot-yellow"></div>
+            <div class="window-dot dot-green"></div>
+          </div>
+          <div style="font-size: 12px; color: #94a3b8; font-family: 'JetBrains Mono', monospace;">THE RIBHUS AUTOMATION — Archicad Worksheet AI</div>
+          <div style="font-size: 11px; color: #10a37f; font-weight: 600;">● Engine Connected</div>
+        </div>
+        <div style="padding: 24px; background: #212121; display: grid; grid-template-columns: 260px 1fr; gap: 20px; min-height: 380px;">
+          <!-- Sidebar Mock -->
+          <div style="background: #171717; border-radius: 12px; padding: 16px; border: 1px solid #333;">
+            <div style="font-size: 12px; font-weight: 700; color: #fff; margin-bottom: 12px; display: flex; align-items: center; justify-content: space-between;">
+              <span>PROJECT WORKSPACE</span>
+              <span style="font-size: 10px; background: #10a37f/20; color: #34d399; padding: 2px 6px; border-radius: 4px;">AC 28/29</span>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 8px;">
+              <div style="background: #262626; padding: 8px 12px; border-radius: 8px; font-size: 12px; color: #e2e8f0;">● 01 KG (Kellergeschoss)</div>
+              <div style="background: #262626; padding: 8px 12px; border-radius: 8px; font-size: 12px; color: #e2e8f0;">● 02 EG (Erdgeschoss)</div>
+              <div style="background: #262626; padding: 8px 12px; border-radius: 8px; font-size: 12px; color: #e2e8f0;">● 03 OG (Obergeschoss)</div>
+              <div style="background: #262626; padding: 8px 12px; border-radius: 8px; font-size: 12px; color: #e2e8f0;">● 04 DG (Dachgeschoss)</div>
+              <div style="background: #262626; padding: 8px 12px; border-radius: 8px; font-size: 12px; color: #e2e8f0;">● 05 Section 1</div>
+              <div style="background: #262626; padding: 8px 12px; border-radius: 8px; font-size: 12px; color: #e2e8f0;">● 06 Elevation 1</div>
+              <div style="background: #262626; padding: 8px 12px; border-radius: 8px; font-size: 12px; color: #e2e8f0;">● 07 Elevation 2</div>
+            </div>
+          </div>
+          <!-- Terminal / Chat Mock -->
+          <div style="background: #171717; border-radius: 12px; padding: 20px; border: 1px solid #333; font-family: 'JetBrains Mono', monospace; font-size: 13px;">
+            <div style="color: #10a37f; margin-bottom: 8px;">✓ Pre-flight tests passed: macOS Accessibility, CoreGraphics, Archicad 29 Hook.</div>
+            <div style="color: #94a3b8; margin-bottom: 8px;">[Vault Sync] Modeller sandbox initialized in USERS/user_madhavbhati1@gmail.com</div>
+            <div style="color: #94a3b8; margin-bottom: 8px;">[Auto-Clean] Base PLN stripped of unneeded drawings; office GDL pens preserved.</div>
+            <div style="color: #38bdf8; margin-bottom: 8px;">→ Executing Universal Engine: Placement Anchor (0, 0) | Original Scale Retained (100%)</div>
+            <div style="color: #34d399; font-weight: 600;">✓ 7 authentic sheets placed cleanly. 3 empty elevation sheets safely deleted.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- CORE FEATURE MATRIX -->
+  <section style="padding: 80px 0;">
+    <div class="auto-container">
+      <div style="text-align: center; max-width: 640px; margin: 0 auto 60px;">
+        <h2 style="font-family: var(--font-head); font-size: 36px; font-weight: 800; color: #fff; margin-bottom: 12px;">Engineered for Real Architectural Production</h2>
+        <p style="color: #94a3b8; font-size: 16px;">Zero guesswork. Built specifically for AEC studios handling high-volume German energy consultant & CAD conversions.</p>
+      </div>
+
+      <div class="feature-grid">
+        <!-- Feature 1 -->
+        <div class="glass-card">
+          <div class="feature-icon"><i data-lucide="layers"></i></div>
+          <h3 class="feature-title">Archicad 28 & 29 Dynamic Targeting</h3>
+          <p class="feature-desc">
+            Seamlessly toggle between <strong>Archicad 28</strong> (standard modeller team deployment) and <strong>Archicad 29</strong> (Chief Architect). The engine dynamically binds menu shortcuts, AppleScript automation, and window coordinates.
+          </p>
+        </div>
+
+        <!-- Feature 2 -->
+        <div class="glass-card">
+          <div class="feature-icon"><i data-lucide="crosshair"></i></div>
+          <h3 class="feature-title">Center Anchor (0,0) & 1:1 Scale</h3>
+          <p class="feature-desc">
+            Drawings are automatically anchored to coordinate origin <span class="code-pill">x 0 y 0</span> via tracker automation. Eliminates manual dragging, clipping, and scale distortion with automatic "Restore Original Values" injection.
+          </p>
+        </div>
+
+        <!-- Feature 3 -->
+        <div class="glass-card">
+          <div class="feature-icon"><i data-lucide="shield-check"></i></div>
+          <h3 class="feature-title">Authentic Sheets Only Guarantee</h3>
+          <p class="feature-desc">
+            No dummy elevation placeholders or empty sheets. The engine inspects every drawing, matches true architectural plans (KG, EG, OG, DG, Sections, Elevations), and automatically cleans up unused sheets.
+          </p>
+        </div>
+
+        <!-- Feature 4 -->
+        <div class="glass-card">
+          <div class="feature-icon"><i data-lucide="folder-git-2"></i></div>
+          <h3 class="feature-title">Modeller Template Personalization</h3>
+          <p class="feature-desc">
+            Takes each modeller's local base PLN file, safely clears prior drawings, and initializes an isolated clean template stored in <span class="code-pill">~/.ribhus_templates/</span>. Company layers, pen sets, and GDL libraries remain 100% untouched.
+          </p>
+        </div>
+
+        <!-- Feature 5 -->
+        <div class="glass-card">
+          <div class="feature-icon"><i data-lucide="cloud"></i></div>
+          <h3 class="feature-title">5 TB Google Drive Vault Governance</h3>
+          <p class="feature-desc">
+            Two-tier security: Modeller files are saved to isolated sandboxes in <span class="code-pill">USERS/user_email/</span>. Only Chief Architect review (<span class="code-pill">madhavbhati1@gmail.com</span>) can promote drawings to production <span class="code-pill">MAIN/</span>.
+          </p>
+        </div>
+
+        <!-- Feature 6 -->
+        <div class="glass-card">
+          <div class="feature-icon"><i data-lucide="sparkles"></i></div>
+          <h3 class="feature-title">On-Device Vision OCR & Gemini Pro</h3>
+          <p class="feature-desc">
+            Combines native Apple Silicon CoreGraphics Vision OCR for microsecond plan reading with Google Gemini Pro 1.5 Copilot for intelligent architectural classification and German AEC terminology parsing.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6-STEP ONBOARDING WIZARD OVERVIEW -->
+  <section style="background: #111827; padding: 80px 0; border-top: 1px solid rgba(255,255,255,0.06); border-bottom: 1px solid rgba(255,255,255,0.06);">
+    <div class="auto-container">
+      <div style="text-align: center; max-width: 640px; margin: 0 auto 50px;">
+        <h2 style="font-family: var(--font-head); font-size: 32px; font-weight: 800; color: #fff; margin-bottom: 12px;">Automated 6-Step Setup Wizard</h2>
+        <p style="color: #94a3b8; font-size: 15px;">Every modeller is guided through a foolproof setup before the CAD engine unlocks.</p>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px;">
+        <div class="glass-card" style="padding: 24px;">
+          <div style="display: flex; align-items: center; margin-bottom: 12px;">
+            <span class="step-badge">1</span>
+            <span style="font-weight: 700; color: #fff;">Google OAuth Verification</span>
+          </div>
+          <p style="color: #94a3b8; font-size: 13px;">Team members sign in with their authorized Ribhus or Google identity. Automatically hooks into personal cloud sandboxes.</p>
+        </div>
+
+        <div class="glass-card" style="padding: 24px;">
+          <div style="display: flex; align-items: center; margin-bottom: 12px;">
+            <span class="step-badge">2</span>
+            <span style="font-weight: 700; color: #fff;">1-Click macOS Permissions</span>
+          </div>
+          <p style="color: #94a3b8; font-size: 13px;">Direct deep links to Accessibility and Automation settings. Grants simulated coordinate input and Archicad menu scripting.</p>
+        </div>
+
+        <div class="glass-card" style="padding: 24px;">
+          <div style="display: flex; align-items: center; margin-bottom: 12px;">
+            <span class="step-badge">3</span>
+            <span style="font-weight: 700; color: #fff;">Archicad 28 / 29 & Template</span>
+          </div>
+          <p style="color: #94a3b8; font-size: 13px;">Modeller selects their installed version and provides a base PLN file. The system auto-cleans it and saves as clean template.</p>
+        </div>
+
+        <div class="glass-card" style="padding: 24px;">
+          <div style="display: flex; align-items: center; margin-bottom: 12px;">
+            <span class="step-badge">4</span>
+            <span style="font-weight: 700; color: #fff;">Office GDL Library Path</span>
+          </div>
+          <p style="color: #94a3b8; font-size: 13px;">Registers the office standard object library path so all placed elements maintain texture, surface, and parameter integrity.</p>
+        </div>
+
+        <div class="glass-card" style="padding: 24px;">
+          <div style="display: flex; align-items: center; margin-bottom: 12px;">
+            <span class="step-badge">5</span>
+            <span style="font-weight: 700; color: #fff;">Gemini Copilot API Key</span>
+          </div>
+          <p style="color: #94a3b8; font-size: 13px;">Interactive tutorial with 1-click Google AI Studio link to acquire and save your Gemini Pro Copilot key.</p>
+        </div>
+
+        <div class="glass-card" style="padding: 24px;">
+          <div style="display: flex; align-items: center; margin-bottom: 12px;">
+            <span class="step-badge">6</span>
+            <span style="font-weight: 700; color: #fff;">100% Pre-Flight Hardware Test</span>
+          </div>
+          <p style="color: #94a3b8; font-size: 13px;">Runs live hardware and API verification. The chat and drawing dispatcher unlock only when every single check passes!</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer style="padding: 48px 0; border-top: 1px solid rgba(255,255,255,0.08); font-size: 13px; color: #64748b;">
+    <div class="auto-container" style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 20px;">
+      <div>
+        <span style="color: #fff; font-weight: 700;">THE RIBHUS AUTOMATION</span> &copy; 2026 Ribhus Studio. All rights reserved.
+      </div>
+      <div style="display: flex; gap: 24px;">
+        <a href="privacy.html" style="color: #94a3b8; text-decoration: none;">Privacy Policy</a>
+        <a href="terms.html" style="color: #94a3b8; text-decoration: none;">Terms of Service</a>
+        <a href="download.html" style="color: #94a3b8; text-decoration: none;">Download Installer</a>
+        <a href="mailto:madhavbhati1@gmail.com" style="color: #94a3b8; text-decoration: none;">madhavbhati1@gmail.com</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    lucide.createIcons();
+  </script>
+</body>
+</html>
+EOF
