@@ -942,7 +942,8 @@ ul { list-style: none; }
 
 .about-cta-bar {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
+  margin-top: 28px;
 }
 
 /* ═══════════════════════════════════════════════
